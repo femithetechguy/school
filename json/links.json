@@ -28,7 +28,6 @@
   },
   "playlists": {
     "beginnerSeries": "https://www.youtube.com/embed/videoseries?list=BEGINNER_PLAYLIST_ID",
-    "studyPlaylist": "https://open.spotify.com/embed/playlist/STUDY_PLAYLIST_ID",
     "powerQuery": "https://www.youtube.com/embed/videoseries?list=POWERQUERY_PLAYLIST_ID",
     "daxTutorial": "https://www.youtube.com/embed/videoseries?list=DAX_COMPLETE_PLAYLIST_ID",
     "realWorldProjects": "https://www.youtube.com/embed/videoseries?list=REALWORLD_PLAYLIST_ID",
@@ -70,5 +69,17 @@
       "hrAnalytics": "https://drive.google.com/file/d/HR_DATA_ID/view"
     },
     "careerRoadmap": "/downloads/analyst-roadmap.pdf"
+  },
+  "spotifyShows": {
+    "rawDataByPAdaptive": {
+      "name": "Raw Data By P3 Adaptive",
+      "author": "P3 Adaptive",
+      "showUrl": "https://open.spotify.com/show/1VZLfXgz1hcB8MFG2OSOH9",
+      "episodes": [
+        "1p8RfheHz0WIzhuAaPpvDO",
+        "0VKfbUdMDCfF7m5UpI29nO",
+        "6CVYcgXt8kFadeNhlGjMgt"
+      ]
+    }
   }
 }

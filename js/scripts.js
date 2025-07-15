@@ -13,7 +13,34 @@ function initializeApp() {
     setupNewsletterForm();
     setupLazyLoading();
     setupSearchFunctionality();
+    setupP3AdaptivePodcastNavigation();
     console.log('Data Analysis Learning Hub initialized successfully!');
+}
+
+// P3 Adaptive Podcast Episode Navigation
+function setupP3AdaptivePodcastNavigation() {
+    const p3adaptiveEpisodes = [
+        "1p8RfheHz0WIzhuAaPpvDO",
+        "0VKfbUdMDCfF7m5UpI29nO",
+        "6CVYcgXt8kFadeNhlGjMgt"
+    ];
+    let currentEpisode = 0;
+    const embed = document.getElementById('p3adaptive-spotify-embed');
+    const prevBtn = document.getElementById('prev-episode');
+    const nextBtn = document.getElementById('next-episode');
+    if (!embed || !prevBtn || !nextBtn) return;
+    prevBtn.onclick = function() {
+        if (currentEpisode > 0) {
+            currentEpisode--;
+            embed.src = `https://open.spotify.com/embed/episode/${p3adaptiveEpisodes[currentEpisode]}`;
+        }
+    };
+    nextBtn.onclick = function() {
+        if (currentEpisode < p3adaptiveEpisodes.length - 1) {
+            currentEpisode++;
+            embed.src = `https://open.spotify.com/embed/episode/${p3adaptiveEpisodes[currentEpisode]}`;
+        }
+    };
 }
 
 // Mobile Menu Toggle
