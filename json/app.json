@@ -1,0 +1,1073 @@
+{
+  "site": {
+    "title": "Data Analysis Learning Hub",
+    "domain": "school.kolawoles.com",
+    "url": "https://school.kolawoles.com",
+    "description": "Learn data analysis, Power BI, SQL, and DAX with hands-on tutorials, podcasts, and resources",
+    "mission": "Empowering analysts with practical skills for real-world data challenges",
+    "hosting": {
+      "platform": "GitHub Pages",
+      "cname": "school.kolawoles.com",
+      "ssl": true,
+      "cdn": "GitHub CDN"
+    }
+  },
+  "navigation": [
+    {
+      "id": "home",
+      "label": "Home",
+      "path": "/",
+      "icon": "home",
+      "type": "spa",
+      "description": "Main landing page with featured content"
+    },
+    {
+      "id": "curriculum",
+      "label": "Learn",
+      "path": "/curriculum",
+      "icon": "book",
+      "type": "spa",
+      "description": "Interactive learning modules and progress tracking"
+    },
+    {
+      "id": "podcast",
+      "label": "Podcast",
+      "path": "/podcast",
+      "icon": "microphone",
+      "type": "spa",
+      "description": "Podcast episodes with dynamic filtering and search"
+    },
+    {
+      "id": "videos",
+      "label": "Videos",
+      "path": "/videos",
+      "icon": "play",
+      "type": "spa",
+      "description": "Video library with playlist management"
+    },
+    {
+      "id": "resources",
+      "label": "Resources",
+      "path": "/resources",
+      "icon": "download",
+      "type": "page",
+      "description": "Static downloads page with file management"
+    },
+    {
+      "id": "blog",
+      "label": "Articles",
+      "path": "/blog",
+      "icon": "edit",
+      "type": "hybrid",
+      "description": "Blog listing (SPA) with individual article pages"
+    },
+    {
+      "id": "about",
+      "label": "About",
+      "path": "/about",
+      "icon": "user",
+      "type": "page",
+      "description": "Static about page with instructor info"
+    },
+    {
+      "id": "contact",
+      "label": "Contact",
+      "path": "/contact",
+      "icon": "mail",
+      "type": "page",
+      "description": "Contact form with server-side processing"
+    }
+  ],
+  "homepage": {
+    "hero": {
+      "title": "Master Data Analysis with Real-World Skills",
+      "subtitle": "Learn Power BI, SQL, DAX, and data visualization through practical tutorials and industry insights",
+      "ctaButton": {
+        "text": "Start Learning",
+        "link": "/curriculum"
+      }
+    },
+    "featuredContent": {
+      "podcasts": [
+        {
+          "title": "Latest Episode",
+          "episodeTitle": "DAX Functions Every Analyst Should Know",
+          "platform": "spotify",
+          "embedCode": "<iframe src=\"https://open.spotify.com/embed/episode/YOUR_EPISODE_ID\" width=\"100%\" height=\"152\" frameborder=\"0\" allowtransparency=\"true\" allow=\"encrypted-media\"></iframe>",
+          "description": "Deep dive into essential DAX functions for Power BI",
+          "featured": true
+        },
+        {
+          "title": "Popular Episode",
+          "episodeTitle": "Career Tips for Data Analysts",
+          "platform": "spotify",
+          "embedCode": "<iframe src=\"https://open.spotify.com/embed/episode/CAREER_EPISODE_ID\" width=\"100%\" height=\"152\" frameborder=\"0\" allowtransparency=\"true\" allow=\"encrypted-media\"></iframe>",
+          "description": "Essential career advice for aspiring analysts",
+          "featured": false
+        }
+      ],
+      "videos": [
+        {
+          "title": "Featured Tutorial",
+          "videoTitle": "Building Your First Power BI Dashboard",
+          "platform": "youtube",
+          "embedCode": "<iframe width=\"100%\" height=\"300\" src=\"https://www.youtube.com/embed/YOUR_VIDEO_ID\" frameborder=\"0\" allowfullscreen></iframe>",
+          "description": "Step-by-step guide to creating professional dashboards",
+          "featured": true
+        },
+        {
+          "title": "Quick Tip",
+          "videoTitle": "5-Minute DAX Calculation",
+          "platform": "youtube",
+          "embedCode": "<iframe width=\"100%\" height=\"300\" src=\"https://www.youtube.com/embed/DAX_TIP_VIDEO_ID\" frameborder=\"0\" allowfullscreen></iframe>",
+          "description": "Quick DAX tips for better calculations",
+          "featured": false
+        }
+      ],
+      "playlists": [
+        {
+          "title": "Complete Beginner Series",
+          "platform": "youtube",
+          "embedCode": "<iframe width=\"100%\" height=\"400\" src=\"https://www.youtube.com/embed/videoseries?list=BEGINNER_PLAYLIST_ID\" frameborder=\"0\" allowfullscreen></iframe>",
+          "description": "Full playlist for Power BI beginners",
+          "videoCount": 12,
+          "featured": true
+        },
+        {
+          "title": "Study Playlist",
+          "platform": "spotify",
+          "embedCode": "<iframe src=\"https://open.spotify.com/embed/playlist/STUDY_PLAYLIST_ID\" width=\"100%\" height=\"380\" frameborder=\"0\" allowtransparency=\"true\" allow=\"encrypted-media\"></iframe>",
+          "description": "Background music for studying data analysis",
+          "trackCount": 25,
+          "featured": false
+        }
+      ]
+    },
+    "newsletter": {
+      "title": "Stay Updated",
+      "description": "Get weekly tips, new tutorials, and industry insights",
+      "placeholder": "Enter your email",
+      "buttonText": "Subscribe"
+    }
+  },
+  "curriculum": {
+    "title": "Learning Path",
+    "description": "Structured curriculum from beginner to advanced data analysis",
+    "levels": [
+      {
+        "id": "beginner",
+        "title": "Beginner",
+        "description": "Power BI basics, data importing, and simple visualizations",
+        "modules": [
+          {
+            "id": "powerbi-basics",
+            "title": "Power BI Fundamentals",
+            "summary": "Get started with Power BI interface and basic concepts",
+            "videos": [
+              {
+                "title": "Power BI Interface Overview",
+                "embedCode": "<iframe width=\"100%\" height=\"300\" src=\"https://www.youtube.com/embed/BEGINNER_VIDEO_ID\" frameborder=\"0\" allowfullscreen></iframe>",
+                "duration": "15:30"
+              },
+              {
+                "title": "Creating Your First Report",
+                "embedCode": "<iframe width=\"100%\" height=\"300\" src=\"https://www.youtube.com/embed/FIRST_REPORT_VIDEO_ID\" frameborder=\"0\" allowfullscreen></iframe>",
+                "duration": "22:45"
+              }
+            ],
+            "podcasts": [
+              {
+                "title": "Power BI Fundamentals Discussion",
+                "embedCode": "<iframe src=\"https://open.spotify.com/embed/episode/FUNDAMENTALS_EPISODE_ID\" width=\"100%\" height=\"152\" frameborder=\"0\" allowtransparency=\"true\" allow=\"encrypted-media\"></iframe>",
+                "duration": "35:20"
+              }
+            ],
+            "resources": [
+              {
+                "type": "template",
+                "title": "Starter PBIX Template",
+                "link": "/downloads/starter-template.pbix"
+              }
+            ]
+          },
+          {
+            "id": "data-import",
+            "title": "Data Import & Power Query",
+            "summary": "Learn to connect and transform data sources",
+            "videos": [
+              {
+                "title": "Power Query Essentials",
+                "embedCode": "<iframe width=\"100%\" height=\"300\" src=\"https://www.youtube.com/embed/POWERQUERY_VIDEO_ID\" frameborder=\"0\" allowfullscreen></iframe>",
+                "duration": "28:15"
+              },
+              {
+                "title": "Data Transformation Techniques",
+                "embedCode": "<iframe width=\"100%\" height=\"300\" src=\"https://www.youtube.com/embed/TRANSFORM_VIDEO_ID\" frameborder=\"0\" allowfullscreen></iframe>",
+                "duration": "31:40"
+              }
+            ],
+            "podcasts": [
+              {
+                "title": "Data Cleaning Best Practices",
+                "embedCode": "<iframe src=\"https://open.spotify.com/embed/episode/CLEANING_EPISODE_ID\" width=\"100%\" height=\"152\" frameborder=\"0\" allowtransparency=\"true\" allow=\"encrypted-media\"></iframe>",
+                "duration": "42:10"
+              }
+            ],
+            "playlists": [
+              {
+                "title": "Power Query Complete Series",
+                "platform": "youtube",
+                "embedCode": "<iframe width=\"100%\" height=\"400\" src=\"https://www.youtube.com/embed/videoseries?list=POWERQUERY_PLAYLIST_ID\" frameborder=\"0\" allowfullscreen></iframe>",
+                "videoCount": 8
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "intermediate",
+        "title": "Intermediate",
+        "description": "DAX functions, data relationships, and advanced modeling",
+        "modules": [
+          {
+            "id": "dax-essentials",
+            "title": "DAX Functions & Formulas",
+            "summary": "Master calculated columns, measures, and time intelligence",
+            "videos": [
+              {
+                "title": "DAX Deep Dive",
+                "embedCode": "<iframe width=\"100%\" height=\"300\" src=\"https://www.youtube.com/embed/DAX_VIDEO_ID\" frameborder=\"0\" allowfullscreen></iframe>",
+                "duration": "45:20"
+              },
+              {
+                "title": "Time Intelligence Functions",
+                "embedCode": "<iframe width=\"100%\" height=\"300\" src=\"https://www.youtube.com/embed/TIME_INTEL_VIDEO_ID\" frameborder=\"0\" allowfullscreen></iframe>",
+                "duration": "38:15"
+              }
+            ],
+            "podcasts": [
+              {
+                "title": "DAX Mastery Interview",
+                "embedCode": "<iframe src=\"https://open.spotify.com/embed/episode/DAX_MASTERY_EPISODE_ID\" width=\"100%\" height=\"152\" frameborder=\"0\" allowtransparency=\"true\" allow=\"encrypted-media\"></iframe>",
+                "duration": "52:30"
+              }
+            ],
+            "playlists": [
+              {
+                "title": "Complete DAX Tutorial Series",
+                "platform": "youtube",
+                "embedCode": "<iframe width=\"100%\" height=\"400\" src=\"https://www.youtube.com/embed/videoseries?list=DAX_COMPLETE_PLAYLIST_ID\" frameborder=\"0\" allowfullscreen></iframe>",
+                "videoCount": 15
+              }
+            ],
+            "resources": [
+              {
+                "type": "cheatsheet",
+                "title": "DAX Function Reference",
+                "link": "/downloads/dax-cheatsheet.pdf"
+              }
+            ]
+          },
+          {
+            "id": "data-modeling",
+            "title": "Data Relationships & Modeling",
+            "summary": "Build robust data models with proper relationships",
+            "videos": [
+              {
+                "title": "Data Modeling Best Practices",
+                "embedCode": "<iframe width=\"100%\" height=\"300\" src=\"https://www.youtube.com/embed/MODELING_VIDEO_ID\" frameborder=\"0\" allowfullscreen></iframe>",
+                "duration": "33:45"
+              },
+              {
+                "title": "Star Schema Design",
+                "embedCode": "<iframe width=\"100%\" height=\"300\" src=\"https://www.youtube.com/embed/STAR_SCHEMA_VIDEO_ID\" frameborder=\"0\" allowfullscreen></iframe>",
+                "duration": "29:20"
+              }
+            ],
+            "podcasts": [
+              {
+                "title": "Data Architecture Discussion",
+                "embedCode": "<iframe src=\"https://open.spotify.com/embed/episode/ARCHITECTURE_EPISODE_ID\" width=\"100%\" height=\"152\" frameborder=\"0\" allowtransparency=\"true\" allow=\"encrypted-media\"></iframe>",
+                "duration": "41:15"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "advanced",
+        "title": "Advanced",
+        "description": "Performance optimization, complex scenarios, and real-world applications",
+        "modules": [
+          {
+            "id": "performance-tuning",
+            "title": "Performance Optimization",
+            "summary": "Optimize reports for speed and efficiency",
+            "videos": [
+              {
+                "title": "Power BI Performance Tips",
+                "embedCode": "<iframe width=\"100%\" height=\"300\" src=\"https://www.youtube.com/embed/PERFORMANCE_VIDEO_ID\" frameborder=\"0\" allowfullscreen></iframe>",
+                "duration": "37:50"
+              },
+              {
+                "title": "Query Optimization Techniques",
+                "embedCode": "<iframe width=\"100%\" height=\"300\" src=\"https://www.youtube.com/embed/QUERY_OPT_VIDEO_ID\" frameborder=\"0\" allowfullscreen></iframe>",
+                "duration": "42:30"
+              }
+            ],
+            "podcasts": [
+              {
+                "title": "Performance Optimization Strategies",
+                "embedCode": "<iframe src=\"https://open.spotify.com/embed/episode/PERFORMANCE_EPISODE_ID\" width=\"100%\" height=\"152\" frameborder=\"0\" allowtransparency=\"true\" allow=\"encrypted-media\"></iframe>",
+                "duration": "48:20"
+              }
+            ]
+          },
+          {
+            "id": "real-world-projects",
+            "title": "Real-World Case Studies",
+            "summary": "Apply skills to actual business scenarios",
+            "videos": [
+              {
+                "title": "Healthcare Dashboard Walkthrough",
+                "embedCode": "<iframe width=\"100%\" height=\"300\" src=\"https://www.youtube.com/embed/HEALTHCARE_VIDEO_ID\" frameborder=\"0\" allowfullscreen></iframe>",
+                "duration": "55:10"
+              },
+              {
+                "title": "Financial Analytics Project",
+                "embedCode": "<iframe width=\"100%\" height=\"300\" src=\"https://www.youtube.com/embed/FINANCE_PROJECT_VIDEO_ID\" frameborder=\"0\" allowfullscreen></iframe>",
+                "duration": "63:45"
+              },
+              {
+                "title": "E-commerce Dashboard Build",
+                "embedCode": "<iframe width=\"100%\" height=\"300\" src=\"https://www.youtube.com/embed/ECOMMERCE_VIDEO_ID\" frameborder=\"0\" allowfullscreen></iframe>",
+                "duration": "71:20"
+              }
+            ],
+            "podcasts": [
+              {
+                "title": "Client Project Insights",
+                "embedCode": "<iframe src=\"https://open.spotify.com/embed/episode/CLIENT_EPISODE_ID\" width=\"100%\" height=\"152\" frameborder=\"0\" allowtransparency=\"true\" allow=\"encrypted-media\"></iframe>",
+                "duration": "44:35"
+              },
+              {
+                "title": "Industry Case Study Discussion",
+                "embedCode": "<iframe src=\"https://open.spotify.com/embed/episode/INDUSTRY_CASE_EPISODE_ID\" width=\"100%\" height=\"152\" frameborder=\"0\" allowtransparency=\"true\" allow=\"encrypted-media\"></iframe>",
+                "duration": "39:15"
+              }
+            ],
+            "playlists": [
+              {
+                "title": "Real-World Projects Collection",
+                "platform": "youtube",
+                "embedCode": "<iframe width=\"100%\" height=\"400\" src=\"https://www.youtube.com/embed/videoseries?list=REALWORLD_PLAYLIST_ID\" frameborder=\"0\" allowfullscreen></iframe>",
+                "videoCount": 10
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "podcast": {
+    "title": "Data Analysis Podcast",
+    "description": "Weekly insights on tools, techniques, and career development",
+    "platforms": [
+      {
+        "name": "Spotify",
+        "icon": "spotify",
+        "link": "https://open.spotify.com/show/YOUR_SHOW_ID"
+      },
+      {
+        "name": "Apple Podcasts",
+        "icon": "apple",
+        "link": "https://podcasts.apple.com/YOUR_SHOW"
+      },
+      {
+        "name": "Anchor",
+        "icon": "anchor",
+        "link": "https://anchor.fm/YOUR_SHOW"
+      }
+    ],
+    "episodes": [
+      {
+        "id": "ep001",
+        "title": "Getting Started in Data Analysis",
+        "episodeNumber": 1,
+        "platform": "spotify",
+        "embedCode": "<iframe src=\"https://open.spotify.com/embed/episode/EP001_ID\" width=\"100%\" height=\"152\" frameborder=\"0\" allowtransparency=\"true\" allow=\"encrypted-media\"></iframe>",
+        "summary": "Essential skills and tools for aspiring data analysts",
+        "duration": "45:30",
+        "publishDate": "2025-07-01",
+        "tags": ["career", "beginners", "tools"],
+        "resources": [
+          {
+            "title": "Career Roadmap PDF",
+            "link": "/downloads/analyst-roadmap.pdf"
+          }
+        ]
+      },
+      {
+        "id": "ep002",
+        "title": "5 DAX Functions I Use Every Day",
+        "episodeNumber": 2,
+        "platform": "spotify",
+        "embedCode": "<iframe src=\"https://open.spotify.com/embed/episode/EP002_ID\" width=\"100%\" height=\"152\" frameborder=\"0\" allowtransparency=\"true\" allow=\"encrypted-media\"></iframe>",
+        "summary": "Deep dive into the most practical DAX functions",
+        "duration": "38:45",
+        "publishDate": "2025-07-08",
+        "tags": ["dax", "powerbi", "functions"],
+        "resources": [
+          {
+            "title": "DAX Examples PBIX",
+            "link": "/downloads/dax-examples.pbix"
+          }
+        ]
+      },
+      {
+        "id": "ep003",
+        "title": "Interview with Power BI Expert",
+        "episodeNumber": 3,
+        "platform": "spotify",
+        "embedCode": "<iframe src=\"https://open.spotify.com/embed/episode/EP003_ID\" width=\"100%\" height=\"152\" frameborder=\"0\" allowtransparency=\"true\" allow=\"encrypted-media\"></iframe>",
+        "summary": "Expert insights on advanced Power BI techniques",
+        "duration": "52:20",
+        "publishDate": "2025-07-15",
+        "tags": ["interviews", "powerbi", "expert"],
+        "resources": []
+      }
+    ],
+    "podcastPlaylists": [
+      {
+        "id": "beginner-series",
+        "title": "Beginner-Friendly Episodes",
+        "description": "Perfect for those just starting their data analysis journey",
+        "platform": "spotify",
+        "embedCode": "<iframe src=\"https://open.spotify.com/embed/playlist/BEGINNER_PODCAST_PLAYLIST_ID\" width=\"100%\" height=\"380\" frameborder=\"0\" allowtransparency=\"true\" allow=\"encrypted-media\"></iframe>",
+        "episodeCount": 8
+      },
+      {
+        "id": "expert-interviews",
+        "title": "Expert Interview Series",
+        "description": "In-depth conversations with industry leaders",
+        "platform": "spotify",
+        "embedCode": "<iframe src=\"https://open.spotify.com/embed/playlist/EXPERT_PODCAST_PLAYLIST_ID\" width=\"100%\" height=\"380\" frameborder=\"0\" allowtransparency=\"true\" allow=\"encrypted-media\"></iframe>",
+        "episodeCount": 12
+      }
+    ],
+    "categories": [
+      {
+        "name": "Career Tips",
+        "tag": "career"
+      },
+      {
+        "name": "Tools & Techniques",
+        "tag": "tools"
+      },
+      {
+        "name": "Interviews",
+        "tag": "interviews"
+      }
+    ]
+  },
+  "videos": {
+    "title": "Video Library",
+    "description": "Comprehensive video tutorials organized by topic",
+    "playlists": [
+      {
+        "id": "powerbi-basics",
+        "title": "Power BI Basics",
+        "description": "Foundation skills for Power BI beginners",
+        "embedCode": "<iframe width=\"100%\" height=\"400\" src=\"https://www.youtube.com/embed/videoseries?list=POWERBI_PLAYLIST_ID\" frameborder=\"0\" allowfullscreen></iframe>",
+        "videoCount": 12
+      },
+      {
+        "id": "dax-essentials",
+        "title": "DAX Essentials",
+        "description": "Master DAX functions and formulas",
+        "embedCode": "<iframe width=\"100%\" height=\"400\" src=\"https://www.youtube.com/embed/videoseries?list=DAX_PLAYLIST_ID\" frameborder=\"0\" allowfullscreen></iframe>",
+        "videoCount": 8
+      },
+      {
+        "id": "sql-for-analysts",
+        "title": "SQL for Data Analysts",
+        "description": "Essential SQL skills for data analysis",
+        "embedCode": "<iframe width=\"100%\" height=\"400\" src=\"https://www.youtube.com/embed/videoseries?list=SQL_PLAYLIST_ID\" frameborder=\"0\" allowfullscreen></iframe>",
+        "videoCount": 15
+      },
+      {
+        "id": "project-walkthroughs",
+        "title": "Project Walkthroughs",
+        "description": "End-to-end project demonstrations",
+        "videos": [
+          {
+            "title": "Healthcare Claims Dashboard",
+            "embedCode": "<iframe width=\"100%\" height=\"300\" src=\"https://www.youtube.com/embed/HEALTHCARE_VIDEO_ID\" frameborder=\"0\" allowfullscreen></iframe>",
+            "description": "Building a comprehensive healthcare analytics dashboard"
+          },
+          {
+            "title": "Sales Performance Analysis",
+            "embedCode": "<iframe width=\"100%\" height=\"300\" src=\"https://www.youtube.com/embed/SALES_VIDEO_ID\" frameborder=\"0\" allowfullscreen></iframe>",
+            "description": "Complete sales analytics solution from data to insights"
+          }
+        ]
+      }
+    ]
+  },
+  "resources": {
+    "title": "Downloads & Templates",
+    "description": "Free resources to accelerate your learning",
+    "categories": [
+      {
+        "id": "templates",
+        "title": "PBIX Templates",
+        "items": [
+          {
+            "title": "Sales Dashboard Template",
+            "description": "Ready-to-use sales analytics template",
+            "fileType": "PBIX",
+            "size": "2.3 MB",
+            "downloadLink": "/downloads/sales-template.pbix"
+          },
+          {
+            "title": "Financial Report Template",
+            "description": "Comprehensive financial reporting template",
+            "fileType": "PBIX",
+            "size": "1.8 MB",
+            "downloadLink": "/downloads/finance-template.pbix"
+          }
+        ]
+      },
+      {
+        "id": "cheatsheets",
+        "title": "Cheat Sheets",
+        "items": [
+          {
+            "title": "DAX Function Reference",
+            "description": "Complete guide to DAX functions with examples",
+            "fileType": "PDF",
+            "size": "1.2 MB",
+            "downloadLink": "/downloads/dax-cheatsheet.pdf"
+          },
+          {
+            "title": "SQL Quick Reference",
+            "description": "Essential SQL commands for data analysts",
+            "fileType": "PDF",
+            "size": "800 KB",
+            "downloadLink": "/downloads/sql-reference.pdf"
+          }
+        ]
+      },
+      {
+        "id": "datasets",
+        "title": "Practice Datasets",
+        "items": [
+          {
+            "title": "Sample Sales Data",
+            "description": "Realistic sales data for practice projects",
+            "fileType": "CSV",
+            "size": "5.2 MB",
+            "downloadLink": "https://drive.google.com/file/d/SALES_DATA_ID/view"
+          },
+          {
+            "title": "HR Analytics Dataset",
+            "description": "Employee data for HR analytics practice",
+            "fileType": "Excel",
+            "size": "3.1 MB",
+            "downloadLink": "https://drive.google.com/file/d/HR_DATA_ID/view"
+          }
+        ]
+      }
+    ]
+  },
+  "blog": {
+    "title": "Articles & Insights",
+    "description": "In-depth articles on data analysis techniques and best practices",
+    "architecture": {
+      "listing_page": {
+        "type": "spa",
+        "features": ["search", "category_filter", "pagination", "infinite_scroll"],
+        "component": "BlogListingPage"
+      },
+      "article_pages": {
+        "type": "static",
+        "seo_optimized": true,
+        "social_sharing": true,
+        "template": "BlogArticlePage"
+      }
+    },
+    "routing": {
+      "listing": "/blog",
+      "article": "/blog/:slug",
+      "category": "/blog/category/:category",
+      "tag": "/blog/tag/:tag"
+    },
+    "categories": [
+      {
+        "name": "Tutorials",
+        "slug": "tutorials"
+      },
+      {
+        "name": "Best Practices",
+        "slug": "best-practices"
+      },
+      {
+        "name": "Case Studies",
+        "slug": "case-studies"
+      },
+      {
+        "name": "Industry Insights",
+        "slug": "insights"
+      }
+    ],
+    "featured": [
+      {
+        "id": "clean-dirty-data",
+        "title": "How to Clean Dirty Data Fast",
+        "slug": "clean-dirty-data-fast",
+        "excerpt": "Proven techniques for quickly cleaning and preparing messy datasets",
+        "category": "tutorials",
+        "readTime": "8 min",
+        "publishDate": "2025-07-10",
+        "relatedVideo": "CLEANING_VIDEO_ID",
+        "relatedPodcast": "CLEANING_EPISODE_ID",
+        "seo": {
+          "metaTitle": "How to Clean Dirty Data Fast - Data Analysis Tutorial",
+          "metaDescription": "Learn proven techniques for quickly cleaning messy datasets with Power BI and Power Query. Step-by-step tutorial for data analysts.",
+          "keywords": ["data cleaning", "power query", "data preparation", "messy data"]
+        }
+      },
+      {
+        "id": "healthcare-dashboard-case",
+        "title": "How I Built a Claims Dashboard for Healthcare Ops",
+        "slug": "healthcare-claims-dashboard-case-study",
+        "excerpt": "Complete walkthrough of building a real-world healthcare analytics solution",
+        "category": "case-studies",
+        "readTime": "15 min",
+        "publishDate": "2025-07-05",
+        "relatedVideo": "HEALTHCARE_VIDEO_ID",
+        "seo": {
+          "metaTitle": "Healthcare Claims Dashboard Case Study - Power BI Analytics",
+          "metaDescription": "Complete walkthrough of building a real-world healthcare analytics dashboard with Power BI. Learn from actual client project experience.",
+          "keywords": ["healthcare analytics", "claims dashboard", "power bi case study", "healthcare data"]
+        }
+      }
+    ]
+  },
+  "about": {
+    "title": "About the Platform",
+    "mission": "Empowering data professionals with practical skills through hands-on learning and real-world applications",
+    "story": "Born from the need for practical, industry-focused data analysis education that bridges the gap between theory and real-world application.",
+    "instructor": {
+      "name": "Adefemi Kolawole",
+      "title": "Senior Data Analyst & Educator",
+      "bio": "Passionate about making data analysis accessible and practical for professionals across industries.",
+      "image": "/images/instructor-photo.jpg",
+      "social": [
+        {
+          "platform": "LinkedIn",
+          "url": "https://linkedin.com/in/your-profile"
+        },
+        {
+          "platform": "YouTube",
+          "url": "https://youtube.com/your-channel"
+        }
+      ]
+    }
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "description": "Questions, suggestions, or collaboration opportunities? Let's connect!",
+    "form": {
+      "fields": [
+        {
+          "name": "name",
+          "label": "Your Name",
+          "type": "text",
+          "required": true
+        },
+        {
+          "name": "email",
+          "label": "Email Address",
+          "type": "email",
+          "required": true
+        },
+        {
+          "name": "subject",
+          "label": "Subject",
+          "type": "select",
+          "options": [
+            "General Question",
+            "Course Suggestion",
+            "Collaboration",
+            "Technical Support",
+            "Other"
+          ],
+          "required": true
+        },
+        {
+          "name": "message",
+          "label": "Message",
+          "type": "textarea",
+          "required": true
+        }
+      ],
+      "submitText": "Send Message"
+    },
+    "community": {
+      "title": "Join the Community",
+      "options": [
+        {
+          "platform": "Newsletter",
+          "description": "Weekly tips and new content updates",
+          "ctaText": "Subscribe",
+          "link": "/newsletter"
+        },
+        {
+          "platform": "WhatsApp Group",
+          "description": "Connect with fellow learners",
+          "ctaText": "Join Group",
+          "link": "https://chat.whatsapp.com/YOUR_GROUP_LINK"
+        }
+      ]
+    }
+  },
+  "seo": {
+    "domain": "https://school.kolawoles.com",
+    "sitemap": "https://school.kolawoles.com/sitemap.xml",
+    "robots": "https://school.kolawoles.com/robots.txt",
+    "keywords": [
+      "data analysis",
+      "power bi",
+      "dax",
+      "sql",
+      "data visualization",
+      "business intelligence",
+      "analytics training",
+      "power query"
+    ],
+    "socialMedia": {
+      "twitter": "@your_handle",
+      "linkedin": "company/your-page",
+      "youtube": "channel/your-channel"
+    },
+    "analytics": {
+      "google_analytics": "GA_MEASUREMENT_ID",
+      "google_search_console": true,
+      "microsoft_clarity": "CLARITY_PROJECT_ID"
+    }
+  },
+  "technical": {
+    "architecture": {
+      "type": "Hybrid SPA",
+      "description": "Single Page Application with specific necessary pages as separate routes",
+      "spa_sections": [
+        "home",
+        "curriculum", 
+        "podcast",
+        "videos"
+      ],
+      "static_pages": [
+        "about",
+        "contact", 
+        "resources"
+      ],
+      "hybrid_sections": [
+        "blog"
+      ]
+    },
+    "routing": {
+      "spa_routes": {
+        "/": {
+          "component": "HomePage",
+          "preload": ["featuredContent", "newsletter"],
+          "lazy_load": true
+        },
+        "/curriculum": {
+          "component": "CurriculumPage", 
+          "preload": ["levels", "modules"],
+          "lazy_load": true,
+          "nested_routes": [
+            "/curriculum/:level",
+            "/curriculum/:level/:module"
+          ]
+        },
+        "/podcast": {
+          "component": "PodcastPage",
+          "preload": ["episodes", "categories"],
+          "lazy_load": true,
+          "features": ["search", "filter", "pagination"]
+        },
+        "/videos": {
+          "component": "VideosPage",
+          "preload": ["playlists"],
+          "lazy_load": true,
+          "features": ["playlist_management", "video_player"]
+        }
+      },
+      "static_routes": {
+        "/about": {
+          "type": "static_page",
+          "template": "AboutPage",
+          "seo_optimized": true
+        },
+        "/contact": {
+          "type": "static_page", 
+          "template": "ContactPage",
+          "form_processing": true,
+          "seo_optimized": true
+        },
+        "/resources": {
+          "type": "static_page",
+          "template": "ResourcesPage", 
+          "download_tracking": true,
+          "seo_optimized": true
+        }
+      },
+      "hybrid_routes": {
+        "/blog": {
+          "type": "spa_listing",
+          "component": "BlogListingPage",
+          "features": ["search", "category_filter", "pagination"]
+        },
+        "/blog/:slug": {
+          "type": "static_page",
+          "template": "BlogArticlePage", 
+          "seo_optimized": true,
+          "social_sharing": true,
+          "related_content": true
+        }
+      }
+    },
+    "performance": {
+      "spa_benefits": [
+        "Fast navigation between main sections",
+        "Seamless user experience for learning content", 
+        "Dynamic content loading",
+        "Progress tracking without page reloads"
+      ],
+      "static_page_benefits": [
+        "Better SEO for key pages",
+        "Faster initial load for simple content",
+        "Form processing capabilities",
+        "Search engine indexing"
+      ],
+      "optimization": {
+        "code_splitting": true,
+        "lazy_loading": true,
+        "preloading": "critical_content_only",
+        "caching_strategy": "aggressive_for_static_content"
+      }
+    },
+    "platforms": {
+      "recommended": [
+        {
+          "name": "Next.js",
+          "reason": "Perfect for hybrid SPA/static approach with great SEO",
+          "spa_support": "Full",
+          "static_generation": "Excellent",
+          "recommended": true
+        },
+        {
+          "name": "Nuxt.js",
+          "reason": "Vue-based hybrid framework with excellent performance",
+          "spa_support": "Full", 
+          "static_generation": "Excellent"
+        },
+        {
+          "name": "Framer",
+          "reason": "Beautiful, interactive, modern (perfect for embeds + landing pages)",
+          "spa_support": "Limited",
+          "static_generation": "Good"
+        },
+        {
+          "name": "Notion + Super.so",
+          "reason": "Easy for adding content & links, embeds work great",
+          "spa_support": "None",
+          "static_generation": "Basic"
+        },
+        {
+          "name": "GitHub Pages + Tailwind CSS",
+          "reason": "Full control if you're coding it yourself",
+          "spa_support": "Custom implementation required",
+          "static_generation": "Manual"
+        },
+        {
+          "name": "Typedream",
+          "reason": "Like Webflow but easier; great for educators",
+          "spa_support": "Limited",
+          "static_generation": "Good"
+        }
+      ]
+    },
+    "embedSettings": {
+      "youtube": {
+        "defaultWidth": "100%",
+        "defaultHeight": "300",
+        "allowFullscreen": true,
+        "frameborder": "0",
+        "lazy_loading": true,
+        "responsive": {
+          "mobile": {
+            "height": "220",
+            "aspectRatio": "16:9"
+          },
+          "tablet": {
+            "height": "280",
+            "aspectRatio": "16:9"
+          },
+          "desktop": {
+            "height": "300",
+            "aspectRatio": "16:9"
+          }
+        }
+      },
+      "spotify": {
+        "defaultWidth": "100%",
+        "defaultHeight": "152",
+        "allowTransparency": true,
+        "allowEncryptedMedia": true,
+        "lazy_loading": true,
+        "responsive": {
+          "mobile": {
+            "height": "152",
+            "compact": true
+          },
+          "tablet": {
+            "height": "152"
+          },
+          "desktop": {
+            "height": "152"
+          }
+        }
+      }
+    },
+    "responsive_design": {
+      "approach": "Mobile-first responsive design",
+      "dynamic_content": true,
+      "breakpoints": {
+        "xs": {
+          "min": "0px",
+          "max": "575px",
+          "description": "Extra small devices (phones)"
+        },
+        "sm": {
+          "min": "576px", 
+          "max": "767px",
+          "description": "Small devices (landscape phones)"
+        },
+        "md": {
+          "min": "768px",
+          "max": "991px", 
+          "description": "Medium devices (tablets)"
+        },
+        "lg": {
+          "min": "992px",
+          "max": "1199px",
+          "description": "Large devices (desktops)"
+        },
+        "xl": {
+          "min": "1200px",
+          "max": "1399px",
+          "description": "Extra large devices (large desktops)"
+        },
+        "xxl": {
+          "min": "1400px",
+          "description": "Extra extra large devices"
+        }
+      },
+      "layout_strategies": {
+        "mobile": {
+          "navigation": "hamburger_menu",
+          "content": "single_column",
+          "embeds": "full_width_responsive",
+          "cards": "stacked_vertical",
+          "typography": "larger_font_sizes",
+          "spacing": "reduced_padding"
+        },
+        "tablet": {
+          "navigation": "condensed_horizontal",
+          "content": "two_column_flex",
+          "embeds": "responsive_aspect_ratio", 
+          "cards": "grid_2_columns",
+          "typography": "medium_font_sizes",
+          "spacing": "medium_padding"
+        },
+        "desktop": {
+          "navigation": "full_horizontal",
+          "content": "multi_column_grid",
+          "embeds": "optimized_dimensions",
+          "cards": "grid_3_or_4_columns", 
+          "typography": "standard_font_sizes",
+          "spacing": "full_padding"
+        }
+      },
+      "dynamic_features": {
+        "adaptive_grids": {
+          "home": "1 col mobile, 2 col tablet, 3 col desktop",
+          "curriculum": "1 col mobile, 1 col tablet, 2 col desktop",
+          "videos": "1 col mobile, 2 col tablet, 3 col desktop",
+          "podcast": "1 col mobile, 1 col tablet, 2 col desktop"
+        },
+        "responsive_embeds": {
+          "youtube": "maintains 16:9 aspect ratio across devices",
+          "spotify": "adapts height based on screen size",
+          "playlists": "scrollable on mobile, grid on desktop"
+        },
+        "touch_optimization": {
+          "buttons": "minimum 44px touch targets",
+          "cards": "swipe gestures on mobile",
+          "navigation": "touch-friendly spacing",
+          "embeds": "tap to expand on mobile"
+        }
+      },
+      "performance_optimizations": {
+        "mobile": {
+          "image_optimization": "webp format with fallbacks",
+          "lazy_loading": "aggressive for below-fold content",
+          "code_splitting": "route-based chunks",
+          "cdn_delivery": "optimized for mobile networks"
+        },
+        "desktop": {
+          "preloading": "critical resources",
+          "caching": "aggressive browser caching",
+          "compression": "gzip/brotli compression",
+          "resource_hints": "dns-prefetch and preconnect"
+        }
+      }
+    },
+    "state_management": {
+      "spa_sections": {
+        "global_state": ["user_progress", "favorites", "current_module"],
+        "local_state": ["video_position", "filters", "search_query"],
+        "persistence": "localStorage_and_cookies"
+      }
+    },
+    "seo_optimization": {
+      "domain": "https://school.kolawoles.com",
+      "structured_data": {
+        "organization": {
+          "@type": "EducationalOrganization",
+          "name": "Data Analysis Learning Hub",
+          "url": "https://school.kolawoles.com",
+          "description": "Learn data analysis, Power BI, SQL, and DAX with hands-on tutorials"
+        },
+        "course": {
+          "@type": "Course",
+          "name": "Data Analysis Mastery",
+          "provider": "FTTG AutoTech & Kolawoles.com"
+        }
+      },
+      "meta_tags": {
+        "viewport": "width=device-width, initial-scale=1.0",
+        "robots": "index, follow",
+        "canonical": "https://school.kolawoles.com"
+      },
+      "social_sharing": {
+        "og:site_name": "Data Analysis Learning Hub",
+        "og:url": "https://school.kolawoles.com",
+        "twitter:site": "@your_handle"
+      }
+    }
+  }
+}

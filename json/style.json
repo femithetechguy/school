@@ -1,0 +1,305 @@
+{
+  "theme": {
+    "name": "Data Analysis Learning Hub - Modern & Simple",
+    "description": "Clean, minimalist design focused on content with starfruit-inspired color palette",
+    "framework": "Tailwind CSS"
+  },
+  "colors": {
+    "primary": {
+      "name": "Starfruit Yellow",
+      "hex": "#F6E96D",
+      "tailwind": "bg-yellow-300",
+      "customClass": "bg-starfruit",
+      "usage": "Primary buttons, highlights, CTAs"
+    },
+    "accent": {
+      "name": "Deep Charcoal",
+      "hex": "#2E2E2E",
+      "tailwind": "bg-gray-800",
+      "customClass": "bg-charcoal",
+      "usage": "Headers, important text, navigation"
+    },
+    "background": {
+      "name": "Off-White",
+      "hex": "#FAFAFA",
+      "tailwind": "bg-gray-50",
+      "customClass": "bg-off-white",
+      "usage": "Main background, card backgrounds"
+    },
+    "text": {
+      "name": "Rich Black",
+      "hex": "#1B1B1B",
+      "tailwind": "text-gray-900",
+      "customClass": "text-rich-black",
+      "usage": "Primary text content"
+    },
+    "highlight": {
+      "name": "Warm Mint Green",
+      "hex": "#A8D5BA",
+      "tailwind": "bg-green-200",
+      "customClass": "bg-mint",
+      "usage": "Secondary CTAs, success states, badges"
+    }
+  },
+  "customTailwindConfig": {
+    "extend": {
+      "colors": {
+        "starfruit": "#F6E96D",
+        "charcoal": "#2E2E2E",
+        "off-white": "#FAFAFA",
+        "rich-black": "#1B1B1B",
+        "mint": "#A8D5BA"
+      },
+      "fontFamily": {
+        "heading": ["Poppins", "Montserrat", "sans-serif"],
+        "body": ["Inter", "Open Sans", "sans-serif"],
+        "code": ["Fira Code", "JetBrains Mono", "monospace"]
+      }
+    }
+  },
+  "typography": {
+    "headings": {
+      "font": "Poppins or Montserrat",
+      "tailwindClass": "font-heading font-bold",
+      "characteristics": "Bold, geometric, modern",
+      "sizes": {
+        "h1": "text-4xl md:text-5xl lg:text-6xl",
+        "h2": "text-3xl md:text-4xl lg:text-5xl",
+        "h3": "text-2xl md:text-3xl lg:text-4xl",
+        "h4": "text-xl md:text-2xl lg:text-3xl",
+        "h5": "text-lg md:text-xl lg:text-2xl",
+        "h6": "text-base md:text-lg lg:text-xl"
+      }
+    },
+    "body": {
+      "font": "Inter or Open Sans",
+      "tailwindClass": "font-body",
+      "characteristics": "Clean, versatile, readable",
+      "sizes": {
+        "large": "text-lg md:text-xl",
+        "base": "text-base md:text-lg",
+        "small": "text-sm md:text-base",
+        "xs": "text-xs md:text-sm"
+      }
+    },
+    "code": {
+      "font": "Fira Code or JetBrains Mono",
+      "tailwindClass": "font-code",
+      "characteristics": "Monospace for SQL/DAX code snippets",
+      "usage": "Code blocks, inline code, technical examples"
+    }
+  },
+  "layout": {
+    "spacing": {
+      "description": "Use lots of white space for readability",
+      "container": "container mx-auto px-4 sm:px-6 lg:px-8",
+      "sections": "py-12 md:py-16 lg:py-20",
+      "cards": "p-6 md:p-8",
+      "buttons": "px-6 py-3 md:px-8 md:py-4"
+    },
+    "breakpoints": {
+      "mobile": "Mobile-first approach",
+      "sm": "640px",
+      "md": "768px", 
+      "lg": "1024px",
+      "xl": "1280px",
+      "2xl": "1536px"
+    },
+    "grid": {
+      "default": "grid gap-6 md:gap-8",
+      "cards": "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6",
+      "hero": "grid grid-cols-1 lg:grid-cols-2 gap-8 items-center"
+    }
+  },
+  "components": {
+    "buttons": {
+      "primary": {
+        "description": "Starfruit yellow CTA with rounded corners and soft shadows",
+        "classes": "bg-starfruit hover:bg-yellow-400 text-charcoal font-semibold py-3 px-6 rounded-lg shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-200",
+        "variations": {
+          "small": "py-2 px-4 text-sm rounded-md",
+          "large": "py-4 px-8 text-lg rounded-xl"
+        }
+      },
+      "secondary": {
+        "description": "Mint green secondary button",
+        "classes": "bg-mint hover:bg-green-300 text-charcoal font-semibold py-3 px-6 rounded-lg shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-200"
+      },
+      "outline": {
+        "description": "Outlined button for subtle actions",
+        "classes": "border-2 border-charcoal text-charcoal hover:bg-charcoal hover:text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200"
+      }
+    },
+    "cards": {
+      "default": {
+        "description": "Standard card with drop-shadow and hover effects",
+        "classes": "bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden",
+        "content": "p-6 md:p-8"
+      },
+      "video": {
+        "description": "Card specifically for video embeds",
+        "classes": "bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group",
+        "embed": "aspect-video w-full rounded-t-xl"
+      },
+      "podcast": {
+        "description": "Card for podcast episodes",
+        "classes": "bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border-l-4 border-mint"
+      }
+    },
+    "navigation": {
+      "header": {
+        "description": "Sticky top navbar",
+        "classes": "sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200",
+        "container": "container mx-auto px-4 sm:px-6 lg:px-8",
+        "nav": "flex justify-between items-center py-4"
+      },
+      "logo": {
+        "classes": "text-2xl font-heading font-bold text-charcoal"
+      },
+      "links": {
+        "desktop": "hidden md:flex space-x-8",
+        "mobile": "md:hidden",
+        "item": "text-charcoal hover:text-starfruit font-medium transition-colors duration-200"
+      }
+    },
+    "embeds": {
+      "youtube": {
+        "description": "Full-width YouTube players with soft border",
+        "container": "rounded-lg overflow-hidden shadow-md border border-gray-200",
+        "iframe": "w-full aspect-video"
+      },
+      "spotify": {
+        "description": "Spotify podcast/playlist embeds",
+        "container": "rounded-lg overflow-hidden shadow-md border border-gray-200 bg-gray-50",
+        "iframe": "w-full"
+      },
+      "playlist": {
+        "description": "Larger embed for playlists",
+        "container": "rounded-lg overflow-hidden shadow-lg border border-gray-200",
+        "iframe": "w-full h-96 md:h-[400px]"
+      }
+    },
+    "badges": {
+      "category": {
+        "description": "Pill-shaped badges for categories",
+        "classes": "inline-flex items-center px-3 py-1 rounded-full text-sm font-medium",
+        "variants": {
+          "powerbi": "bg-blue-100 text-blue-800",
+          "sql": "bg-purple-100 text-purple-800",
+          "dax": "bg-green-100 text-green-800",
+          "beginner": "bg-yellow-100 text-yellow-800",
+          "intermediate": "bg-orange-100 text-orange-800",
+          "advanced": "bg-red-100 text-red-800"
+        }
+      }
+    },
+    "forms": {
+      "input": {
+        "classes": "w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-starfruit focus:border-transparent transition-all duration-200",
+        "label": "block text-sm font-medium text-charcoal mb-2"
+      },
+      "textarea": {
+        "classes": "w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-starfruit focus:border-transparent transition-all duration-200 resize-none",
+        "rows": "4"
+      },
+      "select": {
+        "classes": "w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-starfruit focus:border-transparent transition-all duration-200 bg-white"
+      }
+    }
+  },
+  "sections": {
+    "hero": {
+      "description": "Homepage hero section with intro text left, featured content right",
+      "container": "py-12 md:py-20 lg:py-24",
+      "grid": "grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center",
+      "title": "text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-charcoal leading-tight",
+      "subtitle": "text-lg md:text-xl text-gray-600 mt-4 leading-relaxed",
+      "cta": "mt-8 flex flex-col sm:flex-row gap-4"
+    },
+    "features": {
+      "description": "Content grid using cards with hover effects",
+      "container": "py-12 md:py-16",
+      "grid": "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8",
+      "title": "text-3xl md:text-4xl font-heading font-bold text-charcoal text-center mb-12"
+    },
+    "curriculum": {
+      "description": "Learning path with progressive levels",
+      "container": "py-12 md:py-16",
+      "level": "mb-12 md:mb-16",
+      "levelTitle": "text-2xl md:text-3xl font-heading font-bold text-charcoal mb-4",
+      "modules": "grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8"
+    },
+    "footer": {
+      "description": "Simple 2-column footer with site links and signature",
+      "container": "bg-charcoal text-white py-12 md:py-16",
+      "grid": "grid grid-cols-1 md:grid-cols-2 gap-8",
+      "signature": "text-mint italic"
+    }
+  },
+  "animations": {
+    "hover": {
+      "scale": "hover:scale-105 transition-transform duration-200",
+      "shadow": "hover:shadow-xl transition-shadow duration-300",
+      "glow": "hover:shadow-lg hover:shadow-starfruit/25 transition-all duration-300"
+    },
+    "fade": {
+      "in": "opacity-0 animate-fade-in",
+      "up": "translate-y-4 opacity-0 animate-slide-up"
+    },
+    "transitions": {
+      "all": "transition-all duration-200",
+      "colors": "transition-colors duration-200",
+      "shadow": "transition-shadow duration-300"
+    }
+  },
+  "utilities": {
+    "responsive": {
+      "container": "container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl",
+      "text": "text-base md:text-lg leading-relaxed",
+      "spacing": "space-y-6 md:space-y-8"
+    },
+    "accessibility": {
+      "focus": "focus:outline-none focus:ring-2 focus:ring-starfruit focus:ring-offset-2",
+      "contrast": "Text should meet WCAG AA standards",
+      "keyboard": "Ensure all interactive elements are keyboard accessible"
+    }
+  },
+  "inspiration": {
+    "references": [
+      "https://framer.com/templates/edu",
+      "https://super.so/examples", 
+      "https://typedream.com/examples",
+      "https://simpleanalytics.com"
+    ],
+    "philosophy": "Clean, light layout with minimalist design. No clutter or distractions. Easy to navigate, mobile-first. Visually emphasizes content over decoration."
+  },
+  "signature": {
+    "tagline": "Data made simple. Learning made possible. Powered by FTTG AutoTech & Kolawoles.com",
+    "placement": "Footer or homepage hero section",
+    "styling": "text-mint italic text-center md:text-left"
+  },
+  "buildPlatforms": {
+    "recommended": [
+      {
+        "name": "Framer",
+        "reason": "Beautiful, interactive, modern (perfect for embeds + landing pages)",
+        "tailwindSupport": "Built-in"
+      },
+      {
+        "name": "GitHub Pages + Tailwind CSS",
+        "reason": "Full control if you're coding it yourself",
+        "tailwindSupport": "Full support"
+      },
+      {
+        "name": "Notion + Super.so",
+        "reason": "Fastest to build and manage, easy to embed media",
+        "tailwindSupport": "Limited customization"
+      },
+      {
+        "name": "Typedream",
+        "reason": "Clean UI + CMS-style structure for growth",
+        "tailwindSupport": "Custom CSS allowed"
+      }
+    ]
+  }
+}
