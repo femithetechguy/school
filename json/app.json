@@ -1069,5 +1069,28 @@
         "twitter:site": "@your_handle"
       }
     }
+  },
+  "footer": {
+    "createdBy": {
+      "text": "Created with <i class='bi bi-heart-fill text-red-500'></i> by FTTG SOLUTIONS",
+      "url": "https://fttgsolutions.com",
+      "company": "FTTG SOLUTIONS"
+    },
+    "copyright": {
+      "year": "dynamic",
+      "text": "All rights reserved."
+    },
+    "socialLinks": [
+      {
+        "platform": "Instagram",
+        "url": "https://www.instagram.com/fttgautotech",
+        "icon": "bi-instagram"
+      },
+      {
+        "platform": "YouTube",
+        "url": "https://www.youtube.com/@fttgautotech",
+        "icon": "bi-youtube"
+      }
+    ]
   }
 }

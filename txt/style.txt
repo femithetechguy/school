@@ -1,0 +1,92 @@
+Great! For your subdomain school.kolawoles.com, where you’ll host learning resources as a Senior Data Analyst, a simple and modern design will keep the focus on your content—especially your YouTube videos, podcasts, and documents.
+
+⸻
+
+🎨 Style Recommendation: Simple & Modern
+
+✅ Overall Theme
+	•	Clean, light layout
+	•	Minimalist design—no clutter or distractions
+	•	Easy to navigate, mobile-first
+	•	Visually emphasizes content over decoration
+
+⸻
+
+🎨 Color Palette (Inspired by Starfruit)
+
+Use soft, energetic tones that still feel professional:
+
+Element	Color	Hex
+Primary	Starfruit Yellow	#F6E96D
+Accent	Deep Charcoal	#2E2E2E
+Background	Off-White	#FAFAFA
+Text	Rich Black	#1B1B1B
+CTA/Highlight	Warm Mint Green	#A8D5BA
+
+Pairing light backgrounds with bold accents gives contrast while keeping it modern and calming.
+
+⸻
+
+🖼️ Typography
+
+Use modern, readable typefaces:
+
+Purpose	Font
+Headings	Poppins or Montserrat (bold, geometric)
+Body Text	Inter or Open Sans (clean, versatile)
+Code Snippets	Fira Code or JetBrains Mono (for SQL/DAX)
+
+All available via Google Fonts, free.
+
+⸻
+
+📐 Layout Guidelines
+
+Section	Layout Type
+Header	Simple nav + logo left, links right
+Hero section	Intro text left, featured video or image right
+Content Grid	Use cards (YouTube, podcast, PDF) with hover effects
+Footer	Simple 2-column: site links + your quote/signature
+
+Use lots of white space. This helps with readability and mobile usability.
+
+⸻
+
+🧱 Design Components
+
+Component	Suggestions
+Buttons	Rounded corners, soft shadows, hover glow (e.g. starfruit yellow CTA)
+Cards	Drop-shadow, icon/title/subtitle layout
+Embeds	Full-width YouTube and Spotify players with soft border
+Tags/Categories	Use pill-shaped badges (Power BI, SQL, Beginner)
+Navigation	Sticky top navbar or slide-in mobile menu
+
+
+⸻
+
+🌟 Example Design Inspirations
+	•	https://framer.com/templates/edu
+	•	https://super.so/examples
+	•	https://typedream.com/examples
+	•	https://simpleanalytics.com (super minimal)
+
+⸻
+
+⚙️ Suggested Platform for This Style
+
+Platform	Why It Works for You
+Framer	Beautiful, interactive, modern (perfect for embeds + landing pages)
+Notion + Super.so	Fastest to build and manage, easy to embed media
+Typedream	Clean UI + CMS-style structure for growth
+GitHub Pages + Tailwind CSS	Full control if you’re coding it yourself
+
+
+⸻
+
+✨ Bonus: Signature Tagline (for footer or home)
+
+“Data made simple. Learning made possible. Powered by FTTG AutoTech & Kolawoles.com”
+
+⸻
+
+Would you like a working homepage starter with this style (Framer, HTML, or Notion)? I can generate it instantly.
