@@ -1,0 +1,85 @@
+{
+  "videos": {
+    "featuredTutorial": "https://www.youtube.com/embed/YOUR_VIDEO_ID",
+    "quickTip": "https://www.youtube.com/embed/DAX_TIP_VIDEO_ID",
+    "beginner": {
+      "interfaceOverview": "https://www.youtube.com/embed/BEGINNER_VIDEO_ID",
+      "firstReport": "https://www.youtube.com/embed/FIRST_REPORT_VIDEO_ID",
+      "powerQueryEssentials": "https://www.youtube.com/embed/POWERQUERY_VIDEO_ID",
+      "dataTransformation": "https://www.youtube.com/embed/TRANSFORM_VIDEO_ID"
+    },
+    "intermediate": {
+      "daxDeepDive": "https://www.youtube.com/embed/DAX_VIDEO_ID",
+      "timeIntelligence": "https://www.youtube.com/embed/TIME_INTEL_VIDEO_ID",
+      "dataModeling": "https://www.youtube.com/embed/MODELING_VIDEO_ID",
+      "starSchema": "https://www.youtube.com/embed/STAR_SCHEMA_VIDEO_ID"
+    },
+    "advanced": {
+      "performanceTips": "https://www.youtube.com/embed/PERFORMANCE_VIDEO_ID",
+      "queryOptimization": "https://www.youtube.com/embed/QUERY_OPT_VIDEO_ID",
+      "healthcareDashboard": "https://www.youtube.com/embed/HEALTHCARE_VIDEO_ID",
+      "financeProject": "https://www.youtube.com/embed/FINANCE_PROJECT_VIDEO_ID",
+      "ecommerceDashboard": "https://www.youtube.com/embed/ECOMMERCE_VIDEO_ID"
+    },
+    "projectWalkthroughs": {
+      "healthcareClaims": "https://www.youtube.com/embed/HEALTHCARE_VIDEO_ID",
+      "salesPerformance": "https://www.youtube.com/embed/SALES_VIDEO_ID"
+    }
+  },
+  "playlists": {
+    "beginnerSeries": "https://www.youtube.com/embed/videoseries?list=BEGINNER_PLAYLIST_ID",
+    "powerQuery": "https://www.youtube.com/embed/videoseries?list=POWERQUERY_PLAYLIST_ID",
+    "daxTutorial": "https://www.youtube.com/embed/videoseries?list=DAX_COMPLETE_PLAYLIST_ID",
+    "realWorldProjects": "https://www.youtube.com/embed/videoseries?list=REALWORLD_PLAYLIST_ID",
+    "powerBIBasics": "https://www.youtube.com/embed/videoseries?list=POWERBI_PLAYLIST_ID",
+    "daxEssentials": "https://www.youtube.com/embed/videoseries?list=DAX_PLAYLIST_ID",
+    "sqlForAnalysts": "https://www.youtube.com/embed/videoseries?list=SQL_PLAYLIST_ID"
+  },
+  "podcasts": {
+    "latestEpisode": "https://open.spotify.com/embed/episode/YOUR_EPISODE_ID",
+    "careerTips": "https://open.spotify.com/embed/episode/CAREER_EPISODE_ID",
+    "fundamentalsDiscussion": "https://open.spotify.com/embed/episode/FUNDAMENTALS_EPISODE_ID",
+    "dataCleaning": "https://open.spotify.com/embed/episode/CLEANING_EPISODE_ID",
+    "daxMastery": "https://open.spotify.com/embed/episode/DAX_MASTERY_EPISODE_ID",
+    "architectureDiscussion": "https://open.spotify.com/embed/episode/ARCHITECTURE_EPISODE_ID",
+    "performanceOptimization": "https://open.spotify.com/embed/episode/PERFORMANCE_EPISODE_ID",
+    "clientInsights": "https://open.spotify.com/embed/episode/CLIENT_EPISODE_ID",
+    "industryCaseStudy": "https://open.spotify.com/embed/episode/INDUSTRY_CASE_EPISODE_ID",
+    "ep001": "https://open.spotify.com/embed/episode/EP001_ID",
+    "ep002": "https://open.spotify.com/embed/episode/EP002_ID",
+    "ep003": "https://open.spotify.com/embed/episode/EP003_ID"
+  },
+  "podcastPlaylists": {
+    "beginnerSeries": "https://open.spotify.com/embed/playlist/BEGINNER_PODCAST_PLAYLIST_ID",
+    "expertInterviews": "https://open.spotify.com/embed/playlist/EXPERT_PODCAST_PLAYLIST_ID"
+  },
+  "resources": {
+    "pbixTemplates": {
+      "salesDashboard": "/downloads/sales-template.pbix",
+      "financeReport": "/downloads/finance-template.pbix",
+      "starterTemplate": "/downloads/starter-template.pbix",
+      "daxExamples": "/downloads/dax-examples.pbix"
+    },
+    "cheatSheets": {
+      "daxReference": "/downloads/dax-cheatsheet.pdf",
+      "sqlReference": "/downloads/sql-reference.pdf"
+    },
+    "datasets": {
+      "sampleSales": "https://drive.google.com/file/d/SALES_DATA_ID/view",
+      "hrAnalytics": "https://drive.google.com/file/d/HR_DATA_ID/view"
+    },
+    "careerRoadmap": "/downloads/analyst-roadmap.pdf"
+  },
+  "spotifyShows": {
+    "rawDataByPAdaptive": {
+      "name": "Raw Data By P3 Adaptive",
+      "author": "P3 Adaptive",
+      "showUrl": "https://open.spotify.com/show/1VZLfXgz1hcB8MFG2OSOH9",
+      "episodes": [
+        "1p8RfheHz0WIzhuAaPpvDO",
+        "0VKfbUdMDCfF7m5UpI29nO",
+        "6CVYcgXt8kFadeNhlGjMgt"
+      ]
+    }
+  }
+}

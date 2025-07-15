@@ -1,0 +1,147 @@
+Perfect, Adefemi. Since you plan to embed multiple podcast episodes and YouTube videos across your learning subdomain school.kolawoles.com, here’s an updated site structure and technical approach tailored for flexibility, content growth, and easy embedding.
+
+⸻
+
+🔧 Updated Website Structure for school.kolawoles.com
+
+Designed to grow as you publish more content—whether video, audio, or written.
+
+⸻
+
+🔹 1. Homepage
+
+Goal: Quick intro + latest or featured content
+	•	Welcome message + your mission
+	•	✅ Latest podcast episode (embed player)
+	•	✅ Featured YouTube tutorial (embed)
+	•	✅ “Start Learning” button → goes to Curriculum page
+	•	CTA to subscribe (newsletter or podcast)
+
+⸻
+
+🔹 2. Curriculum / Learn
+
+Goal: Organized learning path or playlists
+	•	Group content by skill level or topic:
+	•	Beginner – Power BI basics, Power Query
+	•	Intermediate – DAX, relationships, modeling
+	•	Advanced – Performance tuning, real-world use cases
+	•	Each module:
+	•	Title + short summary
+	•	Embed:
+	•	🎥 YouTube video
+	•	📄 Link to related doc/template
+	•	🎙️ Podcast episode (if applicable)
+
+📌 Use anchor links or tabs if you want to group them dynamically on one page.
+
+⸻
+
+🔹 3. Podcast
+
+Goal: All your podcast episodes in one place
+	•	Embed multiple episodes from:
+	•	Spotify
+	•	Anchor.fm
+	•	Apple Podcasts (optional)
+	•	Sortable or filterable by topic/tag (e.g. Career Tips, Tools, Interviews)
+
+Each entry:
+	•	Title + episode number
+	•	Embedded audio player
+	•	Summary
+	•	Link to related resources or transcript
+
+⸻
+
+🔹 4. Videos
+
+Goal: Central video library
+
+Group by playlist or topic:
+
+Topic	Example
+Power BI Basics	Embed YouTube playlist
+DAX Essentials	Embed individual videos or another playlist
+SQL for Analysts	Separate section
+Projects/Walkthroughs	Client-style or case-based
+
+🔁 Keep each section modular so you can add more without needing to restructure the whole site.
+
+⸻
+
+🔹 5. Resources
+	•	Downloadable files:
+	•	PBIX templates
+	•	SQL cheat sheets
+	•	Data sets (via Google Drive)
+	•	PDF guides
+
+Optional: Add a simple search or tag filter
+
+⸻
+
+🔹 6. Blog / Articles
+	•	Short-form:
+	•	“5 DAX Functions I Use Every Day”
+	•	“How to Clean Dirty Data Fast”
+	•	Long-form:
+	•	“How I Built a Claims Dashboard for Healthcare Ops”
+	•	Link relevant videos/podcasts to each post
+
+⸻
+
+🔹 7. About / Mission
+	•	Your photo, short bio
+	•	Your story: why you built this
+	•	Invite learners to grow with you
+
+⸻
+
+🔹 8. Contact / Join the Community
+	•	Google Form or Netlify form
+	•	Optional:
+	•	Join the WhatsApp group
+	•	Link to newsletter
+	•	Follow you on LinkedIn / YouTube
+
+⸻
+
+🔧 Technical Tips for Embedding
+
+🎙️ Embed Multiple Podcast Episodes
+
+Use Spotify or Anchor:
+
+<iframe src="https://open.spotify.com/embed/episode/YOUR_EPISODE_ID" width="100%" height="152" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+
+📺 Embed Multiple YouTube Videos
+
+You can:
+	•	Embed full playlists:
+
+<iframe width="100%" height="400" src="https://www.youtube.com/embed/videoseries?list=YOUR_PLAYLIST_ID" frameborder="0" allowfullscreen></iframe>
+
+
+	•	Or embed single videos repeatedly with titles, e.g.:
+
+<iframe width="100%" height="300" src="https://www.youtube.com/embed/YOUR_VIDEO_ID" frameborder="0" allowfullscreen></iframe>
+
+
+
+⸻
+
+🏗️ Recommended Build Method
+
+Since you’ll have growing content, you need something scalable and easy to manage:
+
+Platform	Why Use It
+Notion + Super.so	Easy for adding content & links, embeds work great
+Framer	Beautiful layouts, drag-and-drop, supports embeds
+GitHub Pages	If you want full control with HTML/CSS
+Typedream	Like Webflow but easier; great for educators
+
+
+⸻
+
+Would you like me to generate a starter homepage with embed structure (in HTML, Notion layout, or Markdown)? Just say the word, and I’ll build it out.
