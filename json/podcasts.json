@@ -1,0 +1,68 @@
+[
+  {
+    "name": "Raw Data by P3 Adaptive",
+    "hosts": ["Rob Collie"],
+    "platform": "Spotify",
+    "link": "https://open.spotify.com/show/0A3kQF1QwQwQwQwQwQwQwQ",
+    "focus": "Power BI, DAX, Excel, data culture, real business stories",
+    "whyGreat": "Deep dives into Power BI use in enterprise settings, interviews with BI leaders"
+  },
+  {
+    "name": "Explicit Measures Podcast",
+    "hosts": ["Patrick LeBlanc", "Adam Saxton", "Tommy Puglia"],
+    "platform": "YouTube Playlist",
+    "link": "https://www.youtube.com/playlist?list=PL1N57mwBHtN0JFo6A4GgQGdS9z6k6Gz5M",
+    "channelKey": "explicit-measures",
+    "focus": "Weekly Power BI discussions, community news, governance, adoption strategies",
+    "whyGreat": "Practical, current, and directly from the Power BI community experts"
+  },
+  {
+    "name": "Data Stories",
+    "hosts": ["Enrico Bertini", "Moritz Stefaner"],
+    "platform": "Web",
+    "link": "https://datastori.es/",
+    "focus": "Data visualization and storytelling (including Power BI and Tableau)",
+    "whyGreat": "Design + narrative discussions that elevate your dashboard work"
+  },
+  {
+    "name": "Kasper On BI",
+    "hosts": ["Kasper de Jonge"],
+    "platform": "Web",
+    "link": "https://kasperonbi.com/",
+    "focus": "Technical Power BI concepts, DAX deep dives, Microsoft ecosystem",
+    "whyGreat": "Perfect for intermediate to advanced Power BI pros"
+  },
+  {
+    "name": "Power BI Women",
+    "hosts": [],
+    "platform": "YouTube",
+    "link": "https://www.youtube.com/channel/UCwQwQwQwQwQwQwQwQwQwQw",
+    "channelKey": "power-bi-women",
+    "focus": "Interviews and case studies from women in data, BI, and Power Platform",
+    "whyGreat": "Inspirational stories, global community, niche use cases"
+  },
+  {
+    "name": "Modern Data Show",
+    "hosts": [],
+    "platform": "Web",
+    "link": "",
+    "focus": "BI tools, analytics pipelines, governance",
+    "whyGreat": "General data podcast with Power BI episodes"
+  },
+  {
+    "name": "Data Skeptic",
+    "hosts": [],
+    "platform": "Web",
+    "link": "",
+    "focus": "Machine learning, BI, ethics",
+    "whyGreat": "General data podcast with Power BI episodes"
+  },
+  {
+    "name": "BI Focal (YouTube)",
+    "hosts": [],
+    "platform": "YouTube",
+    "link": "",
+    "focus": "Business Intelligence trends, Power BI tips",
+    "whyGreat": "General data podcast with Power BI episodes"
+  }
+]

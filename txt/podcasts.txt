@@ -1,0 +1,63 @@
+Here are the best Power BI–focused podcasts that offer valuable insights, expert interviews, use-case discussions, and real-world applications in data analytics and business intelligence:
+
+⸻
+
+🎧 Best Power BI Podcasts (2024–2025)
+
+🔹 1. Raw Data by P3 Adaptive
+	•	🔗 Spotify
+	•	🎙️ Hosted by: Rob Collie (former Microsoft Power BI team)
+	•	💡 Focus: Power BI, DAX, Excel, data culture, real business stories
+	•	🔥 Why it’s great: Deep dives into Power BI use in enterprise settings, interviews with BI leaders
+
+⸻
+
+🔹 2. Explicit Measures Podcast
+	•	🔗 YouTube Playlist
+	•	🎙️ Hosts: Patrick LeBlanc, Adam Saxton (Guy in a Cube), and Tommy Puglia
+	•	💡 Focus: Weekly Power BI discussions, community news, governance, adoption strategies
+	•	🔥 Why it’s great: Practical, current, and directly from the Power BI community experts
+
+⸻
+
+🔹 3. Data Stories
+	•	🔗 datastori.es
+	•	🎙️ Hosts: Enrico Bertini & Moritz Stefaner
+	•	💡 Focus: Data visualization and storytelling (including Power BI and Tableau)
+	•	🔥 Why it’s great: Design + narrative discussions that elevate your dashboard work
+
+⸻
+
+🔹 4. Kasper On BI
+	•	🔗 kasperonbi.com
+	•	🎙️ Host: Kasper de Jonge (Principal PM at Microsoft Power BI)
+	•	💡 Focus: Technical Power BI concepts, DAX deep dives, Microsoft ecosystem
+	•	🔥 Why it’s great: Perfect for intermediate to advanced Power BI pros
+
+⸻
+
+🔹 5. Power BI Women
+	•	🔗 YouTube
+	•	💡 Focus: Interviews and case studies from women in data, BI, and Power Platform
+	•	🔥 Why it’s great: Inspirational stories, global community, niche use cases
+
+⸻
+
+🛠️ Bonus: General Data Podcasts with Power BI Episodes
+
+Podcast	Topics Covered
+Modern Data Show	BI tools, analytics pipelines, governance
+Data Skeptic	Machine learning, BI, ethics
+BI Focal (YouTube)	Business Intelligence trends, Power BI tips
+
+
+⸻
+
+✅ Recommendation for You (as a Senior BI Analyst)
+
+Start with:
+	•	🔸 Raw Data by P3 Adaptive – for industry-level conversations
+	•	🔸 Explicit Measures – for latest Power BI updates
+	•	🔸 Kasper on BI – for DAX and modeling insights
+
+Would you like an embeddable podcast section for school.kolawoles.com to auto-load latest Power BI episodes from these sources?
