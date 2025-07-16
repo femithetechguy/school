@@ -1,19 +1,57 @@
+// ...removed call to setupExclusiveMediaPlayback (no longer exists)...
+// ...exclusive playback logic removed...
 // BI Playlist and BI Podcast buttons should scroll to the embedded iframes
+// Also set Podcast and Videos menu links to external playlists
 document.addEventListener('DOMContentLoaded', function() {
   fetch('json/links.json?t=' + new Date().getTime())
     .then(res => res.json())
     .then(links => {
+      // BI Playlist button
       var biPlaylistBtn = document.getElementById('bi-playlist-btn');
       if (biPlaylistBtn) {
         biPlaylistBtn.setAttribute('href', '#featured-powerbi-playlist');
         biPlaylistBtn.removeAttribute('target');
         biPlaylistBtn.removeAttribute('rel');
       }
+      // BI Podcast button
       var biPodcastBtn = document.getElementById('bi-podcast-btn');
       if (biPodcastBtn) {
         biPodcastBtn.setAttribute('href', '#p3adaptive-spotify-embed');
         biPodcastBtn.removeAttribute('target');
         biPodcastBtn.removeAttribute('rel');
+      }
+
+      // Podcast menu (desktop & mobile)
+      var podcastMenu = document.getElementById('menu-podcast');
+      var podcastMenuMobile = document.getElementById('menu-podcast-mobile');
+      var spotifyPlaylist = links?.podcastPlaylists?.beginnerSeries;
+      if (podcastMenu && spotifyPlaylist) {
+        podcastMenu.setAttribute('href', spotifyPlaylist.replace('/embed/', '/'));
+        podcastMenu.setAttribute('target', '_blank');
+        podcastMenu.setAttribute('rel', 'noopener');
+      }
+      if (podcastMenuMobile && spotifyPlaylist) {
+        podcastMenuMobile.setAttribute('href', spotifyPlaylist.replace('/embed/', '/'));
+        podcastMenuMobile.setAttribute('target', '_blank');
+        podcastMenuMobile.setAttribute('rel', 'noopener');
+      }
+
+      // Videos menu (desktop & mobile)
+      var videosMenu = document.getElementById('menu-videos');
+      var videosMenuMobile = document.getElementById('menu-videos-mobile');
+      var ytPlaylist = links?.playlists?.powerBIMasterclass;
+      if (videosMenu && ytPlaylist) {
+        // Convert embed link to YouTube playlist page link
+        var ytPageLink = ytPlaylist.replace('/embed/videoseries?', '/playlist?').replace('www.youtube.com', 'youtube.com').replace('embed/', '');
+        videosMenu.setAttribute('href', ytPageLink);
+        videosMenu.setAttribute('target', '_blank');
+        videosMenu.setAttribute('rel', 'noopener');
+      }
+      if (videosMenuMobile && ytPlaylist) {
+        var ytPageLink = ytPlaylist.replace('/embed/videoseries?', '/playlist?').replace('www.youtube.com', 'youtube.com').replace('embed/', '');
+        videosMenuMobile.setAttribute('href', ytPageLink);
+        videosMenuMobile.setAttribute('target', '_blank');
+        videosMenuMobile.setAttribute('rel', 'noopener');
       }
     });
 });
@@ -97,20 +135,6 @@ function renderYouTubeChannels() {
         .catch(() => {
             container.innerHTML = '<div class="text-red-500">Unable to load channels. Please try again later.</div>';
         });
-    const nextBtn = document.getElementById('next-episode');
-    if (!embed || !prevBtn || !nextBtn) return;
-    prevBtn.onclick = function() {
-        if (currentEpisode > 0) {
-            currentEpisode--;
-            embed.src = `https://open.spotify.com/embed/episode/${p3adaptiveEpisodes[currentEpisode]}`;
-        }
-    };
-    nextBtn.onclick = function() {
-        if (currentEpisode < p3adaptiveEpisodes.length - 1) {
-            currentEpisode++;
-            embed.src = `https://open.spotify.com/embed/episode/${p3adaptiveEpisodes[currentEpisode]}`;
-        }
-    };
 }
 
 // Mobile Menu Toggle
