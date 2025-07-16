@@ -33,7 +33,8 @@
     "realWorldProjects": "https://www.youtube.com/embed/videoseries?list=REALWORLD_PLAYLIST_ID",
     "powerBIBasics": "https://www.youtube.com/embed/videoseries?list=POWERBI_PLAYLIST_ID",
     "daxEssentials": "https://www.youtube.com/embed/videoseries?list=DAX_PLAYLIST_ID",
-    "sqlForAnalysts": "https://www.youtube.com/embed/videoseries?list=SQL_PLAYLIST_ID"
+    "sqlForAnalysts": "https://www.youtube.com/embed/videoseries?list=SQL_PLAYLIST_ID",
+    "powerBIMasterclass": "https://www.youtube.com/embed/videoseries?list=PLjNd3r1KLjQt0xN_y8F6BSIOVNvdQmq4d"
   },
   "podcasts": {
     "latestEpisode": "https://open.spotify.com/embed/episode/YOUR_EPISODE_ID",

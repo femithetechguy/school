@@ -125,19 +125,27 @@
                         <a href="#podcast" class="bg-mint hover:bg-green-300 text-charcoal font-semibold py-3 px-6 rounded-lg shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-200 text-center">
                             Listen to Podcast
                         </a>
+                        <a id="bi-playlist-btn" href="#" class="bg-blue-400 hover:bg-blue-500 text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-200 text-center">
+                            BI Playlist
+                        </a>
+                        <a id="bi-podcast-btn" href="#" class="bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-200 text-center">
+                            BI Podcast
+                        </a>
                     </div>
                 </div>
                 
                 <!-- Featured Content -->
                 <div class="space-y-6">
-                    <!-- Featured Video -->
-                    <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden">
-                        <div class="aspect-video w-full rounded-t-xl">
-                            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen class="rounded-t-xl"></iframe>
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-heading font-bold text-charcoal mb-2">Building Your First Power BI Dashboard</h3>
-                            <p class="text-gray-600">Step-by-step guide to creating professional dashboards</p>
+                    <!-- Featured Power BI Playlist (static fallback, replaced by JS if available) -->
+                    <div id="featured-powerbi-playlist">
+                        <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden">
+                            <div class="aspect-video w-full rounded-t-xl">
+                                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/videoseries?list=PLjNd3r1KLjQt0xN_y8F6BSIOVNvdQmq4d" frameborder="0" allowfullscreen class="rounded-t-xl"></iframe>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-heading font-bold text-charcoal mb-2">Power BI Masterclass Playlist</h3>
+                                <a href="powerBIMasterclass" target="_blank" rel="noopener" class="text-blue-700 hover:underline">View on YouTube</a>
+                            </div>
                         </div>
                     </div>
                     <!-- Featured Spotify Show with Episode Navigation -->
@@ -154,6 +162,21 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- YouTube Channels Section -->
+    <section id="youtube-channels" class="py-12 md:py-16 bg-gray-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl md:text-4xl font-heading font-bold text-charcoal mb-4">
+                    Top Power BI YouTube Channels
+                </h2>
+                <p class="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
+                    Curated list of the best channels for learning Power BI, DAX, and data analysis
+                </p>
+            </div>
+            <div id="channels-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"></div>
         </div>
     </section>
 
