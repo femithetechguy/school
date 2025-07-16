@@ -1,0 +1,76 @@
+[
+  {
+    "name": "Guy in a Cube",
+    "url": "https://youtube.com/@GuyInACube",
+    "bestFor": "Practical tutorials, Power BI tips, live Q&A, and Microsoft feature updates.",
+    "hosts": ["Adam Saxton", "Patrick LeBlanc"],
+    "topics": [
+      "DAX fundamentals",
+      "Data modeling best practices",
+      "Power BI Service optimization"
+    ]
+  },
+  {
+    "name": "SQLBI",
+    "url": "https://youtube.com/@SQLBI",
+    "bestFor": "Advanced DAX, performance tuning, and in-depth data modeling theory.",
+    "hosts": ["Alberto Ferrari", "Marco Russo"],
+    "topics": [
+      "Advanced DAX",
+      "Performance tuning",
+      "Data modeling theory"
+    ]
+  },
+  {
+    "name": "Leila Gharani",
+    "url": "https://youtube.com/@LeilaGharani",
+    "bestFor": "Excel-to-Power BI transitioners, data viz design, storytelling.",
+    "hosts": ["Leila Gharani"],
+    "topics": [
+      "Real-world dashboards",
+      "Power Query",
+      "Visuals tricks"
+    ]
+  },
+  {
+    "name": "How to Power BI (Avi Singh)",
+    "url": "https://youtube.com/@AviSingh",
+    "bestFor": "Motivational teaching style and clear walkthroughs of concepts.",
+    "hosts": ["Avi Singh"],
+    "topics": [
+      "Concept breakdowns",
+      "Digestible lessons"
+    ]
+  },
+  {
+    "name": "Enterprise DNA",
+    "url": "https://youtube.com/@EnterpriseDNA",
+    "bestFor": "Professional-level tutorials, DAX deep dives, and report design.",
+    "hosts": ["Enterprise DNA"],
+    "topics": [
+      "End-to-end solutions",
+      "Real datasets"
+    ]
+  },
+  {
+    "name": "Curbal (Ruth Pozuelo Martinez)",
+    "url": "https://youtube.com/@curbal",
+    "bestFor": "Short, focused Power BI & DAX lessons—daily tip style.",
+    "hosts": ["Ruth Pozuelo Martinez"],
+    "topics": [
+      "Power BI tips",
+      "DAX lessons"
+    ]
+  },
+  {
+    "name": "The Power BI Guy (Chris Wagner)",
+    "url": "https://youtube.com/@ThePowerBIGuy",
+    "bestFor": "Data governance, enterprise-level Power BI strategies, storytelling.",
+    "hosts": ["Chris Wagner"],
+    "topics": [
+      "Data governance",
+      "Enterprise Power BI",
+      "Storytelling"
+    ]
+  }
+]

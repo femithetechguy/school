@@ -1,3 +1,54 @@
+// Dynamically set Listen to Podcast link to Spotify playlist
+document.addEventListener('DOMContentLoaded', function() {
+  fetch('json/links.json?t=' + new Date().getTime())
+    .then(res => res.json())
+    .then(links => {
+      // Listen to Podcast button
+      var podcastBtn = document.querySelector('a[href="#podcast"].bg-mint');
+      var playlist = links?.podcastPlaylists?.beginnerSeries;
+      if (podcastBtn && playlist) {
+        podcastBtn.setAttribute('href', playlist);
+        podcastBtn.setAttribute('target', '_blank');
+        podcastBtn.setAttribute('rel', 'noopener');
+      }
+
+      // BI Playlist button
+      var biPlaylistBtn = document.getElementById('bi-playlist-btn');
+      var ytPlaylist = links?.playlists?.powerBIMasterclass;
+      if (biPlaylistBtn && ytPlaylist) {
+        // Convert embed link to YouTube playlist page link
+        var ytPageLink = ytPlaylist.replace('/embed/videoseries?', '/playlist?').replace('www.youtube.com', 'youtube.com').replace('embed/', '');
+        biPlaylistBtn.setAttribute('href', ytPageLink);
+        biPlaylistBtn.setAttribute('target', '_blank');
+        biPlaylistBtn.setAttribute('rel', 'noopener');
+      }
+
+      // BI Podcast button
+      var biPodcastBtn = document.getElementById('bi-podcast-btn');
+      var spPlaylist = links?.podcastPlaylists?.beginnerSeries;
+      if (biPodcastBtn && spPlaylist) {
+        // Convert embed link to Spotify playlist page link
+        var spPageLink = spPlaylist.replace('/embed/', '/');
+        biPodcastBtn.setAttribute('href', spPageLink);
+        biPodcastBtn.setAttribute('target', '_blank');
+        biPodcastBtn.setAttribute('rel', 'noopener');
+      }
+    });
+});
+// Dynamically set Listen to Podcast link to Spotify playlist
+document.addEventListener('DOMContentLoaded', function() {
+  fetch('json/links.json?t=' + new Date().getTime())
+    .then(res => res.json())
+    .then(links => {
+      var podcastBtn = document.querySelector('a[href="#podcast"].bg-mint');
+      var playlist = links?.podcastPlaylists?.beginnerSeries;
+      if (podcastBtn && playlist) {
+        podcastBtn.setAttribute('href', playlist);
+        podcastBtn.setAttribute('target', '_blank');
+        podcastBtn.setAttribute('rel', 'noopener');
+      }
+    });
+});
 // Data Analysis Learning Hub - JavaScript
 
 // DOM Ready
@@ -13,20 +64,71 @@ function initializeApp() {
     setupNewsletterForm();
     setupLazyLoading();
     setupSearchFunctionality();
+    renderYouTubeChannels();
+    renderFeaturedPowerBIPlaylist();
+// Render the featured Power BI playlist before the Spotify embed
+function renderFeaturedPowerBIPlaylist() {
+    const playlistDiv = document.getElementById('featured-powerbi-playlist');
+    if (!playlistDiv) return;
+    fetch('json/links.json?t=' + new Date().getTime())
+        .then(res => res.json())
+        .then(links => {
+            const playlistUrl = links?.playlists?.powerBIMasterclass;
+            if (playlistUrl) {
+                playlistDiv.innerHTML = `
+                    <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden">
+                        <div class="aspect-video w-full rounded-t-xl">
+                            <iframe width="100%" height="100%" src="${playlistUrl}" frameborder="0" allowfullscreen class="rounded-t-xl"></iframe>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-heading font-bold text-charcoal mb-2">Power BI Masterclass Playlist</h3>
+                            <a href="https://www.youtube.com/playlist?list=PLjNd3r1KLjQuVWrPuygE8QwEmCL6rrUrx" target="_blank" rel="noopener" class="text-blue-700 hover:underline">View on YouTube</a>
+                        </div>
+                    </div>
+                `;
+            } else {
+                playlistDiv.innerHTML = '<div class="text-red-500">Power BI playlist not found.</div>';
+            }
+        })
+        .catch(() => {
+            playlistDiv.innerHTML = '<div class="text-red-500">Unable to load playlist. Please try again later.</div>';
+        });
+}
     setupP3AdaptivePodcastNavigation();
     console.log('Data Analysis Learning Hub initialized successfully!');
 }
-
-// P3 Adaptive Podcast Episode Navigation
-function setupP3AdaptivePodcastNavigation() {
-    const p3adaptiveEpisodes = [
-        "1p8RfheHz0WIzhuAaPpvDO",
-        "0VKfbUdMDCfF7m5UpI29nO",
-        "6CVYcgXt8kFadeNhlGjMgt"
-    ];
-    let currentEpisode = 0;
-    const embed = document.getElementById('p3adaptive-spotify-embed');
-    const prevBtn = document.getElementById('prev-episode');
+// Dynamically load and render YouTube channels from channels.json
+function renderYouTubeChannels() {
+    const container = document.getElementById('channels-list');
+    if (!container) return;
+    // Cache busting: add timestamp
+    const url = 'json/channels.json?t=' + new Date().getTime();
+    fetch(url)
+        .then(res => res.json())
+        .then(channels => {
+            container.innerHTML = '';
+            channels.forEach(channel => {
+                const card = document.createElement('div');
+                card.className = 'bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 p-6 flex flex-col';
+                card.innerHTML = `
+                    <div class="flex items-center mb-3">
+                        <i class="bi bi-youtube text-2xl text-red-500 mr-2"></i>
+                        <a href="${channel.url}" target="_blank" rel="noopener" class="text-lg font-bold text-blue-700 hover:underline">${channel.name}</a>
+                    </div>
+                    <div class="text-sm text-gray-600 mb-2">${channel.bestFor || ''}</div>
+                    <div class="mb-2">
+                        <span class="font-semibold text-charcoal">Hosts:</span> ${Array.isArray(channel.hosts) ? channel.hosts.join(', ') : ''}
+                    </div>
+                    <div>
+                        <span class="font-semibold text-charcoal">Topics:</span> ${Array.isArray(channel.topics) ? channel.topics.join(', ') : ''}
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        })
+        .catch(() => {
+            container.innerHTML = '<div class="text-red-500">Unable to load channels. Please try again later.</div>';
+        });
     const nextBtn = document.getElementById('next-episode');
     if (!embed || !prevBtn || !nextBtn) return;
     prevBtn.onclick = function() {

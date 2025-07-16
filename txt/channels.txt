@@ -1,0 +1,69 @@
+Here are some great YouTube channels to learn and stay sharp with Power BI, whether you’re just starting or already a seasoned data analyst like yourself:
+
+⸻
+
+🎓 Top YouTube Channels for Power BI
+
+🔹 1. Guy in a Cube
+	•	🔗 youtube.com/@GuyInACube
+	•	⭐ Best For: Practical tutorials, Power BI tips, live Q&A, and Microsoft feature updates.
+	•	Run by Microsoft employees Adam Saxton and Patrick LeBlanc.
+	•	🔥 Popular topics:
+	•	DAX fundamentals
+	•	Data modeling best practices
+	•	Power BI Service optimization
+
+⸻
+
+🔹 2. SQLBI
+	•	🔗 youtube.com/@SQLBI
+	•	⭐ Best For: Advanced DAX, performance tuning, and in-depth data modeling theory.
+	•	Run by Alberto Ferrari and Marco Russo, Power BI legends.
+	•	🔥 Watch this if you want to go from “good” to “expert” in DAX.
+
+⸻
+
+🔹 3. Leila Gharani
+	•	🔗 youtube.com/@LeilaGharani
+	•	⭐ Best For: Excel-to-Power BI transitioners, data viz design, storytelling.
+	•	High production quality + beginner-friendly.
+	•	🔥 Includes real-world dashboards, Power Query, and visuals tricks.
+
+⸻
+
+🔹 4. How to Power BI (Avi Singh)
+	•	🔗 youtube.com/@AviSingh
+	•	⭐ Best For: Motivational teaching style and clear walkthroughs of concepts.
+	•	Avi is great at breaking down concepts into digestible lessons.
+
+⸻
+
+🔹 5. Enterprise DNA
+	•	🔗 youtube.com/@EnterpriseDNA
+	•	⭐ Best For: Professional-level tutorials, DAX deep dives, and report design.
+	•	Covers end-to-end solutions using real datasets.
+
+⸻
+
+🔹 6. Curbal (Ruth Pozuelo Martinez)
+	•	🔗 youtube.com/@curbal
+	•	⭐ Best For: Short, focused Power BI & DAX lessons—daily tip style.
+	•	Great resource for specific use cases and learning fast.
+
+⸻
+
+🔹 7. The Power BI Guy (Chris Wagner)
+	•	🔗 youtube.com/@ThePowerBIGuy
+	•	⭐ Best For: Data governance, enterprise-level Power BI strategies, storytelling.
+	•	Insightful takes on production-ready reports and data culture.
+
+⸻
+
+💡 Tips for Using These Channels
+	•	✅ Subscribe to 2–3 to start.
+	•	🔔 Turn on notifications for Guy in a Cube and SQLBI for the freshest insights.
+	•	📁 Organize useful videos into YouTube playlists on your channel (e.g., “Power Query Tips”, “DAX Shortcuts”, etc.)
+
+⸻
+
+Would you like a pre-curated YouTube playlist embedded on your learning site school.kolawoles.com? I can generate one or help you organize the best videos.
