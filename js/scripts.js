@@ -1,51 +1,19 @@
-// Dynamically set Listen to Podcast link to Spotify playlist
+// BI Playlist and BI Podcast buttons should scroll to the embedded iframes
 document.addEventListener('DOMContentLoaded', function() {
   fetch('json/links.json?t=' + new Date().getTime())
     .then(res => res.json())
     .then(links => {
-      // Listen to Podcast button
-      var podcastBtn = document.querySelector('a[href="#podcast"].bg-mint');
-      var playlist = links?.podcastPlaylists?.beginnerSeries;
-      if (podcastBtn && playlist) {
-        podcastBtn.setAttribute('href', playlist);
-        podcastBtn.setAttribute('target', '_blank');
-        podcastBtn.setAttribute('rel', 'noopener');
-      }
-
-      // BI Playlist button
       var biPlaylistBtn = document.getElementById('bi-playlist-btn');
-      var ytPlaylist = links?.playlists?.powerBIMasterclass;
-      if (biPlaylistBtn && ytPlaylist) {
-        // Convert embed link to YouTube playlist page link
-        var ytPageLink = ytPlaylist.replace('/embed/videoseries?', '/playlist?').replace('www.youtube.com', 'youtube.com').replace('embed/', '');
-        biPlaylistBtn.setAttribute('href', ytPageLink);
-        biPlaylistBtn.setAttribute('target', '_blank');
-        biPlaylistBtn.setAttribute('rel', 'noopener');
+      if (biPlaylistBtn) {
+        biPlaylistBtn.setAttribute('href', '#featured-powerbi-playlist');
+        biPlaylistBtn.removeAttribute('target');
+        biPlaylistBtn.removeAttribute('rel');
       }
-
-      // BI Podcast button
       var biPodcastBtn = document.getElementById('bi-podcast-btn');
-      var spPlaylist = links?.podcastPlaylists?.beginnerSeries;
-      if (biPodcastBtn && spPlaylist) {
-        // Convert embed link to Spotify playlist page link
-        var spPageLink = spPlaylist.replace('/embed/', '/');
-        biPodcastBtn.setAttribute('href', spPageLink);
-        biPodcastBtn.setAttribute('target', '_blank');
-        biPodcastBtn.setAttribute('rel', 'noopener');
-      }
-    });
-});
-// Dynamically set Listen to Podcast link to Spotify playlist
-document.addEventListener('DOMContentLoaded', function() {
-  fetch('json/links.json?t=' + new Date().getTime())
-    .then(res => res.json())
-    .then(links => {
-      var podcastBtn = document.querySelector('a[href="#podcast"].bg-mint');
-      var playlist = links?.podcastPlaylists?.beginnerSeries;
-      if (podcastBtn && playlist) {
-        podcastBtn.setAttribute('href', playlist);
-        podcastBtn.setAttribute('target', '_blank');
-        podcastBtn.setAttribute('rel', 'noopener');
+      if (biPodcastBtn) {
+        biPodcastBtn.setAttribute('href', '#p3adaptive-spotify-embed');
+        biPodcastBtn.removeAttribute('target');
+        biPodcastBtn.removeAttribute('rel');
       }
     });
 });
