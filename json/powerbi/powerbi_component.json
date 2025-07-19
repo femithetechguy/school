@@ -1,0 +1,121 @@
+{
+  "title": "Power BI Ecosystem: Core and Specialized Components",
+  "description": "Power BI is a suite of tools and services for collecting, transforming, visualizing, and sharing data insights. Here is a breakdown of the key products within the Power BI ecosystem.",
+  "items": [
+    {
+      "title": "Power BI Desktop",
+      "description": "A free, Windows-based desktop application for data analysts and developers to create Power BI reports and data models.",
+      "details": [
+        {
+          "label": "Key Functions",
+          "items": [
+            "Connect to various data sources",
+            "Transform and clean data using Power Query",
+            "Build data models (define relationships, create calculated columns and measures with DAX)",
+            "Design interactive reports with a wide range of visualizations"
+          ]
+        },
+        {
+          "label": "Usage",
+          "items": [
+            "Primary tool for initial data work and report creation"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Power BI Service",
+      "description": "A cloud-based SaaS platform for publishing, sharing, and collaborating on Power BI reports and dashboards.",
+      "details": [
+        {
+          "label": "Key Functions",
+          "items": [
+            "Online viewing and interaction with reports",
+            "Create dashboards (collections of visualizations from multiple reports)",
+            "Set up scheduled data refreshes",
+            "Manage user access and security",
+            "Use features like Q&A (natural language query) and data alerts"
+          ]
+        },
+        {
+          "label": "Licensing Tiers",
+          "items": [
+            "Power BI (Free): Personal use, create reports, publish to personal workspace, limited sharing",
+            "Power BI Pro: Per-user subscription for sharing/collaboration, shared workspaces, more frequent refreshes",
+            "Power BI Premium Per User (PPU): Higher-tier per-user subscription with Premium features (larger datasets, paginated reports, AI, deployment pipelines)",
+            "Power BI Premium (Per Capacity): Enterprise-level, dedicated cloud capacity, broader sharing, advanced features for scale, performance, and governance"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Power BI Mobile Apps",
+      "description": "Mobile applications for iOS, Android, and Windows devices to access and interact with Power BI reports and dashboards on the go.",
+      "details": [
+        {
+          "label": "Key Functions",
+          "items": [
+            "Access and interact with Power BI reports and dashboards",
+            "Optimized layouts for mobile screens"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Power BI Report Server",
+      "description": "An on-premises solution for organizations needing to keep Power BI and paginated reports within their own infrastructure.",
+      "details": [
+        {
+          "label": "Key Functions",
+          "items": [
+            "Publish and manage Power BI reports on-premises",
+            "Similar to SQL Server Reporting Services (SSRS)",
+            "Alternative to Power BI Service for specific data residency/security needs"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Power BI Report Builder",
+      "description": "A standalone tool for creating paginated (pixel-perfect, printable) reports, often for operational reporting.",
+      "details": [
+        {
+          "label": "Key Functions",
+          "items": [
+            "Design highly formatted, fixed-layout reports",
+            "Print or export reports",
+            "Publish to Power BI Service (with Premium) or Power BI Report Server"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Power BI Embedded",
+      "description": "A service for developers to embed Power BI reports, dashboards, and visualizations into custom applications or websites.",
+      "details": [
+        {
+          "label": "Key Functions",
+          "items": [
+            "Integrate Power BI capabilities into software products",
+            "Provide interactive analytics to users without direct Power BI licenses",
+            "Pricing based on usage and capacity"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Microsoft Fabric (and Power BI's role)",
+      "description": "Microsoft Fabric is a unified analytics platform. Power BI is the visualization and business intelligence experience within Fabric.",
+      "details": [
+        {
+          "label": "Key Points",
+          "items": [
+            "Fabric brings together data engineering, warehousing, science, real-time analytics, and BI in one platform",
+            "Power BI leverages the unified data lake (OneLake) and shared compute/governance",
+            "Many Premium features of Power BI are delivered through Fabric capacities"
+          ]
+        }
+      ]
+    }
+  ]
+}
