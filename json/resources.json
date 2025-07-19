@@ -1,0 +1,15 @@
+{
+  "title": "Resources",
+  "children": [
+    {
+      "id": "powerbi_views",
+      "label": "Power BI Views",
+      "json": "powerbi/powerbi_views.json"
+    },
+     {
+      "id": "powerbi_phases",
+      "label": "Power BI Phases",
+      "json": "powerbi/powerbi_phases.json"
+    }
+  ]
+}

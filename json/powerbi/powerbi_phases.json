@@ -1,0 +1,171 @@
+{
+  "title": "Power BI Project Plan: From Data to Insightful Reports",
+  "description": "This comprehensive plan outlines the phases, sub-steps, and key considerations for building a robust and impactful Power BI solution.",
+  "items": [
+    {
+      "title": "Data Acquisition & Initial Transformation (Power Query)",
+      "description": "Initial setup and transformation of data sources in Power Query.",
+      "details": [
+        {
+          "type": "steps",
+          "label": "Steps",
+          "items": [
+            "Create a New Power BI Desktop File",
+            "Connect to Data Sources (Excel Workbook)",
+            "Initial Data Inspection & Basic Transformations in Power Query Editor (for Sales, Products, ProductCategories, Customers tables)",
+            "Create a Dedicated Date Dimension Table (M-Code)",
+            "Close & Apply"
+          ]
+        },
+        {
+          "type": "tips",
+          "label": "Consultant Tips",
+          "items": [
+            "Clear Naming Conventions: Name queries clearly and consistently (e.g., DimCustomer, FactSales)",
+            "Error Handling & Type Checking: Implement robust error handling and ensure correct data types in Power Query.",
+            "Parameterization: Use parameters or functions if similar logic is required repeatedly."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Data Modeling (Relationships View)",
+      "description": "Designing the data model and establishing relationships.",
+      "details": [
+        {
+          "type": "steps",
+          "label": "Steps",
+          "items": [
+            "Open Model View",
+            "Arrange Tables",
+            "Establish Relationships (Sales to Dim Date, Sales to Products, Products to ProductCategories, Sales to Customers)",
+            "Review Relationship Properties"
+          ]
+        },
+        {
+          "type": "tips",
+          "label": "Consultant Tips",
+          "items": [
+            "Star Schema Design: Focus on a star schema design with one-to-many (1:*) and single-direction relationships.",
+            "User-Friendly Names & Hiding Keys: Use user-friendly names for columns and hide foreign keys and unnecessary fields from report view.",
+            "Model Annotation: Annotate your model using descriptions and display folders to improve understandability."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "DAX Calculations (Report View)",
+      "description": "Creating and organizing DAX measures for reporting.",
+      "details": [
+        {
+          "type": "steps",
+          "label": "Steps",
+          "items": [
+            "Go to Report View",
+            "Create a New Table for Measures",
+            "Basic Measures for Sanity Check (e.g., Total Sales Amount, Total Customers)",
+            "Recreate Legacy Report Measures (e.g., Customers Returned Within 90 Days, Pct Who Returned Within 90 Days of First Purchase, Customers Returned Within Following 3 Months, Pct Who Returned Within Following 3 Months)"
+          ]
+        },
+        {
+          "type": "tips",
+          "label": "Consultant Tips",
+          "items": [
+            "Dedicated Measure Table: Group all measures in a single, dedicated measure table.",
+            "Measure Prefixes: Prefix measures with [#], [_], or similar for clarity and easy identification.",
+            "Advanced DAX Functions: Utilize functions like CALCULATE, DATESINPERIOD, and USERELATIONSHIP for advanced time-intelligence and retention metrics."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Report Design - Replicating the Legacy Report",
+      "description": "Building a report page to match the legacy report.",
+      "details": [
+        {
+          "type": "steps",
+          "label": "Steps",
+          "items": [
+            "Create a New Report Page",
+            "Add a Table Visual",
+            "Add Fields to the Table Visual",
+            "Formatting the Table Visual",
+            "Validate Against Screenshot"
+          ]
+        },
+        {
+          "type": "tips",
+          "label": "Consultant Tips",
+          "items": [
+            "Exact Matching: Precisely match fonts, spacing, and headers if this is a replication task.",
+            "Bookmarks & Conditional Formatting: Use bookmarks if the legacy report includes interactive elements, and leverage tooltips and conditional formatting to add polish."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Additional Demo Report (Impress the Client)",
+      "description": "Creating an additional report page to showcase advanced features.",
+      "details": [
+        {
+          "type": "steps",
+          "label": "Steps",
+          "items": [
+            "Create a New Report Page",
+            "Ideation & Visual Strategy",
+            "Implement Visuals & Insights (e.g., Customer Acquisition Over Time, Retention Rate Trend, Cohort Retention, KPI Cards, Time Intelligence Example)",
+            "Layout, Formatting & Storytelling"
+          ]
+        },
+        {
+          "type": "tips",
+          "label": "Consultant Tips",
+          "items": [
+            "Narrative Layer: Include text boxes to explain insights and guide the user through the report.",
+            "Diverse Visuals: Incorporate slicer panels, KPI cards, and trend visuals.",
+            "Depth of Analysis: Create drillthrough pages or dynamic titles to demonstrate deeper analytical capabilities."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Review, Optimization & Submission",
+      "description": "Final review, optimization, and submission of the Power BI file.",
+      "details": [
+        {
+          "type": "steps",
+          "label": "Steps",
+          "items": [
+            "Thorough Review & Testing",
+            "Final File Size Optimization",
+            "Save & Submit"
+          ]
+        },
+        {
+          "type": "tips",
+          "label": "Consultant Tips",
+          "items": [
+            "Performance Analyzer: Run Power BI's Performance Analyzer to identify and optimize slow visuals or calculations.",
+            "Column Optimization: Remove unused columns and measures, and optimize column data types for efficiency.",
+            "Default Settings: Set the view mode to 'Fit to Page,' define default pages, and reset slicers before submission."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Documentation (OPTIONAL)",
+      "description": "Documenting the solution for handoff and future enhancements.",
+      "details": [
+        {
+          "type": "steps",
+          "label": "Steps",
+          "items": [
+            "Create a Data Dictionary for Tables, Columns, and Measures",
+            "Add Report Usage Instructions and Page Descriptions",
+            "Provide Handoff Notes and Future Enhancement Recommendations"
+          ]
+        }
+      ]
+    }
+  ]
+}
