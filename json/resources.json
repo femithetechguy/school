@@ -10,6 +10,11 @@
       "id": "powerbi_phases",
       "label": "Power BI Phases",
       "json": "powerbi/powerbi_phases.json"
+    },
+    {
+      "id": "powerbi_component",
+      "label": "Power BI Components",
+      "json": "powerbi/powerbi_component.json"
     }
   ]
 }
