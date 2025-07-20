@@ -1,0 +1,114 @@
+{
+  "title": "Handling Nulls and Empty Values in Power BI",
+  "description": "Best practices and strategies for handling null and empty values in Power BI, primarily using Power Query Editor.",
+  "items": [
+    {
+      "title": "Understanding Null vs. Empty",
+      "description": "Clarifies the difference between null (absence of value) and empty (empty string or blank cell) in Power BI.",
+      "details": [
+        {
+          "label": "Definitions",
+          "items": [
+            "Null: Absence of value, unknown data, or missing information. Appears as null in Power Query.",
+            "Empty: An empty string (\"\") in text columns or a blank cell. Power BI treats null and empty string differently."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Common Strategies for Handling Nulls and Empties",
+      "description": "Overview of typical approaches for dealing with nulls and empty values in Power Query Editor.",
+      "details": [
+        {
+          "label": "Remove Rows with Nulls/Empties",
+          "items": [
+            "Use when missing values indicate incomplete records or are few in number.",
+            "Select column(s), filter out (null) and/or (Empty), or use Remove Blank Rows/Remove Empty."
+          ]
+        },
+        {
+          "label": "Replace Values",
+          "items": [
+            "Use when a null/empty can be reasonably substituted (e.g., 0, 'N/A', 'Unknown').",
+            "Select column, use Replace Values, specify value to find (null or empty), and replacement value."
+          ]
+        },
+        {
+          "label": "Fill Down/Fill Up",
+          "items": [
+            "Use when nulls should inherit the previous/next non-null value (e.g., categories in poorly structured data).",
+            "Select column, use Fill Down or Fill Up."
+          ]
+        },
+        {
+          "label": "Conditional Columns",
+          "items": [
+            "Use when replacement logic depends on other columns or complex conditions.",
+            "Add Conditional Column, define rules (e.g., If [ColumnA] is null then 'Missing A' else [ColumnA])."
+          ]
+        },
+        {
+          "label": "Remove Columns",
+          "items": [
+            "Remove columns with too many nulls/empties or that provide no value.",
+            "Select column(s), right-click, Remove."
+          ]
+        },
+        {
+          "label": "Keep as Is (Implicit Handling)",
+          "items": [
+            "Sometimes null is valid and should not be changed (e.g., ReturnDate is null means not returned yet).",
+            "SUM() ignores nulls by default; COUNT() only counts non-null values."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Practical Examples from Common Tables",
+      "description": "How to handle nulls/empties in typical Power BI tables and columns.",
+      "details": [
+        {
+          "label": "Products table - EndDate",
+          "items": [
+            "Null likely means product is still current. Keep as null. Filter for current products with EndDate IS NULL."
+          ]
+        },
+        {
+          "label": "Customers table - CommuteDistance, NumberCarsOwned, TotalChildren, YearlyIncome",
+          "items": [
+            "If null means zero (e.g., 0 cars owned), replace with 0.",
+            "If null means unknown, keep as null and handle in DAX or remove row if critical."
+          ]
+        },
+        {
+          "label": "ProductCategories table - Subcategory, Category",
+          "items": [
+            "Should not have nulls/empties. Remove rows if any are null/empty."
+          ]
+        },
+        {
+          "label": "Any Key column (CustomerKey, ProductKey, SalesTerritoryKey)",
+          "items": [
+            "Should be complete for relationships. Remove rows if null."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Workflow in Power Query Editor",
+      "description": "Step-by-step process for addressing nulls and empties in Power Query.",
+      "details": [
+        {
+          "label": "Steps",
+          "items": [
+            "Identify: Scan columns for null/empty values, especially after changing data types.",
+            "Understand: Determine what null/empty represents in each column.",
+            "Choose Strategy: Decide the best action based on analysis goals.",
+            "Apply Step: Use Power Query UI to apply the transformation.",
+            "Verify: Check data preview to ensure the step worked as intended."
+          ]
+        }
+      ]
+    }
+  ]
+}

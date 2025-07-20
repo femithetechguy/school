@@ -6,7 +6,7 @@
       "label": "Power BI Views",
       "json": "powerbi/powerbi_views.json"
     },
-     {
+    {
       "id": "powerbi_phases",
       "label": "Power BI Phases",
       "json": "powerbi/powerbi_phases.json"
@@ -15,6 +15,11 @@
       "id": "powerbi_component",
       "label": "Power BI Components",
       "json": "powerbi/powerbi_component.json"
+    },
+    {
+        "id": "powerbi_null",
+        "label": "Power BI Null vs Empty",
+        "json": "powerbi/powerbi_null.json"
     }
   ]
 }
