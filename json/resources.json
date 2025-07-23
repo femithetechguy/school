@@ -20,6 +20,11 @@
         "id": "powerbi_null",
         "label": "Power BI Null vs Empty",
         "json": "powerbi/powerbi_null.json"
+    },
+    {
+      "id": "data_platform_administrator",
+      "label": "Data Platform Administrator",
+      "json": "powerbi/data_platform_administrator.json"
     }
   ]
 }

@@ -1,0 +1,107 @@
+{
+  "title": "Data Platform Administrator",
+  "description": "A Data Platform Administrator is a technical specialist responsible for managing, supporting, and optimizing the core data platforms used across an organization. Their primary goal is to ensure these platforms run smoothly, securely, and efficiently to enable analytics, business intelligence (BI), and data science efforts for all users, including analysts, developers, and data scientists. Think of a Data Platform Administrator as the 'data infrastructure gatekeeper.' They ensure that essential tools and databases like Power BI, Azure Synapse, Snowflake, SQL Server, or Tableau are always operational, secure, and performant. This role is crucial in modern data-driven organizations, blending IT operations, governance, and deep BI platform knowledge to build a scalable, secure, and performant BI ecosystem while enabling self-service analytics across departments.",
+  "items": [
+    {
+      "title": "Key Responsibilities",
+      "details": [
+        {
+          "label": "Platform Support & Maintenance",
+          "items": [
+            "Manage and monitor BI tools (e.g., Power BI, Tableau, Qlik)",
+            "Maintain performance and uptime, including installation, configuration, patching, and upgrades of database servers and instances",
+            "Handle configurations and troubleshoot system-level issues"
+          ]
+        },
+        {
+          "label": "User & Access Management",
+          "items": [
+            "Set up and control role-based access (RBAC, Row-Level Security - RLS)",
+            "Support user provisioning and license management",
+            "Enforce data governance policies and manage user access, roles, and permissions"
+          ]
+        },
+        {
+          "label": "Security & Compliance",
+          "items": [
+            "Ensure data platform compliance with internal and external regulations (e.g., HIPAA, GDPR)",
+            "Manage authentication and authorization (e.g., Azure AD, OAuth, SSO)",
+            "Implement security measures to protect sensitive data"
+          ]
+        },
+        {
+          "label": "Performance Optimization",
+          "items": [
+            "Monitor resource consumption and optimize capacity",
+            "Help improve query performance, optimize indexes, and reduce load times for dashboards and reports",
+            "Fine-tune datasets and dataflows for efficiency"
+          ]
+        },
+        {
+          "label": "Collaboration & Enablement",
+          "items": [
+            "Act as a liaison between IT, data teams, and business units",
+            "Support self-service analytics users with documentation, training, and troubleshooting",
+            "Assist developers with database design and query optimization"
+          ]
+        },
+        {
+          "label": "Monitoring & Incident Response",
+          "items": [
+            "Set up alerts and monitoring tools (e.g., Azure Monitor, Power BI Admin Portal) to continuously track database health and performance",
+            "Resolve issues related to slow dashboards, failed refreshes, or platform errors promptly",
+            "Implement and manage robust backup strategies and ensure data recovery"
+          ]
+        },
+        {
+          "label": "Capacity Planning",
+          "items": [
+            "Forecasting future resource needs (storage, CPU, memory) based on growth trends and planning for scalability"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Common Tools & Technologies",
+      "details": [
+        {
+          "label": "BI Tools",
+          "items": ["Power BI", "Tableau", "Qlik", "Looker"]
+        },
+        {
+          "label": "Cloud Platforms",
+          "items": ["Azure", "AWS", "Google Cloud"]
+        },
+        {
+          "label": "Databases",
+          "items": ["SQL Server", "Snowflake", "Oracle", "MySQL", "PostgreSQL"]
+        },
+        {
+          "label": "Data Movement",
+          "items": ["Azure Data Factory", "SSIS", "Synapse Pipelines"]
+        },
+        {
+          "label": "Admin Tools",
+          "items": ["Power BI Admin Portal", "Microsoft 365 Admin Center", "Azure Monitor"]
+        },
+        {
+          "label": "Scripting",
+          "items": ["PowerShell", "T-SQL", "DAX"]
+        }
+      ]
+    },
+    {
+      "title": "How It Differs from Other Roles",
+      "details": [
+        {
+          "label": "Role Comparison",
+          "items": [
+            "Data Engineer: Building data pipelines and ETL/ELT processes",
+            "BI Developer: Creating dashboards, KPIs, and visualizations",
+            "Data Platform Administrator: Supporting the infrastructure, security, and operations of data tools"
+          ]
+        }
+      ]
+    }
+  ]
+}
