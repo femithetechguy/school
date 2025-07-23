@@ -17,14 +17,34 @@
       "json": "powerbi/powerbi_component.json"
     },
     {
-        "id": "powerbi_null",
-        "label": "Power BI Null vs Empty",
-        "json": "powerbi/powerbi_null.json"
+      "id": "powerbi_null",
+      "label": "Power BI Null vs Empty",
+      "json": "powerbi/powerbi_null.json"
     },
     {
       "id": "data_platform_administrator",
       "label": "Data Platform Administrator",
       "json": "powerbi/data_platform_administrator.json"
+    },
+    {
+      "id": "data_warehousing",
+      "label": "Data Warehousing",
+      "json": "powerbi/data_warehousing.json"
+    },
+    {
+      "id": "data_modeling",
+      "label": "Data Modeling",
+      "json": "powerbi/data_modeling.json"
+    },
+    {
+      "id": "cloud_devops_automation",
+      "label": "Cloud, DevOps, and Automation",
+      "json": "powerbi/cloud_devops_automation.json"
+    },
+    {
+      "id": "software_dev_and_data",
+      "label": "Software Development and Data",
+      "json": "powerbi/software_dev_and_data.json"
     }
   ]
 }
