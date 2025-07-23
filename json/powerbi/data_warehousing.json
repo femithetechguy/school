@@ -1,0 +1,112 @@
+{
+  "title": "Data Warehousing",
+  "description": "A Data Warehouse is a centralized repository designed to store and manage large volumes of structured data from multiple disparate sources, such as databases, cloud systems, applications, and files. It's optimized specifically for reporting, analytics, and business intelligence (BI). In simple terms, a data warehouse is like a giant, organized digital library where all your company’s data is cleaned, categorized, and stored in one place so it can be easily accessed and analyzed—especially over time. It provides a long-range, unified view of data over time, serving as a 'single version of the truth' across an organization.",
+  "items": [
+    {
+      "title": "Key Features of a Data Warehouse",
+      "details": [
+        {
+          "label": "Features",
+          "items": [
+            "Subject-Oriented: Organized around key business areas like sales, finance, HR, etc.",
+            "Integrated: Combines data from various sources into a consistent format",
+            "Time-Variant: Stores historical data for trend analysis",
+            "Non-Volatile: Data is stable—once entered, it’s not changed (read-optimized)"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Data Warehouse Process: ETL / ELT",
+      "details": [
+        {
+          "label": "ETL Steps",
+          "items": [
+            "Extract: Pulling data from various sources (e.g., CRM, ERP, APIs, operational systems)",
+            "Transform: Cleaning, formatting, enriching, and standardizing the data (e.g., data types, business rules)",
+            "Load: Storing the final, structured data into the data warehouse"
+          ]
+        },
+        {
+          "label": "ELT (Modern)",
+          "items": [
+            "Raw data is loaded first, and transformations occur inside the data warehouse itself."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Modern Data Warehouse Architectures",
+      "details": [
+        {
+          "label": "Types & Tools",
+          "items": [
+            "Traditional (on-prem): SQL Server, Oracle, Teradata",
+            "Cloud-Based: Snowflake, Amazon Redshift, Google BigQuery, Azure Synapse",
+            "Lakehouse (hybrid): Databricks, Microsoft Fabric"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Common Use Cases",
+      "details": [
+        {
+          "label": "Use Cases",
+          "items": [
+            "Enterprise Reporting (e.g., Power BI, Tableau, Looker)",
+            "Executive Dashboards (KPIs, OKRs)",
+            "Historical Data Analysis",
+            "Data Mining & Predictive Analytics",
+            "Data Governance & Auditing"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Why Data Warehousing Matters",
+      "details": [
+        {
+          "label": "Benefits",
+          "items": [
+            "Provides a single source of truth for business data.",
+            "Supports faster, more reliable decision-making.",
+            "Enables data democratization (self-service analytics).",
+            "Helps meet compliance & audit requirements.",
+            "Maintains historical data for trend analysis and forecasting.",
+            "Improves data quality through cleansing and standardization.",
+            "Enhances performance by separating analytical processing from operational databases."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Who Uses It?",
+      "details": [
+        {
+          "label": "Users",
+          "items": [
+            "Data Analysts & BI Developers: For reporting, creating dashboards, and deriving insights.",
+            "Executives & Managers: For strategic insights and high-level decision-making.",
+            "Data Engineers: For building and maintaining data pipelines and the warehouse infrastructure.",
+            "Data Architects: For designing scalable and efficient warehouse solutions.",
+            "Data Scientists: For advanced analytics, machine learning, and predictive modeling."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "How It Differs from Other Data Systems",
+      "details": [
+        {
+          "label": "Comparison Table",
+          "items": [
+            "Data Warehouse: Analytical processing, reporting, business intelligence; Structured, often semi-structured, transformed; Schema-on-write (pre-defined before loading); Optimized for complex queries and read operations; Stores current and historical data.",
+            "Database (Transactional/OLTP): Operational processing, daily transactions; Structured; Schema-on-write (pre-defined for transactions); Optimized for rapid transactions and write operations; Primarily current data.",
+            "Data Lake: Store raw, unfiltered data for future use (all formats); Structured, semi-structured, unstructured (raw); Schema-on-read (defined when data is accessed); Optimized for cost-effective storage of vast raw data; Stores all data, including historical, in raw form."
+          ]
+        }
+      ]
+    }
+  ]
+}
