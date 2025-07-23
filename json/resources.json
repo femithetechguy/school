@@ -25,6 +25,11 @@
       "id": "data_platform_administrator",
       "label": "Data Platform Administrator",
       "json": "powerbi/data_platform_administrator.json"
+    },
+    {
+      "id": "data_warehousing",
+      "label": "Data Warehousing",
+      "json": "powerbi/data_warehousing.json"
     }
   ]
 }
