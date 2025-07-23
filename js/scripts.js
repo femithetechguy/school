@@ -132,13 +132,41 @@ function renderResourceJson(child, data) {
             if (Array.isArray(item.details)) {
                 item.details.forEach(detail => {
                     if (Array.isArray(detail.items) && detail.items.length > 0) {
-                        html += `<div class='mb-2'>`;
-                        if (detail.label) html += `<div class='font-semibold text-charcoal mb-1'>${detail.label}</div>`;
-                        html += `<ul class='list-disc ml-6 text-gray-700 space-y-1'>`;
-                        detail.items.forEach(d => {
-                            html += `<li>${d}</li>`;
-                        });
-                        html += `</ul></div>`;
+                        // Detect if detail.items is a table-like array of objects
+                        if (detail.items.every(row => typeof row === 'object' && !Array.isArray(row) && row !== null)) {
+                            // Responsive table/cards rendering
+                            html += `<div class='block md:hidden'>`;
+                            detail.items.forEach(row => {
+                                html += `<div class='bg-white rounded-lg shadow p-4 mb-4'>`;
+                                Object.keys(row).forEach(key => {
+                                    html += `<div class='flex justify-between mb-1'><span class='font-semibold text-charcoal'>${key}</span><span class='text-gray-700'>${row[key]}</span></div>`;
+                                });
+                                html += `</div>`;
+                            });
+                            html += `</div>`;
+                            html += `<div class='hidden md:block overflow-x-auto'>`;
+                            html += `<table class='min-w-full bg-white rounded-lg shadow mb-4'><thead><tr>`;
+                            Object.keys(detail.items[0]).forEach(key => {
+                                html += `<th class='px-4 py-2 border-b font-semibold text-charcoal bg-gray-50'>${key}</th>`;
+                            });
+                            html += `</tr></thead><tbody>`;
+                            detail.items.forEach(row => {
+                                html += `<tr>`;
+                                Object.values(row).forEach(val => {
+                                    html += `<td class='px-4 py-2 border-b text-gray-700'>${val}</td>`;
+                                });
+                                html += `</tr>`;
+                            });
+                            html += `</tbody></table></div>`;
+                        } else {
+                            html += `<div class='mb-2'>`;
+                            if (detail.label) html += `<div class='font-semibold text-charcoal mb-1'>${detail.label}</div>`;
+                            html += `<ul class='list-disc ml-6 text-gray-700 space-y-1'>`;
+                            detail.items.forEach(d => {
+                                html += `<li>${d}</li>`;
+                            });
+                            html += `</ul></div>`;
+                        }
                     }
                 });
             }
