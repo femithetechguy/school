@@ -1,0 +1,82 @@
+{
+  "title": "Data Modelling in Analytics",
+  "description": "Data modeling in data analytics is the process of structuring and organizing data—usually in the form of tables, relationships, and rules—to ensure it’s accurate, scalable, and optimized for analytics and reporting. It serves as the blueprint for how data is stored, related, and queried within a data warehouse, a Power BI model, or any other analytics platform.",
+  "items": [
+    {
+      "title": "Why It Matters in Analytics",
+      "details": [
+        {
+          "label": "Impact",
+          "items": [
+            "Without good data modeling: Reports can become slow, inaccurate, or inconsistent; calculations become complex; users may lose trust in the numbers.",
+            "With good data modeling: Models are clean, consistent, and easy to use; metrics and visuals are efficient and reliable; insights are faster and more confident."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Types of Data Models (Common in Analytics)",
+      "details": [
+        {
+          "label": "Model Types",
+          "items": [
+            "Conceptual Model: High-level view of business entities and their relationships, independent of technology (Whiteboarding, Visio, Lucidchart)",
+            "Logical Model: Adds structure, defining tables, columns, data types, and relationships (ER diagrams)",
+            "Physical Model: Actual implementation within a specific database or analytics tool (SQL Server, Power BI, Snowflake, Oracle)"
+          ]
+        },
+        {
+          "label": "Common Models",
+          "items": [
+            "Relational Model: Data in tables with rows and columns, linked by keys; often transformed into dimensional models for analytics.",
+            "Dimensional Model: Designed for analytical querying and reporting (Star Schema, Snowflake Schema)",
+            "Star Schema: Central fact table with surrounding dimension tables; optimizes query performance in BI tools.",
+            "Snowflake Schema: Extension of star schema with normalized dimension tables; reduces redundancy but increases join complexity.",
+            "Data Vault Model: Hybrid approach for agility, scalability, and auditing; consists of Hubs, Links, and Satellites."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Common Modeling Techniques & Best Practices",
+      "details": [
+        {
+          "label": "Techniques & Best Practices",
+          "items": [
+            "Star Schema: Prioritize for readability and performance; fact tables for measures, dimension tables for context.",
+            "Snowflake Schema: Use when data redundancy is a concern, but be mindful of join complexity.",
+            "Flat Table: Simple for small datasets, but not scalable for complex analytics.",
+            "In Power BI: Use one-to-many relationships, avoid circular relationships and bidirectional filters, prefer DAX measures over calculated columns, optimize with star schema.",
+            "General: Build single fact table models when possible, use surrogate keys for joins, enforce data types and naming conventions, document relationships and cardinality, avoid over-normalization."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Real-World Example (Power BI)",
+      "details": [
+        {
+          "label": "Sales Dashboard Model",
+          "items": [
+            "FactSales: OrderID, ProductID, Quantity, TotalAmount (facts)",
+            "DimProduct: ProductID, ProductName, Category (dimension)",
+            "DimCustomer: CustomerID, CustomerName, City (dimension)",
+            "DimDate: Date, Month, Year, Quarter (dimension)",
+            "Enables time intelligence, slicing by product or customer, and keeps the model lean and fast."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Summary",
+      "details": [
+        {
+          "label": "Essence",
+          "items": [
+            "Data modeling in analytics is the foundational process for making data usable, relatable, and fast. It's the blueprint that enables accurate dashboards, clean reports, and trustworthy insights, ultimately empowering organizations to leverage their data for strategic advantage."
+          ]
+        }
+      ]
+    }
+  ]
+}

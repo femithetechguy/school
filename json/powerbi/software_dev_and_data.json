@@ -47,14 +47,14 @@
       "title": "Tools Bridging Both Worlds",
       "details": [
         {
-          "label": "Key Tools",
+          "label": "Key Tools Table",
           "items": [
-            "Python: Data pipelines, analytics, ML",
-            "SQL: Core to both backend dev & analytics",
-            "Git/GitHub: Source control for code and data models",
-            "Docker: Packaging for data tools and microservices",
-            "REST APIs: Exposing or consuming data",
-            "Power BI / Tableau Embedded: Embedding analytics in applications"
+            {"tool": "Python", "data_use": "Data pipelines, analytics, ML"},
+            {"tool": "SQL", "data_use": "Core to both backend dev & analytics"},
+            {"tool": "Git/GitHub", "data_use": "Source control for code and data models"},
+            {"tool": "Docker", "data_use": "Packaging for data tools and microservices"},
+            {"tool": "REST APIs", "data_use": "Exposing or consuming data"},
+            {"tool": "Power BI / Tableau Embedded", "data_use": "Embedding analytics in applications"}
           ]
         }
       ]
@@ -65,8 +65,22 @@
         {
           "label": "Comparison Table",
           "items": [
-            "Software Dev: Goal—Build functionality; Input—Requirements, features; Output—Applications; Tools—Git, APIs, IDEs, Frameworks; Overlap—Data-driven apps, analytics pipelines, embedded BI, API development.",
-            "Data: Goal—Deliver insights; Input—Raw data; Output—Reports, dashboards, predictions; Tools—SQL, Power BI, ETL, Python; Overlap—Data-driven apps, analytics pipelines, embedded BI, API development."
+            {
+              "area": "Software Dev",
+              "goal": "Build functionality",
+              "input": "Requirements, features",
+              "output": "Applications",
+              "tools": "Git, APIs, IDEs, Frameworks",
+              "overlap": "Data-driven apps, analytics pipelines, embedded BI, API development"
+            },
+            {
+              "area": "Data",
+              "goal": "Deliver insights",
+              "input": "Raw data",
+              "output": "Reports, dashboards, predictions",
+              "tools": "SQL, Power BI, ETL, Python",
+              "overlap": "Data-driven apps, analytics pipelines, embedded BI, API development"
+            }
           ]
         }
       ]

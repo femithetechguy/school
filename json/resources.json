@@ -45,6 +45,11 @@
       "id": "software_dev_and_data",
       "label": "Software Development and Data",
       "json": "powerbi/software_dev_and_data.json"
+    },
+    {
+      "id": "data_analytics_ecosystem",
+      "label": "Data Analytics Ecosystem",
+      "json": "powerbi/data_analytics_ecosystem.json"
     }
   ]
 }
