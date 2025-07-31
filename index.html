@@ -6,6 +6,7 @@
     <meta name="description" content="Learn data analysis, Power BI, SQL, and DAX with hands-on tutorials, podcasts, and resources">
     <meta name="keywords" content="data analysis, power bi, dax, sql, data visualization, business intelligence, analytics training, power query">
     <meta name="robots" content="index, follow">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://cdn.jsdelivr.net; font-src * data:; img-src 'self' data:; connect-src 'self' ws: wss: http://127.0.0.1:* localhost:*;">
     <link rel="canonical" href="https://school.kolawoles.com">
     
     <!-- Cache Control Meta Tags -->
@@ -43,97 +44,10 @@
     
     <!-- Custom Styles -->
     <link rel="stylesheet" href="css/styles.css">
-    
-    <!-- iframe embedding styles -->
-    <style>
-      html, body, .container, .grid, section, #resources-content {
-        height: 100%;
-        min-height: 100vh;
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      
-      /* Additional styles specifically for iframe embedding */
-      body {
-        overflow-x: hidden; /* Prevent horizontal scrollbars */
-      }
-      
-      /* Ensure content fills available space but allows scrolling if needed */
-      main {
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-      }
-      
-      /* Adjust for mobile responsiveness in iframes */
-      @media (max-width: 768px) {
-        html, body {
-          -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
-        }
-      }
-
-      /* Fix for list padding in Markdown content */
-      #resources-content .prose ul,
-      #resources-content .prose ol {
-        padding-left: 1.5rem; /* Add padding to prevent bullets from being cut off */
-      }
-
-      /* Ensure content wraps and doesn't overflow its container */
-      #resources-content {
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-      }
-    </style>
+    <link rel="stylesheet" href="css/resources.css">
     
     <!-- Tailwind Config -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'starfruit': '#F6E96D',
-                        'charcoal': '#2E2E2E',
-                        'off-white': '#FAFAFA',
-                        'rich-black': '#1B1B1B',
-                        'mint': '#A8D5BA'
-                    },
-                    fontFamily: {
-                        'heading': ['Poppins', 'sans-serif'],
-                        'body': ['Inter', 'sans-serif']
-                    },
-                    typography: (theme) => ({
-                        DEFAULT: {
-                            css: {
-                                color: theme('colors.charcoal'),
-                                a: {
-                                    color: theme('colors.blue.700'),
-                                    '&:hover': {
-                                        color: theme('colors.blue.800'),
-                                    },
-                                },
-                                h1: {
-                                    color: theme('colors.charcoal'),
-                                    fontFamily: theme('fontFamily.heading'),
-                                },
-                                h2: {
-                                    color: theme('colors.charcoal'),
-                                    fontFamily: theme('fontFamily.heading'),
-                                },
-                                h3: {
-                                    color: theme('colors.charcoal'),
-                                    fontFamily: theme('fontFamily.heading'),
-                                },
-                            },
-                        },
-                    }),
-                }
-            },
-            plugins: [
-                // require('@tailwindcss/typography'), // This will cause an error in browser-only setup
-            ],
-        }
-    </script>
+    <script src="js/tailwind-config.js"></script>
     
     <!-- Marked.js for Markdown parsing -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
@@ -164,18 +78,19 @@
     <!-- Main Content -->
     <main class="container mx-auto px-4 py-8">
         <!-- Resources Section -->
-        <section id="resources" class="py-16">
+        <section id="resources" class="py-10">
             <h2 class="text-3xl md:text-4xl font-bold font-heading text-center text-charcoal mb-8">Learning Resources</h2>
-            <div id="resources-tabs" class="flex flex-wrap justify-center gap-4 mb-8">
+            <div id="resources-tabs" class="flex flex-wrap justify-center gap-0 mb-0">
                 <!-- Tabs will be rendered here by JavaScript -->
             </div>
-            <div id="resources-content" class="bg-white p-6 rounded-lg shadow-lg min-h-[300px]">
+            <div id="resources-content" class="bg-white">
                 <!-- Content will be loaded here -->
             </div>
         </section>
     </main>
 
     <!-- Scripts -->
+    <script src="js/mobile-menu.js"></script>
     <script src="js/scripts.js"></script>
     <script src="js/resource-loader.js"></script>
 </body>
