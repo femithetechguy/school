@@ -126,6 +126,16 @@
       "id": "date_table",
       "label": "Date Table",
       "json": "powerbi/date_table.md"
+    },
+    {
+      "id": "powerbi_service",
+      "label": "Power BI Service",
+      "json": "powerbi/powerbi_service.md"
+    },
+    {
+      "id": "powerbi_setup_and_soon",
+      "label": "Power BI Setup and Configuration",
+      "json": "powerbi/powerbi_setup_and_soon.md"
     }
   ]
 }
