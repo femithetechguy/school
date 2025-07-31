@@ -127,7 +127,16 @@ function renderResourcesTabs() {
                             if (resourceFile.endsWith('.md')) {
                                 return res.text().then(text => ({ content: text, type: 'md' }));
                             }
-                            return res.json().then(json => ({ content: json, type: 'json' }));
+                            // Try to parse as JSON, but if it fails, treat as text
+                            return res.text().then(text => {
+                                try {
+                                    const jsonContent = JSON.parse(text);
+                                    return { content: jsonContent, type: 'json' };
+                                } catch (e) {
+                                    console.log('Resource is not JSON, treating as markdown:', e);
+                                    return { content: text, type: 'md' };
+                                }
+                            });
                         })
                         .then(data => {
                             if (data.type === 'md') {
