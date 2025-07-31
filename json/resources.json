@@ -136,6 +136,16 @@
       "id": "powerbi_setup_and_soon",
       "label": "Power BI Setup and Configuration",
       "json": "powerbi/powerbi_setup_and_soon.md"
+    },
+    {
+      "id": "workspace_and_gateway_setup",
+      "label": "Workspace and Gateway Setup",
+      "json": "powerbi/workspace_and_gateway_setup.md"
+    },
+    {
+      "id": "deployment_pipeline",
+      "label": "Deployment Pipeline",
+      "json": "powerbi/deployment_pipeline.md"
     }
   ]
 }
