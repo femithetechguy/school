@@ -2,7 +2,65 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     renderResourcesTabs();
+    
+    // Close popup when escape key is pressed
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeMobilePopup();
+        }
+    });
 });
+
+// Function to open content in a mobile popup
+function openMobilePopup(content, title) {
+    // Create popup elements if they don't exist
+    let overlay = document.querySelector('.mobile-popup-overlay');
+    if (!overlay) {
+        overlay = document.createElement('div');
+        overlay.className = 'mobile-popup-overlay';
+        document.body.appendChild(overlay);
+        
+        // Close popup when clicking outside content
+        overlay.addEventListener('click', function(e) {
+            if (e.target === overlay) {
+                closeMobilePopup();
+            }
+        });
+    }
+    
+    // Create or update popup content
+    let popup = document.querySelector('.mobile-popup-content');
+    if (!popup) {
+        popup = document.createElement('div');
+        popup.className = 'mobile-popup-content';
+        overlay.appendChild(popup);
+    }
+    
+    // Set popup content with title
+    popup.innerHTML = `
+        <div class="mobile-popup-header">
+            <h3 class="mobile-popup-title">${title}</h3>
+            <button class="mobile-popup-close">&times;</button>
+        </div>
+        <div class="mobile-popup-body">${content}</div>
+    `;
+    
+    // Add close button event listener
+    popup.querySelector('.mobile-popup-close').addEventListener('click', closeMobilePopup);
+    
+    // Show popup
+    overlay.style.display = 'flex';
+    document.body.style.overflow = 'hidden'; // Prevent body scrolling
+}
+
+// Function to close the mobile popup
+function closeMobilePopup() {
+    const overlay = document.querySelector('.mobile-popup-overlay');
+    if (overlay) {
+        overlay.style.display = 'none';
+        document.body.style.overflow = ''; // Restore body scrolling
+    }
+}
 
 function renderResourcesTabs() {
     const tabsContainer = document.getElementById('resources-tabs');
@@ -14,10 +72,18 @@ function renderResourcesTabs() {
         .then(resources => {
             tabsContainer.innerHTML = '';
             contentContainer.innerHTML = '';
+            
             if (!resources.children || !resources.children.length) {
                 tabsContainer.innerHTML = '<div class="text-gray-500">No resources found.</div>';
                 return;
             }
+            
+            // Create wrapper for the content
+            const contentWrapper = document.createElement('div');
+            contentWrapper.id = 'resource-content-wrapper';
+            contentWrapper.className = 'border border-gray-200 p-6 bg-white';
+            contentContainer.appendChild(contentWrapper);
+            
             resources.children.forEach((child, idx) => {
                 const tabBtn = document.createElement('button');
                 tabBtn.className = 'px-4 py-2 mx-1 border border-gray-300 rounded-t-lg font-semibold text-charcoal bg-gray-50 hover:bg-gray-100 focus:outline-none transition-colors duration-200';
@@ -66,10 +132,26 @@ function renderResourcesTabs() {
                         .then(data => {
                             if (data.type === 'md') {
                                 console.log('Rendering markdown content');
-                                contentContainer.innerHTML = renderMarkdownResource(data.content);
+                                const renderedContent = renderMarkdownResource(data.content);
+                                
+                                // For mobile devices, show in popup
+                                if (window.innerWidth <= 768) {
+                                    openMobilePopup(renderedContent, activeChild.label);
+                                } else {
+                                    // For desktop, show in the container
+                                    document.getElementById('resource-content-wrapper').innerHTML = renderedContent;
+                                }
                             } else {
                                 console.log('Rendering JSON content');
-                                contentContainer.innerHTML = renderJsonResource(data.content);
+                                const renderedContent = renderJsonResource(data.content);
+                                
+                                // For mobile devices, show in popup
+                                if (window.innerWidth <= 768) {
+                                    openMobilePopup(renderedContent, activeChild.label);
+                                } else {
+                                    // For desktop, show in the container
+                                    document.getElementById('resource-content-wrapper').innerHTML = renderedContent;
+                                }
                             }
                         })
                         .catch((error) => {
@@ -85,45 +167,39 @@ function renderResourcesTabs() {
 }
 
 /**
- * Renders structured JSON data into HTML with collapsible sections.
+ * Renders structured JSON data into HTML without collapsible sections.
  * @param {object} data - The JSON data for the resource.
  * @returns {string} - The generated HTML string.
  */
 function renderJsonResource(data) {
     const resourceArray = Array.isArray(data.items) ? data.items : (Array.isArray(data.views) ? data.views : null);
     if (resourceArray) {
-        let html = '';
-        if (data.title) html += `<h3 class='text-2xl md:text-3xl font-heading font-bold text-charcoal mb-2'>${data.title}</h3>`;
-        if (data.summary || data.description) html += `<p class='mb-4 text-gray-700 text-base md:text-lg'>${data.summary || data.description}</p>`;
-        html += '<div class="divide-y divide-gray-200">';
+        let html = '<div class="prose prose-lg max-w-none md:prose-xl">';
+        
+        // Add title and description at the top
+        if (data.title) html += `<h1 class='mb-4'>${data.title}</h1>`;
+        if (data.summary || data.description) html += `<p class='mb-6 text-gray-700'>${data.summary || data.description}</p>`;
+        
+        // Render each item as a section with heading
         resourceArray.forEach((item, idx) => {
-            const collapsed = idx !== 0 ? 'hidden' : '';
-            const chevron = idx !== 0 ? 'fa-chevron-down' : 'fa-chevron-up';
-            html += `<div class='py-2 md:py-4'>`;
-            html += `<button type='button' class='w-full flex items-center justify-between text-left focus:outline-none group' data-collapsible='${idx}'>`;
-            html += `<span class='text-lg md:text-xl font-bold text-charcoal group-hover:text-starfruit transition-colors break-words'>${item.title || item.name}</span>`;
-            html += `<i class='fas ${chevron} ml-2 text-gray-500 group-hover:text-starfruit transition-colors'></i>`;
-            html += `</button>`;
-            html += `<div class='collapsible-content mt-2 ${collapsed}' data-content='${idx}'>`;
-            if (item.description) html += `<p class='mb-3 text-gray-600 text-base md:text-lg'>${item.description}</p>`;
+            // Add section heading
+            html += `<h2 class='mt-8 mb-4 text-charcoal font-bold'>${item.title || item.name}</h2>`;
+            
+            // Add item description
+            if (item.description) html += `<p class='mb-4 text-gray-700'>${item.description}</p>`;
+            
+            // Add details
             if (Array.isArray(item.details)) {
                 item.details.forEach(detail => {
                     if (Array.isArray(detail.items) && detail.items.length > 0) {
+                        // Check if details are table-like data (objects)
                         if (detail.items.every(row => typeof row === 'object' && !Array.isArray(row) && row !== null)) {
-                            // Mobile view - card-based display for tables
-                            html += `<div class='block md:hidden space-y-4'>`;
-                            detail.items.forEach(row => {
-                                html += `<div class='bg-white rounded-lg shadow p-4 mb-2 break-words'>`;
-                                Object.keys(row).forEach(key => {
-                                    html += `<div class='mb-2'><span class='font-semibold text-charcoal block mb-1'>${key}</span><span class='text-gray-700 break-words'>${row[key]}</span></div>`;
-                                });
-                                html += `</div>`;
-                            });
-                            html += `</div>`;
+                            // Add section subheading if there's a label
+                            if (detail.label) html += `<h3 class='mt-6 mb-3 font-semibold'>${detail.label}</h3>`;
                             
-                            // Desktop view - table-based display
-                            html += `<div class='hidden md:block overflow-x-auto'>`;
-                            html += `<table class='min-w-full bg-white rounded-lg shadow mb-4'><thead><tr>`;
+                            // Desktop & tablet view - table-based display
+                            html += `<div class='hidden md:block overflow-x-auto mb-6'>`;
+                            html += `<table class='min-w-full border mb-4'><thead><tr>`;
                             Object.keys(detail.items[0]).forEach(key => {
                                 html += `<th class='px-4 py-2 border-b font-semibold text-charcoal bg-gray-50'>${key}</th>`;
                             });
@@ -136,10 +212,22 @@ function renderJsonResource(data) {
                                 html += `</tr>`;
                             });
                             html += `</tbody></table></div>`;
+                            
+                            // Mobile view - card-based display for tables
+                            html += `<div class='block md:hidden space-y-4 mb-6'>`;
+                            detail.items.forEach(row => {
+                                html += `<div class='bg-white rounded-lg shadow p-4 mb-2 break-words'>`;
+                                Object.keys(row).forEach(key => {
+                                    html += `<div class='mb-2'><span class='font-semibold text-charcoal block mb-1'>${key}</span><span class='text-gray-700 break-words'>${row[key]}</span></div>`;
+                                });
+                                html += `</div>`;
+                            });
+                            html += `</div>`;
                         } else {
-                            html += `<div class='mb-2'>`;
-                            if (detail.label) html += `<div class='font-semibold text-charcoal mb-1'>${detail.label}</div>`;
-                            html += `<ul class='list-disc ml-6 text-gray-700 space-y-1'>`;
+                            // Regular list data
+                            html += `<div class='mb-4'>`;
+                            if (detail.label) html += `<h3 class='mt-6 mb-3 font-semibold'>${detail.label}</h3>`;
+                            html += `<ul class='list-disc ml-6 text-gray-700 space-y-2 mb-4'>`;
                             detail.items.forEach(d => {
                                 html += `<li>${d}</li>`;
                             });
@@ -148,42 +236,37 @@ function renderJsonResource(data) {
                     }
                 });
             }
-            if (item.purpose) html += `<p class='mb-3 text-gray-600 text-base md:text-lg'>${item.purpose}</p>`;
-            if (Array.isArray(item.keyFeatures)) {
-                html += '<ul class="list-disc ml-6 text-gray-700 space-y-1">';
+            
+            // Add purpose section
+            if (item.purpose) html += `<div class='my-4 p-4 bg-blue-50 rounded-lg text-gray-800'><h3 class='font-semibold mb-2'>Purpose</h3><p>${item.purpose}</p></div>`;
+            
+            // Add key features
+            if (Array.isArray(item.keyFeatures) && item.keyFeatures.length > 0) {
+                html += '<h3 class="mt-6 mb-3 font-semibold">Key Features</h3>';
+                html += '<ul class="list-disc ml-6 text-gray-700 space-y-2 mb-6">';
                 item.keyFeatures.forEach(f => {
                     html += `<li>${f}</li>`;
                 });
                 html += '</ul>';
             }
-            html += `</div></div>`;
+            
+            // Add a divider between sections (except the last one)
+            if (idx < resourceArray.length - 1) {
+                html += '<hr class="my-8 border-gray-200">';
+            }
         });
+        
+        // Add conclusion if present
+        if (data.conclusion) {
+            html += `<div class='mt-8 p-4 bg-gray-50 rounded-lg text-gray-800'>${data.conclusion}</div>`;
+        }
+        
         html += '</div>';
-        if (data.conclusion) html += `<div class='mt-8 p-4 bg-gray-50 rounded-lg text-gray-800 text-base md:text-lg'>${data.conclusion}</div>`;
-
-        setTimeout(() => {
-            const buttons = document.querySelectorAll('[data-collapsible]');
-            buttons.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const idx = btn.getAttribute('data-collapsible');
-                    const content = document.querySelector(`[data-content="${idx}"]`);
-                    const icon = btn.querySelector('i');
-                    if (content.classList.contains('hidden')) {
-                        content.classList.remove('hidden');
-                        icon.classList.remove('fa-chevron-down');
-                        icon.classList.add('fa-chevron-up');
-                    } else {
-                        content.classList.add('hidden');
-                        icon.classList.remove('fa-chevron-up');
-                        icon.classList.add('fa-chevron-down');
-                    }
-                });
-            });
-        }, 0);
-
         return html;
     }
-    return `<pre class='bg-gray-100 p-4 rounded text-sm overflow-x-auto'>${JSON.stringify(data, null, 2)}</pre>`;
+    
+    // Fallback if data format is unknown
+    return `<div class="prose prose-lg max-w-none"><pre class='bg-gray-100 p-4 rounded text-sm overflow-x-auto'>${JSON.stringify(data, null, 2)}</pre></div>`;
 }
 
 /**
