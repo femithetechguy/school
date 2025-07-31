@@ -110,6 +110,22 @@
       "id": "alert_driven_dashboard",
       "label": "Alert Driven Dashboard",
       "json": "powerbi/alert_driven_dashboard.md"
+    },
+    {
+      "id": "fact_and_dimension_table",
+      "label": "Fact and Dimension Tables",
+      "json": "powerbi/fact_and_dimension_table.md"
+    }
+  ,
+    {
+      "id": "dimension_measure",
+      "label": "Dimension and Measure",
+      "json": "powerbi/dimension_measure.md"
+    },
+    {
+      "id": "date_table",
+      "label": "Date Table",
+      "json": "powerbi/date_table.md"
     }
   ]
 }
