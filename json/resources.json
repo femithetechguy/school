@@ -50,6 +50,21 @@
       "id": "data_analytics_ecosystem",
       "label": "Data Analytics Ecosystem",
       "json": "powerbi/data_analytics_ecosystem.json"
+    },
+    {
+      "id": "ingestion_pipeline",
+      "label": "Data Ingestion Pipeline",
+      "json": "powerbi/ingestion_pipeline.json"
+    },
+    {
+      "id": "creating_advanced_bi_reports",
+      "label": "Advanced BI Reports",
+      "json": "powerbi/creating_advanced_bi_reports.json"
+    },
+    {
+      "id": "translating_requirements",
+      "label": "Translating Requirements",
+      "json": "powerbi/translating_requirements.json"
     }
   ]
 }
