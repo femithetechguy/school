@@ -50,6 +50,66 @@
       "id": "data_analytics_ecosystem",
       "label": "Data Analytics Ecosystem",
       "json": "powerbi/data_analytics_ecosystem.json"
+    },
+    {
+      "id": "ingestion_pipeline",
+      "label": "Data Ingestion Pipeline",
+      "json": "powerbi/ingestion_pipeline.json"
+    },
+    {
+      "id": "creating_advanced_bi_reports",
+      "label": "Advanced BI Reports",
+      "json": "powerbi/creating_advanced_bi_reports.json"
+    },
+    {
+      "id": "translating_requirements",
+      "label": "Translating Requirements",
+      "json": "powerbi/translating_requirements.json"
+    },
+    {
+      "id": "investigate_complex_data_issues",
+      "label": "Investigate Complex Data Issues",
+      "json": "powerbi/investigate_complex_data_issues.md"
+    },
+    {
+      "id": "enhance_data_models_optimize_calculations",
+      "label": "Enhance Data Models & Optimize Calculations",
+      "json": "powerbi/enhance_data_models_optimize_calculations.md"
+    },
+    {
+      "id": "data_quality_checkpoints",
+      "label": "Data Quality Checkpoints",
+      "json": "powerbi/data_quality_checkpoints.md"
+    },
+    {
+      "id": "targeted_powerbi_training",
+      "label": "Targeted Power BI Training",
+      "json": "powerbi/targeted_powerbi_training.md"
+    },
+    {
+      "id": "query_refactoring",
+      "label": "Query Refactoring",
+      "json": "powerbi/query_refactoring.md"
+    },
+    {
+      "id": "modernizing_bi_architecture",
+      "label": "Modernizing BI Architecture",
+      "json": "powerbi/modernizing_bi_architecture.md"
+    },
+    {
+      "id": "transitioning_allelse_into_powerbi",
+      "label": "Transitioning All Else Into Power BI",
+      "json": "powerbi/transitioning_allelse_into_powerbi.md"
+    },
+    {
+      "id": "modernize_bi_architecture_and_governance",
+      "label": "Modernize BI Architecture and Governance",
+      "json": "powerbi/modernize_bi_architecture_and_governance.md"
+    },
+    {
+      "id": "alert_driven_dashboard",
+      "label": "Alert Driven Dashboard",
+      "json": "powerbi/alert_driven_dashboard.md"
     }
   ]
 }
