@@ -1,0 +1,162 @@
+/* Resources Section Styles */
+html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Reset container styles */
+.container, .grid, section {
+  box-sizing: border-box;
+}
+
+/* Simplified content handling */
+#resources-content {
+  box-sizing: border-box;
+}
+
+/* Prevent horizontal scrollbars */
+body {
+  overflow-x: hidden;
+}
+
+/* Ensure content fills available space but allows scrolling if needed */
+main {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Clear explicit height settings that might be causing the border issue */
+section#resources {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Tab-specific styling */
+#resources-tabs button {
+  position: relative;
+  bottom: -1px; /* Overlap with the content border */
+  z-index: 5;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+#resources-tabs button.active {
+  border-bottom-color: white;
+  background-color: white;
+}
+
+/* Mobile responsiveness adjustments */
+@media (max-width: 768px) {
+  html, body {
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  }
+  
+  /* Adjust tab size and layout on smaller screens */
+  #resources-tabs button {
+    font-size: 0.9rem;
+    padding: 0.5rem 0.75rem;
+  }
+  
+  /* Reduce content padding on mobile */
+  #resources-content {
+    padding: 1.25rem;
+  }
+  
+  /* Improve typography for mobile */
+  #resources-content h1 { font-size: 1.5rem; }
+  #resources-content h2 { font-size: 1.3rem; }
+  #resources-content h3 { font-size: 1.2rem; }
+  
+  /* Make pre blocks (code) responsive */
+  #resources-content pre {
+    max-width: 100%;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+  
+  /* Ensure tables are scrollable on mobile */
+  #resources-content .overflow-x-auto {
+    margin-bottom: 1rem;
+  }
+}
+
+/* Fix for list padding in Markdown content */
+#resources-content .prose ul,
+#resources-content .prose ol {
+  padding-left: 1.5rem; /* Add padding to prevent bullets from being cut off */
+  margin-bottom: 1rem;
+}
+
+/* Improve typography for better readability */
+#resources-content h1,
+#resources-content h2,
+#resources-content h3,
+#resources-content h4 {
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+#resources-content h1 { font-size: 1.75rem; }
+#resources-content h2 { font-size: 1.5rem; }
+#resources-content h3 { font-size: 1.25rem; }
+
+#resources-content p {
+  margin-bottom: 1rem;
+}
+
+/* Add spacing between paragraphs and lists */
+#resources-content p + ul,
+#resources-content p + ol {
+  margin-top: -0.5rem;
+}
+
+/* Resources tabs styling */
+#resources-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 0;
+}
+
+/* Resource content container - no card styling, just a plain container with border */
+#resources-content {
+  background-color: white;
+  padding: 2rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 0.25rem;
+  min-height: 300px;
+  max-width: 1200px;
+  margin: 0 auto;
+  line-height: 1.6;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  height: auto !important; /* Override any height constraints */
+  display: block; /* Use block display for natural content height */
+  flex: 1; /* Fill available space in flex parent */
+  overflow: visible; /* Ensure content isn't cut off */
+}
+
+/* Additional responsive styles for markdown content */
+#resources-content img {
+  max-width: 100%;
+  height: auto;
+}
+
+#resources-content table {
+  width: 100%;
+  margin-bottom: 1rem;
+  border-collapse: collapse;
+}
+
+#resources-content code, 
+#resources-content pre {
+  max-width: 100%;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}

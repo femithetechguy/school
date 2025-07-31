@@ -20,9 +20,9 @@ function renderResourcesTabs() {
             }
             resources.children.forEach((child, idx) => {
                 const tabBtn = document.createElement('button');
-                tabBtn.className = 'px-4 py-2 rounded-lg font-semibold text-charcoal bg-gray-100 hover:bg-starfruit focus:bg-starfruit transition-colors duration-200';
+                tabBtn.className = 'px-4 py-2 mx-1 border border-gray-300 rounded-t-lg font-semibold text-charcoal bg-gray-50 hover:bg-gray-100 focus:outline-none transition-colors duration-200';
                 tabBtn.textContent = child.label;
-                tabBtn.setAttribute('data-resource-file', child.json); // Use a more descriptive attribute
+                tabBtn.setAttribute('data-resource-file', child.json);
                 tabBtn.onclick = function() {
                     setActiveTab(idx);
                 };
@@ -33,14 +33,31 @@ function renderResourcesTabs() {
             setActiveTab(0);
 
             function setActiveTab(activeIdx) {
+                // First, update the tab appearance
                 Array.from(tabsContainer.children).forEach((btn, i) => {
-                    btn.classList.toggle('bg-starfruit', i === activeIdx);
+                    if (i === activeIdx) {
+                        btn.classList.remove('bg-gray-50');
+                        btn.classList.add('bg-white', 'border-b-0', 'active');
+                    } else {
+                        btn.classList.remove('bg-white', 'border-b-0', 'active');
+                        btn.classList.add('bg-gray-50');
+                    }
                 });
+                
+                // Then, load the content
                 const activeChild = resources.children[activeIdx];
                 if (activeChild && activeChild.json) {
                     const resourceFile = 'json/' + activeChild.json;
+                    console.log('Attempting to fetch resource:', resourceFile);
+                    
                     fetch(resourceFile + '?t=' + new Date().getTime())
                         .then(res => {
+                            if (!res.ok) {
+                                console.error('Failed to fetch resource:', resourceFile, 'Status:', res.status);
+                                throw new Error('Failed to fetch resource: ' + resourceFile);
+                            }
+                            console.log('Successfully fetched resource:', resourceFile);
+                            
                             if (resourceFile.endsWith('.md')) {
                                 return res.text().then(text => ({ content: text, type: 'md' }));
                             }
@@ -48,13 +65,16 @@ function renderResourcesTabs() {
                         })
                         .then(data => {
                             if (data.type === 'md') {
+                                console.log('Rendering markdown content');
                                 contentContainer.innerHTML = renderMarkdownResource(data.content);
                             } else {
+                                console.log('Rendering JSON content');
                                 contentContainer.innerHTML = renderJsonResource(data.content);
                             }
                         })
-                        .catch(() => {
-                            contentContainer.innerHTML = '<div class="text-red-500">Unable to load resource content.</div>';
+                        .catch((error) => {
+                            console.error('Error loading resource:', error);
+                            contentContainer.innerHTML = `<div class="text-red-500 p-4">Unable to load resource content: ${resourceFile}. Error: ${error.message}</div>`;
                         });
                 }
             }
@@ -81,7 +101,7 @@ function renderJsonResource(data) {
             const chevron = idx !== 0 ? 'fa-chevron-down' : 'fa-chevron-up';
             html += `<div class='py-2 md:py-4'>`;
             html += `<button type='button' class='w-full flex items-center justify-between text-left focus:outline-none group' data-collapsible='${idx}'>`;
-            html += `<span class='text-xl md:text-2xl font-bold text-charcoal group-hover:text-starfruit transition-colors'>${item.title || item.name}</span>`;
+            html += `<span class='text-lg md:text-xl font-bold text-charcoal group-hover:text-starfruit transition-colors break-words'>${item.title || item.name}</span>`;
             html += `<i class='fas ${chevron} ml-2 text-gray-500 group-hover:text-starfruit transition-colors'></i>`;
             html += `</button>`;
             html += `<div class='collapsible-content mt-2 ${collapsed}' data-content='${idx}'>`;
@@ -90,15 +110,18 @@ function renderJsonResource(data) {
                 item.details.forEach(detail => {
                     if (Array.isArray(detail.items) && detail.items.length > 0) {
                         if (detail.items.every(row => typeof row === 'object' && !Array.isArray(row) && row !== null)) {
-                            html += `<div class='block md:hidden'>`;
+                            // Mobile view - card-based display for tables
+                            html += `<div class='block md:hidden space-y-4'>`;
                             detail.items.forEach(row => {
-                                html += `<div class='bg-white rounded-lg shadow p-4 mb-4'>`;
+                                html += `<div class='bg-white rounded-lg shadow p-4 mb-2 break-words'>`;
                                 Object.keys(row).forEach(key => {
-                                    html += `<div class='flex justify-between mb-1'><span class='font-semibold text-charcoal'>${key}</span><span class='text-gray-700'>${row[key]}</span></div>`;
+                                    html += `<div class='mb-2'><span class='font-semibold text-charcoal block mb-1'>${key}</span><span class='text-gray-700 break-words'>${row[key]}</span></div>`;
                                 });
                                 html += `</div>`;
                             });
                             html += `</div>`;
+                            
+                            // Desktop view - table-based display
                             html += `<div class='hidden md:block overflow-x-auto'>`;
                             html += `<table class='min-w-full bg-white rounded-lg shadow mb-4'><thead><tr>`;
                             Object.keys(detail.items[0]).forEach(key => {
@@ -172,7 +195,23 @@ function renderMarkdownResource(markdownText) {
     if (typeof marked === 'undefined') {
         return '<div class="text-red-500">Markdown parser (marked.js) is not loaded.</div>';
     }
-    const html = marked.parse(markdownText);
+    
+    // Set options for marked to ensure mobile-friendly output
+    marked.setOptions({
+        breaks: true,  // Convert line breaks to <br>
+        gfm: true      // Enable GitHub flavored markdown
+    });
+    
+    let html = marked.parse(markdownText);
+    
+    // Process the HTML to make it more mobile-friendly
+    // 1. Make all images responsive
+    html = html.replace(/<img /g, '<img class="max-w-full h-auto" ');
+    
+    // 2. Add horizontal scroll to tables
+    html = html.replace(/<table>/g, '<div class="overflow-x-auto"><table class="min-w-full">');
+    html = html.replace(/<\/table>/g, '</table></div>');
+    
     // Add prose class for Tailwind typography styles
-    return `<div class="prose prose-lg max-w-none">${html}</div>`;
+    return `<div class="prose prose-lg max-w-none md:prose-xl prose-headings:break-words prose-p:break-words">${html}</div>`;
 }
