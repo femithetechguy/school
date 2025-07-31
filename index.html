@@ -72,6 +72,18 @@
           -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
         }
       }
+
+      /* Fix for list padding in Markdown content */
+      #resources-content .prose ul,
+      #resources-content .prose ol {
+        padding-left: 1.5rem; /* Add padding to prevent bullets from being cut off */
+      }
+
+      /* Ensure content wraps and doesn't overflow its container */
+      #resources-content {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+      }
     </style>
     
     <!-- Tailwind Config -->
@@ -89,383 +101,96 @@
                     fontFamily: {
                         'heading': ['Poppins', 'sans-serif'],
                         'body': ['Inter', 'sans-serif']
-                    }
+                    },
+                    typography: (theme) => ({
+                        DEFAULT: {
+                            css: {
+                                color: theme('colors.charcoal'),
+                                a: {
+                                    color: theme('colors.blue.700'),
+                                    '&:hover': {
+                                        color: theme('colors.blue.800'),
+                                    },
+                                },
+                                h1: {
+                                    color: theme('colors.charcoal'),
+                                    fontFamily: theme('fontFamily.heading'),
+                                },
+                                h2: {
+                                    color: theme('colors.charcoal'),
+                                    fontFamily: theme('fontFamily.heading'),
+                                },
+                                h3: {
+                                    color: theme('colors.charcoal'),
+                                    fontFamily: theme('fontFamily.heading'),
+                                },
+                            },
+                        },
+                    }),
                 }
-            }
+            },
+            plugins: [
+                // require('@tailwindcss/typography'), // This will cause an error in browser-only setup
+            ],
         }
     </script>
+    
+    <!-- Marked.js for Markdown parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body class="bg-off-white text-rich-black font-body">
     <!-- Navigation -->
     <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="container mx-auto px-4">
             <div class="flex justify-between items-center py-4">
-                <!-- Logo -->
-                <div class="text-2xl font-heading font-bold text-charcoal">
-                    <a href="/">Data Analysis Hub</a>
+                <a href="index.html" class="text-2xl font-bold font-heading text-charcoal">Data Analysis Hub</a>
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="index.html" class="text-charcoal hover:text-starfruit transition-colors">Home</a>
+                    <a href="#resources" class="text-charcoal hover:text-starfruit transition-colors">Resources</a>
                 </div>
-                
-                <!-- Desktop Navigation -->
-                <div class="hidden md:flex space-x-8">
-                    <a href="/" class="text-charcoal hover:text-starfruit font-medium transition-colors duration-200">Home</a>
-                    <a href="#curriculum" class="text-charcoal hover:text-starfruit font-medium transition-colors duration-200">Learn</a>
-                    <a id="menu-podcast" href="#podcast" class="text-charcoal hover:text-starfruit font-medium transition-colors duration-200">Podcast</a>
-                    <a id="menu-videos" href="#videos" class="text-charcoal hover:text-starfruit font-medium transition-colors duration-200">Videos</a>
-                    <a href="#resources" class="text-charcoal hover:text-starfruit font-medium transition-colors duration-200">Resources</a>
-                    <a href="#blog" class="text-charcoal hover:text-starfruit font-medium transition-colors duration-200">Articles</a>
-                    <a href="#about" class="text-charcoal hover:text-starfruit font-medium transition-colors duration-200">About</a>
-                    <a href="#contact" class="text-charcoal hover:text-starfruit font-medium transition-colors duration-200">Contact</a>
-                </div>
-                
-                <!-- Mobile Menu Button -->
-                <div class="md:hidden">
-                    <button id="mobile-menu-btn" class="text-charcoal hover:text-starfruit">
-                        <i class="fas fa-bars text-xl"></i>
-                    </button>
-                </div>
-            </div>
-            
-            <!-- Mobile Navigation -->
-            <div id="mobile-menu" class="hidden md:hidden pb-4">
-                <div class="flex flex-col space-y-2">
-                    <a href="/" class="text-charcoal hover:text-starfruit font-medium py-2 transition-colors duration-200">Home</a>
-                    <a href="#curriculum" class="text-charcoal hover:text-starfruit font-medium py-2 transition-colors duration-200">Learn</a>
-                    <a id="menu-podcast-mobile" href="#podcast" class="text-charcoal hover:text-starfruit font-medium py-2 transition-colors duration-200">Podcast</a>
-                    <a id="menu-videos-mobile" href="#videos" class="text-charcoal hover:text-starfruit font-medium py-2 transition-colors duration-200">Videos</a>
-                    <a href="#resources" class="text-charcoal hover:text-starfruit font-medium py-2 transition-colors duration-200">Resources</a>
-                    <a href="#blog" class="text-charcoal hover:text-starfruit font-medium py-2 transition-colors duration-200">Articles</a>
-                    <a href="#about" class="text-charcoal hover:text-starfruit font-medium py-2 transition-colors duration-200">About</a>
-                    <a href="#contact" class="text-charcoal hover:text-starfruit font-medium py-2 transition-colors duration-200">Contact</a>
-                </div>
+                <button id="mobile-menu-btn" class="md:hidden text-charcoal focus:outline-none">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
             </div>
         </div>
     </nav>
+    
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-200">
+        <a href="index.html" class="block py-2 px-4 text-charcoal hover:bg-gray-50">Home</a>
+        <a href="#resources" class="block py-2 px-4 text-charcoal hover:bg-gray-50">Resources</a>
+    </div>
 
-    <!-- Hero Section -->
-    <section class="py-12 md:py-20 lg:py-24">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-                <!-- Hero Content -->
-                <div>
-                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-charcoal leading-tight">
-                        Master Data Analysis with Real-World Skills
-                    </h1>
-                    <p class="text-lg md:text-xl text-gray-600 mt-4 leading-relaxed">
-                        Learn Power BI, SQL, DAX, and data visualization through practical tutorials and industry insights
-                    </p>
-                    <div class="mt-8 flex flex-col sm:flex-row gap-4">
-                        <a href="#curriculum" class="bg-starfruit hover:bg-yellow-400 text-charcoal font-semibold py-3 px-6 rounded-lg shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-200 text-center">
-                            Start Learning
-                        </a>
-                        <a id="bi-playlist-btn" href="#featured-powerbi-playlist" class="bg-blue-400 hover:bg-blue-500 text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-200 text-center">
-                            BI Playlist
-                        </a>
-                        <a id="bi-podcast-btn" href="#p3adaptive-spotify-embed" class="bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-200 text-center">
-                            BI Podcast
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Featured Content -->
-                <div class="space-y-6">
-                    <!-- Featured Power BI Playlist (static fallback, replaced by JS if available) -->
-                    <div id="featured-powerbi-playlist">
-                        <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden">
-                            <div class="aspect-video w-full rounded-t-xl">
-                                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/videoseries?list=PLjNd3r1KLjQt0xN_y8F6BSIOVNvdQmq4d" frameborder="0" allowfullscreen class="rounded-t-xl"></iframe>
-                            </div>
-                            <div class="p-6">
-                                <h3 class="text-xl font-heading font-bold text-charcoal mb-2">Power BI Masterclass Playlist</h3>
-                                <a href="powerBIMasterclass" target="_blank" rel="noopener" class="text-blue-700 hover:underline">View on YouTube</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Featured Spotify Show with Episode Navigation -->
-                    <div class="rounded-lg overflow-hidden shadow-md border border-gray-200 bg-gray-50 mt-6">
-                        <iframe id="p3adaptive-spotify-embed" src="https://open.spotify.com/embed/episode/1p8RfheHz0WIzhuAaPpvDO" width="100%" height="232" frameborder="0" allowtransparency="true" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" class="w-full h-56 md:h-64 lg:h-72"></iframe>
-                        <div class="p-4 flex flex-col items-center">
-                            <h3 class="text-lg font-heading font-bold text-charcoal mb-1">Raw Data By P3 Adaptive</h3>
-                            <p class="text-gray-600 text-sm mb-2">Podcast by P3 Adaptive</p>
-                            <div class="flex gap-4 mt-2">
-                                <button id="prev-episode" class="bg-charcoal text-white px-4 py-2 rounded hover:bg-starfruit hover:text-charcoal transition-colors">&#8592; Previous</button>
-                                <button id="next-episode" class="bg-charcoal text-white px-4 py-2 rounded hover:bg-starfruit hover:text-charcoal transition-colors">Next &#8594;</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Resources Section -->
+        <section id="resources" class="py-16">
+            <h2 class="text-3xl md:text-4xl font-bold font-heading text-center text-charcoal mb-8">Learning Resources</h2>
+            <div id="resources-tabs" class="flex flex-wrap justify-center gap-4 mb-8">
+                <!-- Tabs will be rendered here by JavaScript -->
             </div>
-        </div>
-    </section>
+            <div id="resources-content" class="bg-white p-6 rounded-lg shadow-lg min-h-[300px]">
+                <!-- Content will be loaded here -->
+            </div>
+        </section>
+    </main>
 
-    <!-- YouTube Channels Section -->
-    <section id="youtube-channels" class="py-12 md:py-16 bg-gray-50">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-10">
-                <h2 class="text-3xl md:text-4xl font-heading font-bold text-charcoal mb-4">
-                    Top Power BI YouTube Channels
-                </h2>
-                <p class="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
-                    Curated list of the best channels for learning Power BI, DAX, and data analysis
-                </p>
-            </div>
-            <div id="channels-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"></div>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-
-    <!-- Resources Section (Dynamic) -->
-    <section id="resources" class="py-12 md:py-16 bg-white">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-heading font-bold text-charcoal mb-4">
-                    Resources
-                </h2>
-                <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
-                    Explore key resources and guides for your data analysis journey.
-                </p>
-            </div>
-            <div id="resources-tabs" class="flex flex-wrap justify-center gap-4 mb-8"></div>
-            <div id="resources-content" class="max-w-4xl mx-auto"></div>
-        </div>
-    </section>
-    <section id="features" class="py-12 md:py-16 bg-white">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-heading font-bold text-charcoal mb-4">
-                    Everything You Need to Master Data Analysis
-                </h2>
-                <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
-                    From beginner tutorials to advanced real-world projects, we've got you covered
-                </p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-                <!-- Feature Card 1 -->
-                <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 p-6 md:p-8 border-l-4 border-starfruit">
-                    <div class="text-3xl text-starfruit mb-4">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <h3 class="text-xl font-heading font-bold text-charcoal mb-2">Structured Learning</h3>
-                    <p class="text-gray-600">Progressive curriculum from beginner to advanced with hands-on projects</p>
-                </div>
-                
-                <!-- Feature Card 2 -->
-                <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 p-6 md:p-8 border-l-4 border-mint">
-                    <div class="text-3xl text-mint mb-4">
-                        <i class="fas fa-microphone"></i>
-                    </div>
-                    <h3 class="text-xl font-heading font-bold text-charcoal mb-2">Weekly Podcast</h3>
-                    <p class="text-gray-600">Industry insights, career tips, and expert interviews for data analysts</p>
-                </div>
-                
-                <!-- Feature Card 3 -->
-                <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 p-6 md:p-8 border-l-4 border-blue-400">
-                    <div class="text-3xl text-blue-400 mb-4">
-                        <i class="fas fa-play"></i>
-                    </div>
-                    <h3 class="text-xl font-heading font-bold text-charcoal mb-2">Video Tutorials</h3>
-                    <p class="text-gray-600">Step-by-step video guides for Power BI, SQL, DAX, and more</p>
-                </div>
-                
-                <!-- Feature Card 4 -->
-                <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 p-6 md:p-8 border-l-4 border-purple-400">
-                    <div class="text-3xl text-purple-400 mb-4">
-                        <i class="fas fa-download"></i>
-                    </div>
-                    <h3 class="text-xl font-heading font-bold text-charcoal mb-2">Templates & Resources</h3>
-                    <p class="text-gray-600">PBIX templates, cheat sheets, and practice datasets</p>
-                </div>
-                
-                <!-- Feature Card 5 -->
-                <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 p-6 md:p-8 border-l-4 border-red-400">
-                    <div class="text-3xl text-red-400 mb-4">
-                        <i class="fas fa-briefcase"></i>
-                    </div>
-                    <h3 class="text-xl font-heading font-bold text-charcoal mb-2">Real-World Projects</h3>
-                    <p class="text-gray-600">Learn from actual client projects and case studies</p>
-                </div>
-                
-                <!-- Feature Card 6 -->
-                <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 p-6 md:p-8 border-l-4 border-green-400">
-                    <div class="text-3xl text-green-400 mb-4">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3 class="text-xl font-heading font-bold text-charcoal mb-2">Community Support</h3>
-                    <p class="text-gray-600">Join fellow learners and get help when you need it</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Curriculum Preview -->
-    <section id="curriculum" class="py-12 md:py-16">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-heading font-bold text-charcoal mb-4">
-                    Your Learning Journey
-                </h2>
-                <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
-                    Structured curriculum from beginner to advanced data analysis
-                </p>
-            </div>
-            
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
-                <!-- Beginner Level -->
-                <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden">
-                    <div class="bg-gradient-to-r from-green-400 to-green-500 p-6">
-                        <h3 class="text-2xl font-heading font-bold text-white">Beginner</h3>
-                        <p class="text-green-100">Power BI basics, data importing, and simple visualizations</p>
-                    </div>
-                    <div class="p-6">
-                        <ul class="space-y-3">
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-green-500 mr-3"></i>
-                                <span>Power BI Fundamentals</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-green-500 mr-3"></i>
-                                <span>Data Import & Power Query</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-green-500 mr-3"></i>
-                                <span>Basic Visualizations</span>
-                            </li>
-                        </ul>
-                        <button class="w-full mt-6 bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200">
-                            Start Here
-                        </button>
-                    </div>
-                </div>
-                
-                <!-- Intermediate Level -->
-                <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden">
-                    <div class="bg-gradient-to-r from-yellow-400 to-yellow-500 p-6">
-                        <h3 class="text-2xl font-heading font-bold text-white">Intermediate</h3>
-                        <p class="text-yellow-100">DAX functions, data relationships, and advanced modeling</p>
-                    </div>
-                    <div class="p-6">
-                        <ul class="space-y-3">
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-yellow-500 mr-3"></i>
-                                <span>DAX Functions & Formulas</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-yellow-500 mr-3"></i>
-                                <span>Data Relationships & Modeling</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-yellow-500 mr-3"></i>
-                                <span>Advanced Visualizations</span>
-                            </li>
-                        </ul>
-                        <button class="w-full mt-6 bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200">
-                            Continue Learning
-                        </button>
-                    </div>
-                </div>
-                
-                <!-- Advanced Level -->
-                <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden">
-                    <div class="bg-gradient-to-r from-red-400 to-red-500 p-6">
-                        <h3 class="text-2xl font-heading font-bold text-white">Advanced</h3>
-                        <p class="text-red-100">Performance optimization and real-world applications</p>
-                    </div>
-                    <div class="p-6">
-                        <ul class="space-y-3">
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-red-500 mr-3"></i>
-                                <span>Performance Optimization</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-red-500 mr-3"></i>
-                                <span>Real-World Case Studies</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-red-500 mr-3"></i>
-                                <span>Advanced Analytics</span>
-                            </li>
-                        </ul>
-                        <button class="w-full mt-6 bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200">
-                            Master Skills
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Newsletter Section -->
-    <section class="py-12 md:py-16 bg-charcoal">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center">
-                <h2 class="text-3xl md:text-4xl font-heading font-bold text-white mb-4">
-                    Stay Updated
-                </h2>
-                <p class="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-                    Get weekly tips, new tutorials, and industry insights
-                </p>
-                
-                <div class="max-w-md mx-auto">
-                    <form class="flex flex-col sm:flex-row gap-4">
-                        <input type="email" placeholder="Enter your email" class="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-starfruit focus:border-transparent transition-all duration-200">
-                        <button type="submit" class="bg-starfruit hover:bg-yellow-400 text-charcoal font-semibold py-3 px-6 rounded-lg shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-200">
-                            Subscribe
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-charcoal text-white py-12 md:py-16">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Footer Left -->
-                <div>
-                    <h3 class="text-2xl font-heading font-bold mb-4">Data Analysis Learning Hub</h3>
-                    <p class="text-gray-300 mb-4">Empowering analysts with practical skills for real-world data challenges</p>
-                    <div class="flex space-x-4 mt-4">
-                        <a href="https://www.instagram.com/fttgautotech" class="text-gray-300 hover:text-starfruit transition-colors duration-200" target="_blank" rel="noopener" aria-label="Instagram">
-                            <i class="bi bi-instagram text-2xl"></i>
-                        </a>
-                        <a href="https://www.youtube.com/@fttgautotech" class="text-gray-300 hover:text-starfruit transition-colors duration-200" target="_blank" rel="noopener" aria-label="YouTube">
-                            <i class="bi bi-youtube text-2xl"></i>
-                        </a>
-                    </div>
-                </div>
-                <!-- Footer Right -->
-                <div>
-                    <h4 class="text-lg font-heading font-bold mb-4">Quick Links</h4>
-                    <div class="grid grid-cols-2 gap-2">
-                        <a href="#curriculum" class="text-gray-300 hover:text-starfruit transition-colors duration-200">Learn</a>
-                        <a href="#podcast" class="text-gray-300 hover:text-starfruit transition-colors duration-200">Podcast</a>
-                        <a href="#videos" class="text-gray-300 hover:text-starfruit transition-colors duration-200">Videos</a>
-                        <a href="#resources" class="text-gray-300 hover:text-starfruit transition-colors duration-200">Resources</a>
-                        <a href="#blog" class="text-gray-300 hover:text-starfruit transition-colors duration-200">Articles</a>
-                        <a href="#contact" class="text-gray-300 hover:text-starfruit transition-colors duration-200">Contact</a>
-                    </div>
-                </div>
-            </div>
-            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
-                <p class="text-mint italic mb-2">
-                    Created with <i class="bi bi-heart-fill text-red-500"></i> by
-                    <a href="https://fttgsolutions.com" class="underline hover:text-starfruit font-semibold" target="_blank" rel="noopener">FTTG SOLUTIONS</a>
-                </p>
-                <p class="text-gray-400 mt-2">&copy; <span id="footer-year"></span> Data Analysis Learning Hub. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-    <script>
-      // Set dynamic year in footer
-      document.addEventListener('DOMContentLoaded', function() {
-        var yearSpan = document.getElementById('footer-year');
-        if (yearSpan) yearSpan.textContent = new Date().getFullYear();
-      });
-    </script>
-
-    <!-- JavaScript -->
+    <!-- Scripts -->
     <script src="js/scripts.js"></script>
+    <script src="js/resource-loader.js"></script>
+
+    <!-- Mobile Menu Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+        });
+    </script>
 </body>
 </html>

@@ -1,216 +1,39 @@
-// ...removed call to setupExclusiveMediaPlayback (no longer exists)...
-// ...exclusive playback logic removed...
-// BI Playlist and BI Podcast buttons should scroll to the embedded iframes
-// Also set Podcast and Videos menu links to external playlists
 document.addEventListener('DOMContentLoaded', function() {
-  fetch('json/links.json?t=' + new Date().getTime())
-    .then(res => res.json())
-    .then(links => {
-      // BI Playlist button
-      var biPlaylistBtn = document.getElementById('bi-playlist-btn');
-      if (biPlaylistBtn) {
-        biPlaylistBtn.setAttribute('href', '#featured-powerbi-playlist');
-        biPlaylistBtn.removeAttribute('target');
-        biPlaylistBtn.removeAttribute('rel');
-      }
-      // BI Podcast button
-      var biPodcastBtn = document.getElementById('bi-podcast-btn');
-      if (biPodcastBtn) {
-        biPodcastBtn.setAttribute('href', '#p3adaptive-spotify-embed');
-        biPodcastBtn.removeAttribute('target');
-        biPodcastBtn.removeAttribute('rel');
-      }
-
-      // Podcast menu (desktop & mobile)
-      var podcastMenu = document.getElementById('menu-podcast');
-      var podcastMenuMobile = document.getElementById('menu-podcast-mobile');
-      var spotifyPlaylist = links?.podcastPlaylists?.beginnerSeries;
-      if (podcastMenu && spotifyPlaylist) {
-        podcastMenu.setAttribute('href', spotifyPlaylist.replace('/embed/', '/'));
-        podcastMenu.setAttribute('target', '_blank');
-        podcastMenu.setAttribute('rel', 'noopener');
-      }
-      if (podcastMenuMobile && spotifyPlaylist) {
-        podcastMenuMobile.setAttribute('href', spotifyPlaylist.replace('/embed/', '/'));
-        podcastMenuMobile.setAttribute('target', '_blank');
-        podcastMenuMobile.setAttribute('rel', 'noopener');
-      }
-
-      // Videos menu (desktop & mobile)
-      var videosMenu = document.getElementById('menu-videos');
-      var videosMenuMobile = document.getElementById('menu-videos-mobile');
-      var ytPlaylist = links?.playlists?.powerBIMasterclass;
-      if (videosMenu && ytPlaylist) {
-        // Convert embed link to YouTube playlist page link
-        var ytPageLink = ytPlaylist.replace('/embed/videoseries?', '/playlist?').replace('www.youtube.com', 'youtube.com').replace('embed/', '');
-        videosMenu.setAttribute('href', ytPageLink);
-        videosMenu.setAttribute('target', '_blank');
-        videosMenu.setAttribute('rel', 'noopener');
-      }
-      if (videosMenuMobile && ytPlaylist) {
-        var ytPageLink = ytPlaylist.replace('/embed/videoseries?', '/playlist?').replace('www.youtube.com', 'youtube.com').replace('embed/', '');
-        videosMenuMobile.setAttribute('href', ytPageLink);
-        videosMenuMobile.setAttribute('target', '_blank');
-        videosMenuMobile.setAttribute('rel', 'noopener');
-      }
-    });
+    setupMobileMenu();
 });
 
-// --- Dynamic Resources Tab ---
-document.addEventListener('DOMContentLoaded', function() {
-    renderResourcesTabs();
-});
-
-function renderResourcesTabs() {
-    const tabsContainer = document.getElementById('resources-tabs');
-    const contentContainer = document.getElementById('resources-content');
-    if (!tabsContainer || !contentContainer) return;
-
-    fetch('json/resources.json?t=' + new Date().getTime())
-        .then(res => res.json())
-        .then(resources => {
-            tabsContainer.innerHTML = '';
-            contentContainer.innerHTML = '';
-            if (!resources.children || !resources.children.length) {
-                tabsContainer.innerHTML = '<div class="text-gray-500">No resources found.</div>';
-                return;
+// Mobile Menu Toggle
+function setupMobileMenu() {
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    if (mobileMenuBtn && mobileMenu) {
+        mobileMenuBtn.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+            
+            // Update button icon
+            const icon = this.querySelector('i');
+            if (mobileMenu.classList.contains('hidden')) {
+                icon.className = 'fas fa-bars text-xl';
+            } else {
+                icon.className = 'fas fa-times text-xl';
             }
-            resources.children.forEach((child, idx) => {
-                const tabBtn = document.createElement('button');
-                tabBtn.className = 'px-4 py-2 rounded-lg font-semibold text-charcoal bg-gray-100 hover:bg-starfruit focus:bg-starfruit transition-colors duration-200';
-                tabBtn.textContent = child.label;
-                tabBtn.setAttribute('data-json', child.json);
-                tabBtn.onclick = function() {
-                    setActiveTab(idx);
-                };
-                tabsContainer.appendChild(tabBtn);
-            });
-            // Auto-select first tab
-            setActiveTab(0);
-
-            function setActiveTab(activeIdx) {
-                Array.from(tabsContainer.children).forEach((btn, i) => {
-                    btn.classList.toggle('bg-starfruit', i === activeIdx);
-                });
-                const activeChild = resources.children[activeIdx];
-                if (activeChild && activeChild.json) {
-                    fetch('json/' + activeChild.json + '?t=' + new Date().getTime())
-                        .then(res => res.json())
-                        .then(data => {
-                            contentContainer.innerHTML = renderResourceJson(activeChild, data);
-                        })
-                        .catch(() => {
-                            contentContainer.innerHTML = '<div class="text-red-500">Unable to load resource content.</div>';
-                        });
-                }
-            }
-        })
-        .catch(() => {
-            tabsContainer.innerHTML = '<div class="text-red-500">Unable to load resources.</div>';
         });
-}
-
-function renderResourceJson(child, data) {
-    // Support both 'items' (new) and 'views' (legacy) for backward compatibility
-    const resourceArray = Array.isArray(data.items) ? data.items : (Array.isArray(data.views) ? data.views : null);
-    if (resourceArray) {
-        let html = '';
-        if (data.title) html += `<h3 class='text-2xl md:text-3xl font-heading font-bold text-charcoal mb-2'>${data.title}</h3>`;
-        if (data.summary || data.description) html += `<p class='mb-4 text-gray-700 text-base md:text-lg'>${data.summary || data.description}</p>`;
-        html += '<div class="divide-y divide-gray-200">';
-        resourceArray.forEach((item, idx) => {
-            const collapsed = idx !== 0 ? 'hidden' : '';
-            const chevron = idx !== 0 ? 'fa-chevron-down' : 'fa-chevron-up';
-            html += `<div class='py-2 md:py-4'>`;
-            html += `<button type='button' class='w-full flex items-center justify-between text-left focus:outline-none group' data-collapsible='${idx}'>`;
-            html += `<span class='text-xl md:text-2xl font-bold text-charcoal group-hover:text-starfruit transition-colors'>${item.title || item.name}</span>`;
-            html += `<i class='fas ${chevron} ml-2 text-gray-500 group-hover:text-starfruit transition-colors'></i>`;
-            html += `</button>`;
-            html += `<div class='collapsible-content mt-2 ${collapsed}' data-content='${idx}'>`;
-            // For new 'items' structure
-            if (item.description) html += `<p class='mb-3 text-gray-600 text-base md:text-lg'>${item.description}</p>`;
-            if (Array.isArray(item.details)) {
-                item.details.forEach(detail => {
-                    if (Array.isArray(detail.items) && detail.items.length > 0) {
-                        // Detect if detail.items is a table-like array of objects
-                        if (detail.items.every(row => typeof row === 'object' && !Array.isArray(row) && row !== null)) {
-                            // Responsive table/cards rendering
-                            html += `<div class='block md:hidden'>`;
-                            detail.items.forEach(row => {
-                                html += `<div class='bg-white rounded-lg shadow p-4 mb-4'>`;
-                                Object.keys(row).forEach(key => {
-                                    html += `<div class='flex justify-between mb-1'><span class='font-semibold text-charcoal'>${key}</span><span class='text-gray-700'>${row[key]}</span></div>`;
-                                });
-                                html += `</div>`;
-                            });
-                            html += `</div>`;
-                            html += `<div class='hidden md:block overflow-x-auto'>`;
-                            html += `<table class='min-w-full bg-white rounded-lg shadow mb-4'><thead><tr>`;
-                            Object.keys(detail.items[0]).forEach(key => {
-                                html += `<th class='px-4 py-2 border-b font-semibold text-charcoal bg-gray-50'>${key}</th>`;
-                            });
-                            html += `</tr></thead><tbody>`;
-                            detail.items.forEach(row => {
-                                html += `<tr>`;
-                                Object.values(row).forEach(val => {
-                                    html += `<td class='px-4 py-2 border-b text-gray-700'>${val}</td>`;
-                                });
-                                html += `</tr>`;
-                            });
-                            html += `</tbody></table></div>`;
-                        } else {
-                            html += `<div class='mb-2'>`;
-                            if (detail.label) html += `<div class='font-semibold text-charcoal mb-1'>${detail.label}</div>`;
-                            html += `<ul class='list-disc ml-6 text-gray-700 space-y-1'>`;
-                            detail.items.forEach(d => {
-                                html += `<li>${d}</li>`;
-                            });
-                            html += `</ul></div>`;
-                        }
-                    }
-                });
-            }
-            // For legacy 'views' structure
-            if (item.purpose) html += `<p class='mb-3 text-gray-600 text-base md:text-lg'>${item.purpose}</p>`;
-            if (Array.isArray(item.keyFeatures)) {
-                html += '<ul class="list-disc ml-6 text-gray-700 space-y-1">';
-                item.keyFeatures.forEach(f => {
-                    html += `<li>${f}</li>`;
-                });
-                html += '</ul>';
-            }
-            html += `</div>`;
-            html += `</div>`;
-        });
-        html += '</div>';
-        if (data.conclusion) html += `<div class='mt-8 p-4 bg-gray-50 rounded-lg text-gray-800 text-base md:text-lg'>${data.conclusion}</div>`;
-
-        // Add collapsible logic
-        setTimeout(() => {
-            const buttons = document.querySelectorAll('[data-collapsible]');
-            buttons.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const idx = btn.getAttribute('data-collapsible');
-                    const content = document.querySelector(`[data-content="${idx}"]`);
-                    const icon = btn.querySelector('i');
-                    if (content.classList.contains('hidden')) {
-                        content.classList.remove('hidden');
-                        icon.classList.remove('fa-chevron-down');
-                        icon.classList.add('fa-chevron-up');
-                    } else {
-                        content.classList.add('hidden');
-                        icon.classList.remove('fa-chevron-up');
-                        icon.classList.add('fa-chevron-down');
-                    }
-                });
+        
+        // Close mobile menu when clicking on a link
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenu.classList.add('hidden');
+                const icon = mobileMenuBtn.querySelector('i');
+                icon.className = 'fas fa-bars text-xl';
             });
-        }, 0);
-
-        return html;
+        });
     }
-    // Default fallback for unknown resource types
-    return `<pre class='bg-gray-100 p-4 rounded text-sm overflow-x-auto'>${JSON.stringify(data, null, 2)}</pre>`;
 }
+
+
+// --- Dynamic Resources Tab logic is now in js/resource-loader.js ---
 
 // DOM Ready
 document.addEventListener('DOMContentLoaded', function() {
