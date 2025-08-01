@@ -9,6 +9,20 @@ document.addEventListener('DOMContentLoaded', function() {
             closeMobilePopup();
         }
     });
+    
+    // Handle window resize events to adapt the UI
+    window.addEventListener('resize', function() {
+        // If we're switching from mobile to desktop, we might need to create the content wrapper
+        if (window.innerWidth > 768) {
+            const contentContainer = document.getElementById('resources-content');
+            if (contentContainer && !document.getElementById('resource-content-wrapper')) {
+                const contentWrapper = document.createElement('div');
+                contentWrapper.id = 'resource-content-wrapper';
+                contentWrapper.className = 'border border-gray-200 p-6 bg-white';
+                contentContainer.appendChild(contentWrapper);
+            }
+        }
+    });
 });
 
 // Function to open content in a mobile popup
@@ -78,11 +92,7 @@ function renderResourcesTabs() {
                 return;
             }
             
-            // Create wrapper for the content
-            const contentWrapper = document.createElement('div');
-            contentWrapper.id = 'resource-content-wrapper';
-            contentWrapper.className = 'border border-gray-200 p-6 bg-white';
-            contentContainer.appendChild(contentWrapper);
+            // We'll create the content wrapper when a tab is selected
             
             resources.children.forEach((child, idx) => {
                 const tabBtn = document.createElement('button');
@@ -90,15 +100,15 @@ function renderResourcesTabs() {
                 tabBtn.textContent = child.label;
                 tabBtn.setAttribute('data-resource-file', child.json);
                 tabBtn.onclick = function() {
-                    setActiveTab(idx);
+                    setActiveTab(idx, true); // Explicitly show popup on mobile when user clicks a tab
                 };
                 tabsContainer.appendChild(tabBtn);
             });
             
             // Auto-select first tab
-            setActiveTab(0);
+            setActiveTab(0, false); // Pass false to avoid auto-popup on mobile for initial load
 
-            function setActiveTab(activeIdx) {
+            function setActiveTab(activeIdx, showPopupOnMobile = true) {
                 // First, update the tab appearance
                 Array.from(tabsContainer.children).forEach((btn, i) => {
                     if (i === activeIdx) {
@@ -113,9 +123,27 @@ function renderResourcesTabs() {
                 // Then, load the content
                 const activeChild = resources.children[activeIdx];
                 if (activeChild && activeChild.json) {
+                    // Clear previous content
+                    contentContainer.innerHTML = '';
+                    
+                    // Only create the content wrapper for desktop view
+                    if (window.innerWidth > 768) {
+                        const contentWrapper = document.createElement('div');
+                        contentWrapper.id = 'resource-content-wrapper';
+                        contentWrapper.className = 'border border-gray-200 p-6 bg-white';
+                        contentContainer.appendChild(contentWrapper);
+                    } else if (!showPopupOnMobile) {
+                        // For mobile, show a message to tap on the tab to view content
+                        const mobileMessage = document.createElement('div');
+                        mobileMessage.className = 'p-4 text-center text-gray-600 text-sm';
+                        mobileMessage.innerHTML = '<p>Tap on a tab to view its content</p>';
+                        contentContainer.appendChild(mobileMessage);
+                    }
+                    // Get the file path from the resources.json
                     const resourceFile = 'json/' + activeChild.json;
                     console.log('Attempting to fetch resource:', resourceFile);
                     
+                    // Add cache-busting parameter to avoid caching issues
                     fetch(resourceFile + '?t=' + new Date().getTime())
                         .then(res => {
                             if (!res.ok) {
@@ -124,10 +152,12 @@ function renderResourcesTabs() {
                             }
                             console.log('Successfully fetched resource:', resourceFile);
                             
-                            if (resourceFile.endsWith('.md')) {
+                            // First check the file extension
+                            if (resourceFile.endsWith('.md') || activeChild.json.endsWith('.md')) {
                                 return res.text().then(text => ({ content: text, type: 'md' }));
                             }
-                            // Try to parse as JSON, but if it fails, treat as text
+                            
+                            // For all other files, try to parse as JSON, but fall back to markdown if it fails
                             return res.text().then(text => {
                                 try {
                                     const jsonContent = JSON.parse(text);
@@ -143,29 +173,66 @@ function renderResourcesTabs() {
                                 console.log('Rendering markdown content');
                                 const renderedContent = renderMarkdownResource(data.content);
                                 
-                                // For mobile devices, show in popup
-                                if (window.innerWidth <= 768) {
+                                // For mobile devices, only show popup if showPopupOnMobile is true
+                                if (window.innerWidth <= 768 && showPopupOnMobile) {
                                     openMobilePopup(renderedContent, activeChild.label);
-                                } else {
+                                } else if (window.innerWidth > 768) {
                                     // For desktop, show in the container
-                                    document.getElementById('resource-content-wrapper').innerHTML = renderedContent;
+                                    const contentWrapper = document.getElementById('resource-content-wrapper');
+                                    if (contentWrapper) {
+                                        contentWrapper.innerHTML = renderedContent;
+                                    }
                                 }
                             } else {
                                 console.log('Rendering JSON content');
                                 const renderedContent = renderJsonResource(data.content);
                                 
-                                // For mobile devices, show in popup
-                                if (window.innerWidth <= 768) {
+                                // For mobile devices, only show popup if showPopupOnMobile is true
+                                if (window.innerWidth <= 768 && showPopupOnMobile) {
                                     openMobilePopup(renderedContent, activeChild.label);
-                                } else {
+                                } else if (window.innerWidth > 768) {
                                     // For desktop, show in the container
-                                    document.getElementById('resource-content-wrapper').innerHTML = renderedContent;
+                                    const contentWrapper = document.getElementById('resource-content-wrapper');
+                                    if (contentWrapper) {
+                                        contentWrapper.innerHTML = renderedContent;
+                                    }
                                 }
                             }
                         })
                         .catch((error) => {
                             console.error('Error loading resource:', error);
-                            contentContainer.innerHTML = `<div class="text-red-500 p-4">Unable to load resource content: ${resourceFile}. Error: ${error.message}</div>`;
+                            
+                            // Show a more user-friendly error message
+                            const errorHTML = `
+                                <div class="bg-red-50 border border-red-200 text-red-800 p-4 rounded-lg">
+                                    <h3 class="font-bold mb-2">Unable to load resource</h3>
+                                    <p>The resource "${activeChild.label}" could not be loaded. This might be due to one of the following reasons:</p>
+                                    <ul class="list-disc ml-6 mt-2">
+                                        <li>The file may not exist at the specified location</li>
+                                        <li>There might be a network issue</li>
+                                        <li>The server might be temporarily unavailable</li>
+                                    </ul>
+                                    <p class="mt-2 text-sm text-gray-700">Technical details: ${error.message}</p>
+                                </div>
+                            `;
+                            
+                            // For mobile devices, only show popup if showPopupOnMobile is true
+                            if (window.innerWidth <= 768 && showPopupOnMobile) {
+                                openMobilePopup(errorHTML, "Error: " + activeChild.label);
+                            } else if (window.innerWidth > 768) {
+                                // For desktop, show in the container
+                                const contentWrapper = document.getElementById('resource-content-wrapper');
+                                if (contentWrapper) {
+                                    contentWrapper.innerHTML = errorHTML;
+                                } else {
+                                    // Create the wrapper if it doesn't exist
+                                    const newWrapper = document.createElement('div');
+                                    newWrapper.id = 'resource-content-wrapper';
+                                    newWrapper.className = 'border border-gray-200 p-6 bg-white';
+                                    newWrapper.innerHTML = errorHTML;
+                                    contentContainer.appendChild(newWrapper);
+                                }
+                            }
                         });
                 }
             }
