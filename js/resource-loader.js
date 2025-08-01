@@ -159,9 +159,37 @@ function renderResourcesTabs() {
                                     return fetch(altResourceFile + '?t=' + new Date().getTime())
                                         .then(altRes => {
                                             if (!altRes.ok) {
-                                                throw new Error('Failed to fetch resource: ' + resourceFile);
+                                                console.error('Failed to fetch alternative resource:', altResourceFile, 'Status:', altRes.status);
+                                                throw new Error(`Failed to fetch resource: ${resourceFile} (Also tried: ${altResourceFile})`);
                                             }
+                                            console.log('Successfully fetched alternative resource:', altResourceFile);
                                             return altRes.text().then(text => ({ content: text, type: 'md' }));
+                                        })
+                                        .catch(altError => {
+                                            console.error('Error with alternative path:', altError);
+                                            
+                                            // Try one more alternative - look for the file directly in the powerbi folder
+                                            // This helps if the path in resources.json is correct locally but not on the server
+                                            if (resourceFile.includes('/powerbi/')) {
+                                                const filename = resourceFile.split('/').pop();
+                                                const directPathAttempt = `json/powerbi/${filename}`;
+                                                console.log('Trying direct path:', directPathAttempt);
+                                                
+                                                return fetch(directPathAttempt + '?t=' + new Date().getTime())
+                                                    .then(directRes => {
+                                                        if (!directRes.ok) {
+                                                            throw new Error(`Failed to fetch resource: ${resourceFile} (Also tried: ${altResourceFile} and ${directPathAttempt})`);
+                                                        }
+                                                        console.log('Successfully fetched with direct path:', directPathAttempt);
+                                                        return directRes.text().then(text => ({ content: text, type: 'md' }));
+                                                    })
+                                                    .catch(directError => {
+                                                        console.error('All path attempts failed:', directError);
+                                                        throw new Error(`Failed to fetch resource: ${resourceFile} (All alternative paths failed)`);
+                                                    });
+                                            }
+                                            
+                                            throw new Error(`Failed to fetch resource: ${resourceFile} (Alternative path error: ${altError.message})`);
                                         });
                                 }
                                 throw new Error('Failed to fetch resource: ' + resourceFile);
@@ -228,9 +256,18 @@ function renderResourcesTabs() {
                                         <li>There might be a network issue</li>
                                         <li>The server might be temporarily unavailable</li>
                                     </ul>
-                                    <p class="mt-2 text-sm text-gray-700">Technical details: ${error.message}</p>
-                                    <p class="mt-2 text-sm text-gray-700">File path: ${resourceFile}</p>
-                                    <p class="mt-2 text-sm text-gray-500">If this is a server issue, please contact the administrator and mention that the file might need to be added to the server, or the server might need MIME type configuration for Markdown files.</p>
+                                    <div class="mt-4 bg-white p-3 border border-gray-200 rounded">
+                                        <p class="font-semibold mb-1">Troubleshooting Details:</p>
+                                        <p class="text-sm text-gray-700">Error: ${error.message}</p>
+                                        <p class="text-sm text-gray-700">Original file path: ${resourceFile}</p>
+                                        <p class="text-sm text-gray-700 mt-2">To resolve this issue:</p>
+                                        <ol class="list-decimal ml-6 text-sm">
+                                            <li>Check that the file exists on the server</li>
+                                            <li>Verify the path in resources.json is correct</li>
+                                            <li>Ensure the server is configured to serve Markdown files (.md)</li>
+                                            <li>Try uploading the file again or contact your administrator</li>
+                                        </ol>
+                                    </div>
                                 </div>
                             `;
                             
