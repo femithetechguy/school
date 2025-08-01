@@ -73,6 +73,9 @@ function closeMobilePopup() {
     if (overlay) {
         overlay.style.display = 'none';
         document.body.style.overflow = ''; // Restore body scrolling
+        
+        // Dispatch event that popup was closed (for copy button)
+        document.dispatchEvent(new CustomEvent('mobilePopupClosed'));
     }
 }
 
@@ -220,11 +223,29 @@ function renderResourcesTabs() {
                                 // For mobile devices, only show popup if showPopupOnMobile is true
                                 if (window.innerWidth <= 768 && showPopupOnMobile) {
                                     openMobilePopup(renderedContent, activeChild.label);
+                                    
+                                    // Dispatch event that content was loaded (for copy button)
+                                    setTimeout(() => {
+                                        document.dispatchEvent(new CustomEvent('resourceContentLoaded', { 
+                                            detail: { 
+                                                contentId: activeChild.id,
+                                                title: activeChild.label
+                                            } 
+                                        }));
+                                    }, 100);
                                 } else if (window.innerWidth > 768) {
                                     // For desktop, show in the container
                                     const contentWrapper = document.getElementById('resource-content-wrapper');
                                     if (contentWrapper) {
                                         contentWrapper.innerHTML = renderedContent;
+                                        
+                                        // Dispatch event that content was loaded (for copy button)
+                                        document.dispatchEvent(new CustomEvent('resourceContentLoaded', { 
+                                            detail: { 
+                                                contentId: activeChild.id,
+                                                title: activeChild.label
+                                            } 
+                                        }));
                                     }
                                 }
                             } else {
@@ -234,11 +255,29 @@ function renderResourcesTabs() {
                                 // For mobile devices, only show popup if showPopupOnMobile is true
                                 if (window.innerWidth <= 768 && showPopupOnMobile) {
                                     openMobilePopup(renderedContent, activeChild.label);
+                                    
+                                    // Dispatch event that content was loaded (for copy button)
+                                    setTimeout(() => {
+                                        document.dispatchEvent(new CustomEvent('resourceContentLoaded', { 
+                                            detail: { 
+                                                contentId: activeChild.id,
+                                                title: activeChild.label
+                                            } 
+                                        }));
+                                    }, 100);
                                 } else if (window.innerWidth > 768) {
                                     // For desktop, show in the container
                                     const contentWrapper = document.getElementById('resource-content-wrapper');
                                     if (contentWrapper) {
                                         contentWrapper.innerHTML = renderedContent;
+                                        
+                                        // Dispatch event that content was loaded (for copy button)
+                                        document.dispatchEvent(new CustomEvent('resourceContentLoaded', { 
+                                            detail: { 
+                                                contentId: activeChild.id,
+                                                title: activeChild.label
+                                            } 
+                                        }));
                                     }
                                 }
                             }
