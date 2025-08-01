@@ -146,6 +146,11 @@
       "id": "workspace_configuration",
       "label": "Workspace Configuration",
       "json": "powerbi/workspace_configuration.md"
+    },
+    {
+      "id": "about_you_pitch",
+      "label": "About You Pitch",
+      "json": "powerbi/about_you_pitch.md"
     }
   ]
 }
