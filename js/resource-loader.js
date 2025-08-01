@@ -140,20 +140,36 @@ function renderResourcesTabs() {
                         contentContainer.appendChild(mobileMessage);
                     }
                     // Get the file path from the resources.json
-                    const resourceFile = 'json/' + activeChild.json;
+                    let resourceFile = 'json/' + activeChild.json;
                     console.log('Attempting to fetch resource:', resourceFile);
+                    
+                    // For .md files, let's try to make sure we're using the right path
+                    const isMdFile = activeChild.json.endsWith('.md');
                     
                     // Add cache-busting parameter to avoid caching issues
                     fetch(resourceFile + '?t=' + new Date().getTime())
                         .then(res => {
                             if (!res.ok) {
                                 console.error('Failed to fetch resource:', resourceFile, 'Status:', res.status);
+                                // For Markdown files, try alternative path format if the first one failed
+                                if (isMdFile) {
+                                    // Remove .md extension to see if server is configured to handle it differently
+                                    const altResourceFile = resourceFile.replace('.md', '');
+                                    console.log('Trying alternative path:', altResourceFile);
+                                    return fetch(altResourceFile + '?t=' + new Date().getTime())
+                                        .then(altRes => {
+                                            if (!altRes.ok) {
+                                                throw new Error('Failed to fetch resource: ' + resourceFile);
+                                            }
+                                            return altRes.text().then(text => ({ content: text, type: 'md' }));
+                                        });
+                                }
                                 throw new Error('Failed to fetch resource: ' + resourceFile);
                             }
                             console.log('Successfully fetched resource:', resourceFile);
                             
-                            // First check the file extension
-                            if (resourceFile.endsWith('.md') || activeChild.json.endsWith('.md')) {
+                            // If we already know it's a Markdown file (either by extension or alternative path)
+                            if (isMdFile || resourceFile.endsWith('.md')) {
                                 return res.text().then(text => ({ content: text, type: 'md' }));
                             }
                             
@@ -213,6 +229,8 @@ function renderResourcesTabs() {
                                         <li>The server might be temporarily unavailable</li>
                                     </ul>
                                     <p class="mt-2 text-sm text-gray-700">Technical details: ${error.message}</p>
+                                    <p class="mt-2 text-sm text-gray-700">File path: ${resourceFile}</p>
+                                    <p class="mt-2 text-sm text-gray-500">If this is a server issue, please contact the administrator and mention that the file might need to be added to the server, or the server might need MIME type configuration for Markdown files.</p>
                                 </div>
                             `;
                             
