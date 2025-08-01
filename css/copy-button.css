@@ -1,0 +1,29 @@
+/* Copy button styles */
+#copy-content-button {
+    width: 48px;
+    height: 48px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    opacity: 0.9;
+}
+
+#copy-content-button:hover {
+    opacity: 1;
+}
+
+#copy-content-button:active {
+    transform: scale(0.95);
+}
+
+.copy-feedback {
+    white-space: nowrap;
+    transition: opacity 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    #copy-content-button {
+        width: 42px;
+        height: 42px;
+    }
+}
