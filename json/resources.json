@@ -161,6 +161,16 @@
       "id": "data_validation",
       "label": "Data Validation",
       "json": "powerbi/data_validation.md"
+    },
+    {
+      "id": "unifying_kpi_dashboard",
+      "label": "Unifying KPI Dashboard",
+      "json": "powerbi/unifying_kpi_dashboard.md"
+    },
+    {
+      "id": "kpi_as_a_concept",
+      "label": "KPI as a Concept",
+      "json": "powerbi/kpi_as_a_concept.md"
     }
 
   ]
