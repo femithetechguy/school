@@ -171,6 +171,11 @@
       "id": "kpi_as_a_concept",
       "label": "KPI as a Concept",
       "json": "powerbi/kpi_as_a_concept.md"
+    },
+    {
+      "id": "data_integrity_and_data_quality",
+      "label": "Data Integrity and Data Quality",
+      "json": "powerbi/data_integrity_and_data_quality.md"
     }
 
   ]
