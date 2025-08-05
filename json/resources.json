@@ -151,6 +151,17 @@
       "id": "about_you_pitch",
       "label": "About You Pitch",
       "json": "powerbi/about_you_pitch.md"
+    },
+    {
+      "id": "row_level_security",
+      "label": "Row Level Security",
+      "json": "powerbi/row_level_security.md"
+    },
+    {
+      "id": "data_validation",
+      "label": "Data Validation",
+      "json": "powerbi/data_validation.md"
     }
+
   ]
 }
