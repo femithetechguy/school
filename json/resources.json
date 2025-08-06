@@ -206,6 +206,41 @@
       "id": "team_structure_manhattan",
       "label": "Manhattan Team Structure",
       "json": "powerbi/team_structure_manhattan.md"
+    },
+    {
+      "id": "data_import_limitation",
+      "label": "Data Import Limitations",
+      "json": "powerbi/data_import_limitation.md"
+    },
+    {
+      "id": "append_and_merge",
+      "label": "Append and Merge",
+      "json": "powerbi/append_and_merge.md"
+    },
+    {
+      "id": "t_sql",
+      "label": "T-SQL",
+      "json": "powerbi/t_sql.md"
+    },
+    {
+      "id": "content_pack_powerbi",
+      "label": "Content Pack Power BI",
+      "json": "powerbi/content_pack_powerbi.md"
+    },
+    {
+      "id": "content_packs_vs_apps",
+      "label": "Content Packs vs Apps",
+      "json": "powerbi/content_packs_vs_apps.md"
+    },
+    {
+      "id": "most_common_Mlanguage_queries",
+      "label": "Most Common M-Language Queries",
+      "json": "powerbi/most_common_Mlanguage_queries.md"
+    },
+    {
+      "id": "types_of_filter",
+      "label": "Types of Filters",
+      "json": "powerbi/types_of_filter.md"
     }
 
   ]
