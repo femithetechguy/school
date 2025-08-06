@@ -201,6 +201,11 @@
       "id": "northside_and_powerbi",
       "label": "Northside and Power BI",
       "json": "powerbi/northside_and_powerbi.md"
+    },
+    {
+      "id": "team_structure_manhattan",
+      "label": "Manhattan Team Structure",
+      "json": "powerbi/team_structure_manhattan.md"
     }
 
   ]
