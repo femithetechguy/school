@@ -7,6 +7,11 @@
       "json": "powerbi/powerbi_views.json"
     },
     {
+      "id": "power_bi_development_phases",
+      "label": "Power BI Development Phases",
+      "json": "powerbi/power_bi_development_phases.md"
+    },
+    {
       "id": "powerbi_phases",
       "label": "Power BI Phases",
       "json": "powerbi/powerbi_phases.json"
