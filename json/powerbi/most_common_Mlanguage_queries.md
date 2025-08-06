@@ -1,6 +1,22 @@
+# Most Common M-Language Queries
+
 M Language, also known as Power Query M formula language, is the language used in Power Query for data transformation. It's a powerful, functional, and case-sensitive language that underlies the graphical interface of the Power Query Editor in tools like Power BI and Excel.
 
 While you can do a lot of data transformation by just clicking buttons in the Power Query Editor, the M code is what gets written behind the scenes. Learning some M can be extremely helpful for more advanced scenarios that aren't possible with the GUI alone.
+
+Here's a basic example of M Language syntax:
+
+```
+let
+    Source = Csv.Document(File.Contents("C:\my_data.csv"),[Delimiter=",", Columns=5, Encoding=1252, QuoteStyle=Csv.QuoteStyle.None]),
+    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{% raw %}{{"Column1", type text}, {"Column2", type number}}{% endraw %}),
+    Result = #"Changed Type"
+in
+    Result
+```
+
+## Common M Language Concepts
 
 Here are some of the most common concepts and elements you'll encounter in M language:
 
@@ -19,7 +35,7 @@ This is the fundamental structure of an M query. It defines a series of steps (v
 let
     Source = Csv.Document(File.Contents("C:\my_data.csv"),[Delimiter=",", Columns=5, Encoding=1252, QuoteStyle=Csv.QuoteStyle.None]),
     #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
-    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Column1", type text}, {"Column2", type number}}),
+    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{% raw %}{{"Column1", type text}, {"Column2", type number}}{% endraw %}),
     Result = #"Changed Type"
 in
     Result
