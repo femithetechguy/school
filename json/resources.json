@@ -7,6 +7,11 @@
       "json": "powerbi/powerbi_views.json"
     },
     {
+      "id": "sql_in_a_nutshell",
+      "label": "SQL in a Nutshell",
+      "json": "powerbi/sql_in_a_nutshell.md"
+    },
+    {
       "id": "power_bi_development_phases",
       "label": "Power BI Development Phases",
       "json": "powerbi/power_bi_development_phases.md"
