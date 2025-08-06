@@ -49,8 +49,8 @@ There are a few ways, but as a seasoned developer, I strongly recommend using **
             EndDate = #date(2025, 12, 31), // Or get from a parameter/max date in fact table
             DateList = List.Dates(StartDate, Duration.Days(EndDate - StartDate) + 1, #duration(1, 0, 0, 0)),
             TableFromList = Table.FromList(DateList, Splitter.SplitByNothing(), null, null, ExtraValues.Error),
-            RenamedColumns = Table.RenameColumns(TableFromList,{{"Column1", "Date"}}),
-            ChangedType = Table.TransformColumnTypes(RenamedColumns,{{"Date", type date}}),
+            RenamedColumns = Table.RenameColumns(TableFromList,{% raw %}{{"Column1", "Date"}}{% endraw %}),
+            ChangedType = Table.TransformColumnTypes(RenamedColumns,{% raw %}{{"Date", type date}}{% endraw %}),
             AddYear = Table.AddColumn(ChangedType, "Year", each Date.Year([Date]), type number),
             AddMonthNumber = Table.AddColumn(AddYear, "Month Number", each Date.Month([Date]), type number),
             AddMonthName = Table.AddColumn(AddMonthNumber, "Month Name", each Date.MonthName([Date]), type text),
