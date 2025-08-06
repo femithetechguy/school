@@ -125,8 +125,7 @@
       "id": "fact_and_dimension_table",
       "label": "Fact and Dimension Tables",
       "json": "powerbi/fact_and_dimension_table.md"
-    }
-  ,
+    },
     {
       "id": "dimension_measure",
       "label": "Dimension and Measure",
