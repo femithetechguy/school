@@ -186,6 +186,21 @@
       "id": "data_integrity_and_data_quality",
       "label": "Data Integrity and Data Quality",
       "json": "powerbi/data_integrity_and_data_quality.md"
+    },
+    {
+      "id": "most_common_dax_functions",
+      "label": "Most Common DAX Functions",
+      "json": "powerbi/most_common_dax_functions.md"
+    },
+    {
+      "id": "manhattan_and_powerbi",
+      "label": "Manhattan and Power BI",
+      "json": "powerbi/manhattan_and_powerbi.md"
+    },
+    {
+      "id": "northside_and_powerbi",
+      "label": "Northside and Power BI",
+      "json": "powerbi/northside_and_powerbi.md"
     }
 
   ]
